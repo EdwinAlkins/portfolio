@@ -1,0 +1,26 @@
+
+.button_slide {
+  background-color: transparent;
+  color: var(--palette-color-white1);
+  border: 2px solid var(--palette-color-blue2);
+  /* //   border-radius: 0px; */
+  padding: 18px 36px;
+  display: inline-block;
+  /* //   font-family: "Lucida Console", Monaco, monospace; */
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 var(--palette-color-blue2);
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_right:hover {
+  color: var(--palette-color-white1);
+  box-shadow: inset 400px 0 0 0 var(--palette-color-blue2);
+}
+
+.parallelogram {
+  transform: skew(-20deg);
+}

@@ -1,12 +1,17 @@
 import "./swipe.scss";
-import {PropsWithChildren} from "react";
+import { PropsWithChildren } from "react";
 
-export interface ButtonSwipeProps extends PropsWithChildren<any>{
+
+export interface ButtonSwipeProps extends PropsWithChildren<any> {
   text: string;
 }
 
 function ButtonSwipe(props: ButtonSwipeProps) {
-  return <button className="button_slide slide_right parallelogram"> {props.text} </button>;
+  return (
+    <button className="button_slide slide_right parallelogram">
+      <span>{props.text}</span>
+    </button>
+  );
 }
 
 ButtonSwipe.defaultProps = {

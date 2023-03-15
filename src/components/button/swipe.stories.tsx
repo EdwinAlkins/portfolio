@@ -1,7 +1,7 @@
 
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ButtonSwipe from './swipe';
+import ButtonSwipe, {ButtonSwipeProps} from './swipe';
 
 import "../../index.css"
 
@@ -9,19 +9,12 @@ export default {
   title: 'ButtonSwipe',
   component: ButtonSwipe,
   argTypes: {
-    text: {
-      control: {
-        type: 'text',
-      },
-    },
+    text: {control: 'text', defaultValue: 'Hello World', description: 'Text to display on the button'},
   },
 } as ComponentMeta<typeof ButtonSwipe>;
 
 
-const Template: ComponentStory<typeof ButtonSwipe> = ({text}) => <ButtonSwipe text={text} />;
+const Template: ComponentStory<typeof ButtonSwipe> = (props: ButtonSwipeProps) => <ButtonSwipe {...props} />;
 
 export const ExampleStory = Template.bind({});
-ExampleStory.args = {
-  text: 'Hello World',
-};
 ExampleStory.storyName = "Example ButtonSwipe";

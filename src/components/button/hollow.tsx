@@ -1,7 +1,6 @@
 import "./hollow.scss";
 import { PropsWithChildren } from "react";
 
-
 export interface ButtonHollowProps extends PropsWithChildren<any> {
   text: string;
 }

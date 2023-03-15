@@ -1,0 +1,89 @@
+.card {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  cursor: pointer;
+}
+.card .card_img {
+  transition: 0.3s;
+}
+
+.card:hover .card_img {
+  //foggy effect
+  filter: blur(5px);
+  transition: 0.3s;
+}
+
+.card_img {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  position: absolute;
+}
+
+.card_description {
+  position: absolute;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.301);
+}
+
+.card_title {
+  position: absolute;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.301);
+}
+
+/* animation */
+.card:hover .card_description {
+  display: block;
+  -webkit-animation: bg 0.1s linear 0s 1 forwards;
+  -moz-animation: bg 0.1s linear 0s 1 forwards;
+  -ms-animation: bg 0.1s linear 0s 1 forwards;
+  animation: bg 0.1s linear 0s 1 forwards;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+@keyframes bg {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.card:hover .card_title {
+  -webkit-animation: blurCard 0.1s linear 0s 1 forwards;
+  -moz-animation: blurCard 0.1s linear 0s 1 forwards;
+  -ms-animation: blurCard 0.1s linear 0s 1 forwards;
+  animation: blurCard 0.1s linear 0s 1 forwards;
+}
+@keyframes blurCard {
+  0% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+  }
+  100% {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+}

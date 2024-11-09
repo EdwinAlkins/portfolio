@@ -1,0 +1,16 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Python Tutorial",
+            "slug": "python-tuto.md"
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Project 1",
+            "technologies": ["js", "aws", "python", "docker", "react"]
+        }
+    ]
+}

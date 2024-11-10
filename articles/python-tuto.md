@@ -11,3 +11,6 @@ To start coding in Python, you need to set up the Python environment. Here are t
 1. **Download Python**:
    - Visit the official Python website at [python.org](https://www.python.org/).
    - Download the latest version of Python.
+
+<img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" alt="Python Logo" />
+<p> qsdf </p>

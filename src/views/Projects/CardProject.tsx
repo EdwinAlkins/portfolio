@@ -29,7 +29,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     return (
         <ProjectCardDiv>
             <h2>{project.title}</h2>
-            <Link to={`/project/${project.id}`}>Voir</Link>
+            <Link to={`/portfolio/project/${project.id}`}>Voir</Link>
             <TechIcons>
                 {project.technologies.map((technology) => (
                     <TechIcon key={technology} className={`fab fa-${technology}`}></TechIcon>

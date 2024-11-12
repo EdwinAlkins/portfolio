@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { gray1 } from '../../contantes/color';
 
 import { getArticles } from '../../utils/dbUtils';
@@ -25,7 +26,7 @@ const Article: React.FC = () => {
         <ArticleContainer>
             <h1>Article</h1>
             {articles.map((article) => (
-                <i>article {article.title} <a href={`/article/${article.id}`}>voir</a></i>
+                <i key={article.id}>article {article.title} <Link to={`/portfolio/article/${article.id}`}>voir</Link></i>
             ))}
         </ArticleContainer>
     );

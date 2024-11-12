@@ -112,19 +112,19 @@ export const CommandBar: React.FC = () => {
               <Command.Empty>No results found.</Command.Empty>
 
               <Command.Group heading="Navigation">
-                <Command.Item onSelect={() => navigate('/')}>
+                <Command.Item onSelect={() => navigate('/portfolio')}>
                   <i className="fas fa-home" /> Home
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/about')}>
+                <Command.Item onSelect={() => navigate('/portfolio/about')}>
                   <i className="fas fa-user" /> About
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/experience')}>
+                <Command.Item onSelect={() => navigate('/portfolio/experience')}>
                   <i className="fas fa-briefcase" /> Experience
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/projects')}>
+                <Command.Item onSelect={() => navigate('/portfolio/projects')}>
                   <i className="fas fa-code" /> Projects
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/articles')}>
+                <Command.Item onSelect={() => navigate('/portfolio/articles')}>
                   <i className="fas fa-newspaper" /> Articles
                 </Command.Item>
               </Command.Group>
@@ -136,7 +136,7 @@ export const CommandBar: React.FC = () => {
                 <Command.Item onSelect={() => window.open('https://www.linkedin.com/in/william-nauroy1998', '_blank')}>
                   <i className="fab fa-linkedin" /> LinkedIn
                 </Command.Item>
-                <Command.Item onSelect={() => window.open('/pdf/resumewn.pdf', '_blank')}>
+                <Command.Item onSelect={() => window.open('/portfolio/pdf/resumewn.pdf', '_blank')}>
                   <i className="far fa-file-alt" /> Resume
                 </Command.Item>
               </Command.Group>

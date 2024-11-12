@@ -43,7 +43,7 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Logo>
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to="/portfolio" style={{ textDecoration: 'none', color: 'inherit' }}>
           YourLogo
         </Link>
       </Logo>
@@ -53,10 +53,10 @@ const Header: React.FC = () => {
       </SearchContainer>
       
       <Navigation>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/experience">Experience</NavLink>
-        <NavLink to="/projects">Projects</NavLink>
-        <NavLink to="/articles">Articles</NavLink>
+        <NavLink to="/portfolio/about">About</NavLink>
+        <NavLink to="/portfolio/experience">Experience</NavLink>
+        <NavLink to="/portfolio/projects">Projects</NavLink>
+        <NavLink to="/portfolio/articles">Articles</NavLink>
       </Navigation>
     </HeaderContainer>
   );

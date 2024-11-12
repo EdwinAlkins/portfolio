@@ -95,7 +95,7 @@ const About: React.FC = () => {
             ))}
           </TechIcons>
         </Description>
-        <Image src={"/IMG_20240516_220132_026.jpg"} alt="William" />
+        <Image src={"/portfolio/IMG_20240516_220132_026.jpg"} alt="William" />
       </Presentation>
     </AboutContainer>
   );

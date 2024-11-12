@@ -58,7 +58,7 @@ const Home: React.FC = () => {
                 <SocialLink href="https://www.linkedin.com/in/william-nauroy1998" target="_blank" rel="noopener noreferrer">
                     <i className="fab fa-linkedin"></i>
                 </SocialLink>
-                <SocialLink href="/pdf/resumewn.pdf" target="_blank" rel="noopener noreferrer">
+                <SocialLink href="/portfolio/pdf/resumewn.pdf" target="_blank" rel="noopener noreferrer">
                     <i className="far fa-file-alt"></i>
                 </SocialLink>
             </SocialLinks>

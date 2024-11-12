@@ -25,7 +25,7 @@ const Article: React.FC = () => {
 
     return (
         <ArticleContainer>
-            <Link to="/articles">Retour</Link>
+            <Link to="/portfolio/articles">Retour</Link>
             {article && <Makdown article={article} />}
         </ArticleContainer>
     );

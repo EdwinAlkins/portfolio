@@ -25,7 +25,7 @@ const Project: React.FC = () => {
 
     return (
         <ProjectContainer>
-            <Link to="/projects">Retour</Link>
+            <Link to="/portfolio/projects">Retour</Link>
            {project && <h1>{project.title}</h1>}
         </ProjectContainer>
     );

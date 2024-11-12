@@ -29,12 +29,13 @@ function App() {
         <PageContainer>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/project/:id" element={<Project />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/article/:id" element={<Article />} />
+            <Route path="/portfolio" element={<Home />} />
+            <Route path="/portfolio/about" element={<About />} />
+            <Route path="/portfolio/experience" element={<Experience />} />
+            <Route path="/portfolio/projects" element={<Projects />} />
+            <Route path="/portfolio/project/:id" element={<Project />} />
+            <Route path="/portfolio/articles" element={<Articles />} />
+            <Route path="/portfolio/article/:id" element={<Article />} />
           </Routes>
         </PageContainer>
       </AppContainer>

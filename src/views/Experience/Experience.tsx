@@ -5,6 +5,10 @@ import { gray1, blue1 } from '../../contantes/color';
 const ExperienceContainer = styled.div`
   padding: 2rem;
   color: ${gray1};
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -12,6 +16,11 @@ const Title = styled.h1`
   color: ${blue1};
   margin-bottom: 2rem;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const TimelineContainer = styled.div`
@@ -28,6 +37,13 @@ const TimelineContainer = styled.div`
     bottom: 0;
     left: 50%;
     margin-left: -1px;
+    z-index: 0;
+  }
+  
+  @media (max-width: 768px) {
+    &::after {
+      left: 31px;
+    }
   }
 `;
 
@@ -56,10 +72,28 @@ const TimelineItem = styled.div`
     border-radius: 50%;
     top: 15px;
     right: -8px;
+    z-index: 1;
   }
   
   &:nth-child(even)::after {
     left: -8px;
+    right: auto;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    
+    &:nth-child(odd), &:nth-child(even) {
+      left: 0;
+      text-align: left;
+    }
+    
+    &::after {
+      left: 23px !important;
+      right: auto !important;
+    }
   }
 `;
 
@@ -87,6 +121,10 @@ const TimelineTitle = styled.h3`
 const TimelineDescription = styled.div`
   margin: 0;
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const CompanyLink = styled.a`

@@ -7,6 +7,11 @@ import { useNavigate } from 'react-router-dom';
 const SearchContainer = styled.div`
   position: relative;
   width: 100%;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const StyledCommand = styled(Command)`
@@ -39,6 +44,7 @@ const StyledCommand = styled(Command)`
     border: 1px solid ${black1};
     border-radius: 6px;
     margin-top: 8px;
+    z-index: 1001;
   }
 
   [cmdk-item] {
@@ -62,6 +68,50 @@ const StyledCommand = styled(Command)`
     padding: 8px 12px;
     opacity: 0.7;
   }
+
+  @media (max-width: 768px) {
+    &:not([data-opened="true"]) {
+      [cmdk-input] {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0;
+        background: ${black2};
+        
+        &::before {
+          content: '⌘';
+          font-size: 1rem;
+          color: ${gray1};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+      }
+    }
+
+    &[data-opened="true"] {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      z-index: 1001;
+
+      [cmdk-input] {
+        background: ${black2};
+        z-index: 1001;
+      }
+
+      [cmdk-list] {
+        position: relative;
+        background: ${black2};
+        border: 1px solid ${black1};
+      }
+    }
+  }
 `;
 
 const ShortcutHint = styled.div`
@@ -83,6 +133,16 @@ const KeyboardKey = styled.span`
   color: ${gray1};
 `;
 
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+`;
+
 export const CommandBar: React.FC = () => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
@@ -101,7 +161,7 @@ export const CommandBar: React.FC = () => {
 
   return (
     <SearchContainer>
-      <StyledCommand shouldFilter={true}>
+      <StyledCommand shouldFilter={true} data-opened={open}>
         <Command.Input
           placeholder="Search..."
           onClick={() => setOpen(true)}
@@ -112,52 +172,44 @@ export const CommandBar: React.FC = () => {
               <Command.Empty>No results found.</Command.Empty>
 
               <Command.Group heading="Navigation">
-                <Command.Item onSelect={() => navigate('/portfolio')}>
+                <Command.Item onSelect={() => {navigate('/portfolio'); setOpen(false);}}>
                   <i className="fas fa-home" /> Home
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/portfolio/about')}>
+                <Command.Item onSelect={() => {navigate('/portfolio/about'); setOpen(false);}}>
                   <i className="fas fa-user" /> About
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/portfolio/experience')}>
+                <Command.Item onSelect={() => {navigate('/portfolio/experience'); setOpen(false);}}>
                   <i className="fas fa-briefcase" /> Experience
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/portfolio/projects')}>
+                <Command.Item onSelect={() => {navigate('/portfolio/projects'); setOpen(false);}}>
                   <i className="fas fa-code" /> Projects
                 </Command.Item>
-                <Command.Item onSelect={() => navigate('/portfolio/articles')}>
+                <Command.Item onSelect={() => {navigate('/portfolio/articles'); setOpen(false);}}>
                   <i className="fas fa-newspaper" /> Articles
                 </Command.Item>
               </Command.Group>
 
               <Command.Group heading="Social">
-                <Command.Item onSelect={() => window.open('https://github.com/EdwinAlkins', '_blank')}>
+                <Command.Item onSelect={() => {window.open('https://github.com/EdwinAlkins', '_blank'); setOpen(false);}}>
                   <i className="fab fa-github" /> GitHub
                 </Command.Item>
-                <Command.Item onSelect={() => window.open('https://www.linkedin.com/in/william-nauroy1998', '_blank')}>
+                <Command.Item onSelect={() => {window.open('https://www.linkedin.com/in/william-nauroy1998', '_blank'); setOpen(false);}}>
                   <i className="fab fa-linkedin" /> LinkedIn
                 </Command.Item>
-                <Command.Item onSelect={() => window.open('/portfolio/pdf/resumewn.pdf', '_blank')}>
+                <Command.Item onSelect={() => {window.open('/portfolio/pdf/resumewn.pdf', '_blank'); setOpen(false);}}>
                   <i className="far fa-file-alt" /> Resume
                 </Command.Item>
               </Command.Group>
             </Command.List>
-            <div
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                zIndex: -1
-              }}
-              onClick={() => setOpen(false)}
-            />
+            <Overlay onClick={() => setOpen(false)} />
           </>
         )}
       </StyledCommand>
-      <ShortcutHint>
-        <KeyboardKey>⌘  K</KeyboardKey>
-      </ShortcutHint>
+      {!open && (
+        <ShortcutHint>
+          <KeyboardKey>⌘ K</KeyboardKey>
+        </ShortcutHint>
+      )}
     </SearchContainer>
   );
 };

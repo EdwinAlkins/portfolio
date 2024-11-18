@@ -6,6 +6,11 @@ const AboutContainer = styled.div`
   padding: 2rem;
   color: ${gray1};
   margin-top: 5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 0rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -13,6 +18,10 @@ const Title = styled.h1`
   color: ${blue1};
   margin-bottom: 1rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 
@@ -22,6 +31,11 @@ const Presentation = styled.p`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 `;
 
 
@@ -34,6 +48,12 @@ const Description = styled.p`
   span {
     color: ${blue1};
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    max-width: 100%;
+    text-align: center;
+  }
 `;
 
 const Image = styled.img`
@@ -41,6 +61,12 @@ const Image = styled.img`
   height: 300px;
   border-radius: 5%;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    margin-top: 1rem;
+  }
 `;
 
 const CompanyLink = styled.a`

@@ -1,16 +1,71 @@
 {
-    "articles": [
-        {
-            "id": 1,
-            "title": "Python Tutorial",
-            "slug": "python-tuto.md"
-        }
-    ],
-    "projects": [
-        {
-            "id": 1,
-            "title": "Project 1",
-            "technologies": ["js", "aws", "python", "docker", "react"]
-        }
-    ]
+  "articles": [
+    {
+      "id": 1,
+      "title": "Python Tutorial",
+      "slug": "python-tuto.md"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "slug": "ecommerce-platform",
+      "shortDescription": "Full-stack e-commerce solution with real-time inventory management",
+      "longDescription": "A comprehensive e-commerce platform built with modern technologies. Features include real-time inventory tracking, secure payment processing, user authentication, admin dashboard, and responsive design.",
+      "capsuleImage": "https://picsum.photos/400/225",
+      "images": [
+        "https://picsum.photos/800/600?random=1",
+        "https://picsum.photos/800/600?random=2",
+        "https://picsum.photos/800/600?random=3"
+      ],
+      "technologies": ["react", "nodejs", "mongodb", "aws", "docker"],
+      "tags": ["Full-Stack", "E-Commerce", "Cloud", "DevOps"],
+      "category": "Web Application",
+      "releaseDate": "2024-06-15",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/edwinalkins/ecommerce",
+        "demo": "https://ecommerce-demo.example.com"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Task Management API",
+      "slug": "task-management-api",
+      "shortDescription": "RESTful API for task management with authentication and real-time updates",
+      "longDescription": "A robust REST API built with Node.js and Express, featuring JWT authentication, WebSocket support for real-time updates, comprehensive validation, and automated testing.",
+      "capsuleImage": "https://picsum.photos/400/225?random=4",
+      "images": [
+        "https://picsum.photos/800/600?random=5",
+        "https://picsum.photos/800/600?random=6"
+      ],
+      "technologies": ["nodejs", "express", "postgresql", "redis", "websocket"],
+      "tags": ["Backend", "API", "Real-Time", "Database"],
+      "category": "API Service",
+      "releaseDate": "2024-03-20",
+      "status": "Production"
+    },
+    {
+      "id": 3,
+      "title": "Weather Dashboard",
+      "slug": "weather-dashboard",
+      "shortDescription": "Interactive weather dashboard with location-based forecasts and visualizations",
+      "longDescription": "A beautiful weather dashboard that displays current conditions and forecasts for any location worldwide. Features interactive maps, historical data visualization, severe weather alerts, and customizable widgets.",
+      "capsuleImage": "https://picsum.photos/400/225?random=7",
+      "images": [
+        "https://picsum.photos/800/600?random=8",
+        "https://picsum.photos/800/600?random=9",
+        "https://picsum.photos/800/600?random=10"
+      ],
+      "technologies": ["react", "typescript", "d3js", "mapbox", "weatherapi"],
+      "tags": ["Frontend", "Dashboard", "Data Visualization", "Maps"],
+      "category": "Web Application",
+      "releaseDate": "2024-01-10",
+      "status": "Beta",
+      "links": {
+        "github": "https://github.com/edwinalkins/weather-dashboard"
+      }
+    }
+  ]
 }

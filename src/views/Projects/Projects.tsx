@@ -11,7 +11,31 @@ const ProjectContainer = styled.div`
   color: ${gray1};
 `;
 
-const Project: React.FC = () => {
+const ProjectGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+`;
+
+const PageHeader = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const PageTitle = styled.h1`
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+`;
+
+const PageSubtitle = styled.p`
+  margin: 0;
+  opacity: 0.7;
+  font-size: 1rem;
+`;
+
+const Projects: React.FC = () => {
     const [projects, setProjects] = useState<ProjectType[]>([])
 
     useEffect(() => {
@@ -24,11 +48,17 @@ const Project: React.FC = () => {
 
     return (
         <ProjectContainer>
-            {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-            ))}
+            <PageHeader>
+                <PageTitle>Projects</PageTitle>
+                <PageSubtitle>Browse my portfolio projects</PageSubtitle>
+            </PageHeader>
+            <ProjectGrid>
+                {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+            </ProjectGrid>
         </ProjectContainer>
     );
 };
 
-export default Project; 
+export default Projects; 

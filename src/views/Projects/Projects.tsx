@@ -19,25 +19,33 @@ const ProjectGrid = styled.div`
 `;
 
 const PageHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 `;
 
 const PageTitle = styled.h1`
   font-size: 2rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-weight: 700;
 `;
 
 const PageSubtitle = styled.p`
   margin: 0;
   opacity: 0.7;
-  font-size: 1rem;
+  font-size: 0.9rem;
 `;
 
 const FilterContainer = styled.div`
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
 `;
 
 const FilterButton = styled.button<{ active: boolean }>`
@@ -45,7 +53,7 @@ const FilterButton = styled.button<{ active: boolean }>`
   color: ${({ active }) => (active ? blue1 : gray1)};
   border: 1px solid ${({ active }) => (active ? blue1 : 'rgba(255, 255, 255, 0.1)')};
   border-radius: 4px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.4rem 0.85rem;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -82,8 +90,10 @@ const Projects: React.FC = () => {
     return (
         <ProjectContainer>
             <PageHeader>
-                <PageTitle>Projects</PageTitle>
-                <PageSubtitle>Browse my portfolio projects</PageSubtitle>
+                <HeaderContent>
+                    <PageTitle>Projects</PageTitle>
+                    <PageSubtitle>Browse my portfolio projects</PageSubtitle>
+                </HeaderContent>
                 <FilterContainer>
                     <FilterButton
                         active={filter === 'all'}

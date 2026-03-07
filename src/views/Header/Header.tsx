@@ -170,7 +170,7 @@ const Header: React.FC = () => {
         <NavLink to="/portfolio/about" onClick={toggleMenu} >About</NavLink>
         <NavLink to="/portfolio/experience" onClick={toggleMenu}>Experience</NavLink>
         <NavLink to="/portfolio/projects" onClick={toggleMenu}>Projects</NavLink>
-        <NavLink to="/portfolio/articles" onClick={toggleMenu}>Articles</NavLink>
+        {/* <NavLink to="/portfolio/articles" onClick={toggleMenu}>Articles</NavLink> */}
       </Navigation>
     </HeaderContainer>
   );

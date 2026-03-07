@@ -15,7 +15,7 @@
       "startDate": "2022",
       "endDate": "Present",
       "description": "Development of web and desktop applications for maritime routing. Scrapping of weather data.",
-      "technologies": "Technologies used are React, Node.js, Vue.js, PostgreSQL, Docker, Kubernetes, Python, React Native."
+      "technologies": "Technologies used are Kubernetes,  AWS, Python, React, Node.js, Vue.js, PostgreSQL, Docker, React Native."
     },
     {
       "id": 2,
@@ -25,15 +25,25 @@
       "startDate": "2021",
       "endDate": "2022",
       "description": "Architecture and development of web solutions for key accounts.",
-      "technologies": "Technologies used include React, Node.js, PostgreSQL, Docker, Vue.js, Angular, Java, Azure."
+      "technologies": "Technologies used include React, Node.js, PostgreSQL, Docker, Vue.js, React, Java, Azure."
+    },
+    {
+      "id": 4,
+      "title": "Internship Software Developer",
+      "company": "EUVEKA",
+      "companyUrl": "https://www.euveka.com",
+      "startDate": "June 2018",
+      "endDate": "July 2018",
+      "description": "Development of a cross-platform application for mannequin robot control.",
+      "technologies": "Technologies used are RAD Studio, C, Rust."
     },
     {
       "id": 3,
       "title": "Interim Software Developer",
       "company": "LPG System",
-      "companyUrl": "https://www.lpg-group.com/fr/groupe-lpg",
+      "companyUrl": "https://www.lpg-group.com",
       "startDate": "Mai 2018",
-      "endDate": "Août 2018",
+      "endDate": "August 2018",
       "description": "Internship and interim assignments in industrial supervision software development.",
       "technologies": "Technologies used are Java, MySQL, Android."
     }

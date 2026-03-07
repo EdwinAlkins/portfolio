@@ -324,14 +324,14 @@ export const CommandBar: React.FC = () => {
                   <SearchResultIcon className="fas fa-code" $type="page" />
                   <SearchResultTitle>Projects</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
+                {/* <Command.Item 
                   value="articles" 
                   keywords={['articles', 'blog', 'posts', 'writing']}
                   onSelect={() => handleNavigate('/portfolio/articles')}
                 >
                   <SearchResultIcon className="fas fa-newspaper" $type="page" />
                   <SearchResultTitle>Articles</SearchResultTitle>
-                </Command.Item>
+                </Command.Item> */}
               </Command.Group>
 
               {projects.length > 0 && (
@@ -351,7 +351,7 @@ export const CommandBar: React.FC = () => {
                 </Command.Group>
               )}
 
-              {articles.length > 0 && (
+              {/* {articles.length > 0 && (
                 <Command.Group heading="Articles">
                   {articles.map((article) => (
                     <Command.Item
@@ -365,7 +365,7 @@ export const CommandBar: React.FC = () => {
                     </Command.Item>
                   ))}
                 </Command.Group>
-              )}
+              )} */}
 
               <Command.Group heading="Links">
                 <Command.Item 

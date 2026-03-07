@@ -15,7 +15,7 @@ const HomeContainer = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   color: ${gray1};
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const Subtitle = styled.h2`
@@ -38,9 +38,43 @@ const SocialLink = styled.a`
   color: ${gray1};
   font-size: 1.5rem;
   transition: color 0.2s ease;
-  
+
   &:hover {
     color: ${blue1};
+  }
+`;
+
+const LookAroundSection = styled.div`
+  margin-top: 1rem;
+  text-align: center;
+`;
+
+const LookAroundTitle = styled.h3`
+  font-size: 1.2rem;
+  color: ${gray1};
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+`;
+
+const NavButton = styled.a`
+  padding: 0.5rem 1rem;
+  border: 2px solid ${blue1};
+  border-radius: 20px;
+  color: ${gray1};
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${blue1};
+    color: white;
   }
 `;
 
@@ -51,6 +85,20 @@ const Home: React.FC = () => {
             <Subtitle>
                 I'm a <span>full stack developer</span>.
             </Subtitle>
+            <LookAroundSection>
+                <LookAroundTitle>Take a look around :</LookAroundTitle>
+                <ButtonGroup>
+                    <NavButton href="/portfolio/about">
+                        <i className="fas fa-user"></i> About
+                    </NavButton>
+                    <NavButton href="/portfolio/experience">
+                        <i className="fas fa-briefcase"></i> Exp
+                    </NavButton>
+                    <NavButton href="/portfolio/projects">
+                        <i className="fas fa-folder"></i> Projects
+                    </NavButton>
+                </ButtonGroup>
+            </LookAroundSection>
             <SocialLinks>
                 <SocialLink href="https://github.com/EdwinAlkins" target="_blank" rel="noopener noreferrer">
                     <i className="fab fa-github"></i>

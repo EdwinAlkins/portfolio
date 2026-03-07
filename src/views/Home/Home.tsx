@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { blue1, gray1 } from '../../contantes/color';
+import { Link } from 'react-router-dom';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -62,7 +63,7 @@ const ButtonGroup = styled.div`
   justify-content: center;
 `;
 
-const NavButton = styled.a`
+const NavButton = styled(Link)`
   padding: 0.5rem 1rem;
   border: 2px solid ${blue1};
   border-radius: 20px;
@@ -88,13 +89,13 @@ const Home: React.FC = () => {
             <LookAroundSection>
                 <LookAroundTitle>Take a look around :</LookAroundTitle>
                 <ButtonGroup>
-                    <NavButton href="/portfolio/about">
+                    <NavButton to="/portfolio/about">
                         <i className="fas fa-user"></i> About
                     </NavButton>
-                    <NavButton href="/portfolio/experience">
+                    <NavButton to="/portfolio/experience">
                         <i className="fas fa-briefcase"></i> Exp
                     </NavButton>
-                    <NavButton href="/portfolio/projects">
+                    <NavButton to="/portfolio/projects">
                         <i className="fas fa-folder"></i> Projects
                     </NavButton>
                 </ButtonGroup>

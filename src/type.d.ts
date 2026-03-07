@@ -4,6 +4,17 @@ export interface Article {
     slug: string;
 }
 
+export interface Experience {
+    id: number;
+    title: string;
+    company: string;
+    companyUrl: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    technologies: string;
+}
+
 export interface ProjectLinks {
     github?: string;
     demo?: string;
@@ -24,9 +35,11 @@ export interface Project {
     releaseDate: string;
     status: string;
     links?: ProjectLinks;
+    experienceId?: number;
 }
 
 export interface Database {
     articles: Article[];
     projects: Project[];
+    experiences: Experience[];
 }

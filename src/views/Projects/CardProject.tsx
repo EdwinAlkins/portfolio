@@ -28,15 +28,16 @@ const CardContainer = styled.div`
 const CardImage = styled.div`
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    min-height: 180px;
+    max-height: 240px;
     overflow: hidden;
     background: ${black1};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const CardImageImg = styled.img`
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;

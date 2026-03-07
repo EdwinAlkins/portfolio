@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { gray1, blue1, black2 } from '../../contantes/color';
-import { getProjects } from '../../utils/dbUtils';
-import { Project as ProjectType } from '../../type';
+import { getProjects, getExperienceById } from '../../utils/dbUtils';
+import { Project as ProjectType, Experience } from '../../type';
 import { Link, useParams } from 'react-router-dom';
 
 
@@ -51,6 +51,30 @@ const ProjectMeta = styled.div`
 const Badge = styled.span`
   background: rgba(144, 205, 244, 0.15);
   color: ${blue1};
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+`;
+
+const ExperienceBadge = styled.a`
+  background: rgba(144, 205, 244, 0.15);
+  color: ${blue1};
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(144, 205, 244, 0.25);
+  }
+`;
+
+const PersonalBadge = styled.span`
+  background: rgba(255, 255, 255, 0.1);
+  color: ${gray1};
   padding: 4px 12px;
   border-radius: 2px;
   font-size: 0.85rem;
@@ -246,13 +270,22 @@ const ModalCounter = styled.div`
 const Project: React.FC = () => {
     const { id } = useParams();
     const [project, setProject] = useState<ProjectType | null>(null)
+    const [experience, setExperience] = useState<Experience | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         const loadContent = async () => {
             const projects = await getProjects()
-            setProject(projects.find((project) => String(project.id) === id) || null)
+            const foundProject = projects.find((project) => String(project.id) === id) || null
+            setProject(foundProject)
+
+            if (foundProject?.experienceId && foundProject.experienceId > 0) {
+                const exp = await getExperienceById(foundProject.experienceId);
+                setExperience(exp || null);
+            } else {
+                setExperience(null);
+            }
         }
         loadContent()
     }, [id])
@@ -304,6 +337,13 @@ const Project: React.FC = () => {
                     <ProjectMeta>
                         <Badge><StatusDot status={project.status} />{project.status}</Badge>
                         <Badge>{project.category}</Badge>
+                        {experience ? (
+                            <ExperienceBadge href={experience.companyUrl} target="_blank" rel="noopener noreferrer">
+                                {experience.company} ({experience.startDate} - {experience.endDate})
+                            </ExperienceBadge>
+                        ) : (
+                            <PersonalBadge>Personal Project</PersonalBadge>
+                        )}
                     </ProjectMeta>
                 </ProjectHeader>
 

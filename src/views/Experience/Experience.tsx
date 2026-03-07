@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { gray1, blue1 } from '../../contantes/color';
+import { Experience as ExperienceType } from '../../type';
+import { getExperiences } from '../../utils/dbUtils';
 
 const ExperienceContainer = styled.div`
   padding: 2rem;
   color: ${gray1};
-  
+
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -16,7 +18,7 @@ const Title = styled.h1`
   color: ${blue1};
   margin-bottom: 2rem;
   text-align: center;
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -27,7 +29,7 @@ const TimelineContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -39,7 +41,7 @@ const TimelineContainer = styled.div`
     margin-left: -1px;
     z-index: 0;
   }
-  
+
   @media (max-width: 768px) {
     &::after {
       left: 31px;
@@ -52,17 +54,17 @@ const TimelineItem = styled.div`
   position: relative;
   width: 50%;
   box-sizing: border-box;
-  
+
   &:nth-child(odd) {
     left: 0;
     text-align: right;
   }
-  
+
   &:nth-child(even) {
     left: 50%;
     text-align: left;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -74,22 +76,22 @@ const TimelineItem = styled.div`
     right: -8px;
     z-index: 1;
   }
-  
+
   &:nth-child(even)::after {
     left: -8px;
     right: auto;
   }
-  
+
   @media (max-width: 768px) {
     width: 100%;
     padding-left: 70px;
     padding-right: 25px;
-    
+
     &:nth-child(odd), &:nth-child(even) {
       left: 0;
       text-align: left;
     }
-    
+
     &::after {
       left: 23px !important;
       right: auto !important;
@@ -106,12 +108,12 @@ const TimelineDate = styled.span`
 
 const TimelineTitle = styled.h3`
   margin: 0 0 0.5rem 0;
-  
+
   a {
     color: inherit;
     text-decoration: none;
     transition: color 0.3s ease;
-    
+
     &:hover {
       color: ${blue1};
     }
@@ -121,10 +123,16 @@ const TimelineTitle = styled.h3`
 const TimelineDescription = styled.div`
   margin: 0;
   line-height: 1.5;
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
+`;
+
+const TechnologiesText = styled.div`
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.85;
 `;
 
 const CompanyLink = styled.a`
@@ -133,7 +141,7 @@ const CompanyLink = styled.a`
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -144,57 +152,39 @@ const Description = styled.p`
 `;
 
 const Experience: React.FC = () => {
+    const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+
+    useEffect(() => {
+        const loadContent = async () => {
+            const experiencesData = await getExperiences();
+            setExperiences(experiencesData);
+        };
+        loadContent();
+    }, []);
+
     return (
         <ExperienceContainer>
             <Title>Experience</Title>
             <TimelineContainer>
-                <TimelineItem>
-                    <TimelineDate>2022 - Present</TimelineDate>
-                    <TimelineTitle>
-                        Full Stack Developer
-                    </TimelineTitle>
-                    <TimelineDescription>
-                        <CompanyLink href="https://www.dice-engineering.com" target="_blank" rel="noopener noreferrer">
-                            D-ICE Engineering
-                        </CompanyLink>
-                        <Description>
-                            Development of web and desktop applications for maritime routing. Scrapping of weather data.
-                            Technologies used are React, Node.js, Vue.js, PostgreSQL, Docker, Kubernetes, Python, React Native.
-                        </Description>
-                    </TimelineDescription>
-                </TimelineItem>
-
-                <TimelineItem>
-                    <TimelineDate>2021 - 2022</TimelineDate>
-                    <TimelineTitle>
-                        Software Architect
-                    </TimelineTitle>
-                    <TimelineDescription>
-                        <CompanyLink href="https://www.asi.fr" target="_blank" rel="noopener noreferrer">
-                            ASI
-                        </CompanyLink>
-                        <Description>
-                            Architecture and development of web solutions for key accounts.
-                            Technologies used include React, Node.js, PostgreSQL, Docker, Vue.js, Angular, Java, Azure.
-                        </Description>
-                    </TimelineDescription>
-                </TimelineItem>
-
-                <TimelineItem>
-                    <TimelineDate>Mai-Août 2018</TimelineDate>
-                    <TimelineTitle>
-                        Interim Software Developer
-                    </TimelineTitle>
-                    <TimelineDescription>
-                        <CompanyLink href="https://www.lpg-group.com/fr/groupe-lpg" target="_blank" rel="noopener noreferrer">
-                            LPG System
-                        </CompanyLink>
-                        <Description>
-                            Internship and interim assignments in industrial supervision software development.
-                            Technologies used are Java, MySQL, Android.
-                        </Description>
-                    </TimelineDescription>
-                </TimelineItem>
+                {experiences.map((experience) => (
+                    <TimelineItem key={experience.id}>
+                        <TimelineDate>{experience.startDate} - {experience.endDate}</TimelineDate>
+                        <TimelineTitle>
+                            {experience.title}
+                        </TimelineTitle>
+                        <TimelineDescription>
+                            <CompanyLink href={experience.companyUrl} target="_blank" rel="noopener noreferrer">
+                                {experience.company}
+                            </CompanyLink>
+                            <Description>
+                                {experience.description}
+                            </Description>
+                            <TechnologiesText>
+                                {experience.technologies}
+                            </TechnologiesText>
+                        </TimelineDescription>
+                    </TimelineItem>
+                ))}
             </TimelineContainer>
         </ExperienceContainer>
     );

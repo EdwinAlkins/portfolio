@@ -1,16 +1,156 @@
 {
-    "articles": [
-        {
-            "id": 1,
-            "title": "Python Tutorial",
-            "slug": "python-tuto.md"
-        }
-    ],
-    "projects": [
-        {
-            "id": 1,
-            "title": "Project 1",
-            "technologies": ["js", "aws", "python", "docker", "react"]
-        }
-    ]
+  "articles": [
+    {
+      "id": 1,
+      "title": "Python Tutorial",
+      "slug": "python-tuto.md"
+    }
+  ],
+  "experiences": [
+    {
+      "id": 1,
+      "title": "Full Stack Developer",
+      "company": "D-ICE Engineering",
+      "companyUrl": "https://www.dice-engineering.com",
+      "startDate": "2022",
+      "endDate": "Present",
+      "description": "Development of web and desktop applications for maritime routing. Scrapping of weather data.",
+      "technologies": "Technologies used are Kubernetes,  AWS, Python, React, Node.js, Vue.js, PostgreSQL, Docker, React Native."
+    },
+    {
+      "id": 2,
+      "title": "Software Architect",
+      "company": "ASI",
+      "companyUrl": "https://www.asi.fr",
+      "startDate": "2021",
+      "endDate": "2022",
+      "description": "Architecture and development of web solutions for key accounts.",
+      "technologies": "Technologies used include React, Node.js, PostgreSQL, Docker, Vue.js, React, Java, Azure."
+    },
+    {
+      "id": 4,
+      "title": "Internship Software Developer",
+      "company": "EUVEKA",
+      "companyUrl": "https://www.euveka.com",
+      "startDate": "June 2018",
+      "endDate": "July 2018",
+      "description": "Development of a cross-platform application for mannequin robot control.",
+      "technologies": "Technologies used are RAD Studio, C, Rust."
+    },
+    {
+      "id": 3,
+      "title": "Interim Software Developer",
+      "company": "LPG System",
+      "companyUrl": "https://www.lpg-group.com",
+      "startDate": "Mai 2018",
+      "endDate": "August 2018",
+      "description": "Internship and interim assignments in industrial supervision software development.",
+      "technologies": "Technologies used are Java, MySQL, Android."
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Auth and Billing Migrations",
+      "slug": "auth-billing-migrations",
+      "shortDescription": "Migration of authentication system from AWS Cognito to Keycloak with Stripe billing integration. Building a trust service to synchronize user subscriptions and roles between both platforms.",
+      "longDescription": "A comprehensive authentication and billing migration project aimed at modernizing the user management infrastructure. The system replaces the legacy AWS Cognito authentication with Keycloak for enhanced security and flexibility. A custom trust service acts as a bridge between Keycloak and Stripe, automatically synchronizing user subscriptions, payment status, and role assignments. The solution leverages Argo Workflows for orchestration, AWS SQS for message queuing, and Kubernetes for container orchestration. This ensures seamless user experience while maintaining data consistency across platforms. Built with Python, the service handles complex workflows including subscription lifecycle management, role-based access control, and real-time synchronization between identity and billing systems.",
+      "capsuleImage": "https://upload.wikimedia.org/wikipedia/commons/2/29/Keycloak_Logo.png",
+      "images": [
+      ],
+      "technologies": ["python", "keycloak", "stripe", "docker", "kubernetes", "postgresql", "aws", "argo"],
+      "tags": ["Authentication", "Billing", "Security", "Cloud", "DevOps"],
+      "category": "API Service",
+      "releaseDate": "2026-02-26",
+      "status": "Development",
+      "experienceId": 1
+    },
+    {
+      "id": 2,
+      "title": "High-Performance Routing Orchestrator",
+      "slug": "high-performance-routing-orchestrator",
+      "shortDescription": "API REST FastAPI pour l'orchestration de calculs de routage intensifs dans le cloud",
+      "longDescription": "Solution d'orchestration de calculs de routage pouvant durer plusieurs dizaines de minutes. Architecture basée sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
+      "capsuleImage": "https://i.ibb.co/SX1XPT2n/hq720.jpg",
+      "images": [
+      ],
+      "technologies": ["python", "fastapi", "kubernetes", "aws", "cpp", "docker", "rds", "sqs", "argo"],
+      "tags": ["API", "Cloud", "DevOps", "High-Performance", "Orchestration"],
+      "category": "API Service",
+      "releaseDate": "2026-02-26",
+      "status": "Production",
+      "experienceId": 1
+    },
+    {
+      "id": 3,
+      "title": "Plateforme de Distribution de Données Météo",
+      "slug": "plateforme-distribution-donnees-meteo",
+      "shortDescription": "Pipeline de données météo multi-sources avec ingestion, transformation et distribution à très faible latence (<200ms)",
+      "longDescription": "Solution d'intégration de données météo concurrente de Windy, développée en Node.js avec optimisations C++. Architecture basée sur un système de cache distribué avec etcd et gestion de cache en mémoire pour une redistribution ultra-rapide. Le système propose également des données météo historiques grâce à un mécanisme de workers et d'orchestration permettant de lancer des batches de calcul. Une analyse prédictive des besoins utilisateurs permet de pré-charger les données météo dans le cache avant même la demande, garantissant une latence minimale.",
+      "capsuleImage": "https://www.notre-environnement.gouv.fr/local/cache-vignettes/L1200xH630/1d104c6aba46e5323b70f2e943b530-4c512.png",
+      "images": [
+      ],
+      "technologies": ["nodejs", "cpp", "kubernetes", "etcd", "docker", "aws", "redis"],
+      "tags": ["Data Engineering", "High-Performance", "Caching", "Real-Time", "Weather"],
+      "category": "API Service",
+      "releaseDate": "2026-02-26",
+      "status": "Beta",
+      "experienceId": 1
+    },
+    {
+      "id": 4,
+      "title": "Application Desktop de Visualisation Météo & Routage",
+      "slug": "application-desktop-visualisation-meteo-routage",
+      "shortDescription": "Application desktop et mobile de routage maritime avec visualisation de données météo, satellite et panneaux statistiques d'analyse",
+      "longDescription": "Logiciel complet de routage maritime (Tactics & SquidX) permettant de lancer des calculs de routage, visualiser les trajets, afficher des données météo et satellite, et analyser les performances via des panneaux statistiques. Développé en React avec Electron pour le desktop et React Native pour mobile.",
+      "capsuleImage": "https://www.squid-sailing.com/img/cms/squidx-1-10-0-tides-2.png",
+      "images": [
+        "https://www.squid-sailing.com/img/cms/squidx-1-10-0-tides-2.png",
+        "https://i.ibb.co/SX1XPT2n/hq720.jpg",
+        "https://www.squid-sailing.com/img/cms/0x0ss%20(1).png"
+      ],
+      "technologies": ["react", "electron", "react-native", "typescript", "docker", "tauri"],
+      "tags": ["Desktop", "Mobile", "Data Visualization", "Maritime", "Full-Stack"],
+      "category": "Desktop Application",
+      "releaseDate": "2026-02-26",
+      "status": "Production",
+      "experienceId": 1
+    },
+    {
+      "id": 5,
+      "title": "Cartographie des system d'information",
+      "slug": "cartographie-systemes-information",
+      "shortDescription": "Étude et cartographie d'un système d'information en vue de sa mutualisation. Migration d'applications monolithiques vers une architecture micro-services avec mise en place de services d'authentification Keycloak.",
+      "longDescription": "Projet de cartographie complète d'un système d'informatique d'entreprise dans l'objectif d'étudier et mettre en œuvre une mutualisation des services. L'initiative visait à transformer des applications monolithiques existantes en une architecture micro-services moderne et évolutive. Parmi les réalisations clés : conception et déploiement d'un micro-service d'authentification centralisé avec Keycloak, permettant une gestion unifiée des identités et des accès. Cette modernisation a amélioré la scalabilité, la maintenabilité et la sécurité du système d'information tout en facilitant l'intégration de nouveaux services.",
+      "capsuleImage": "https://www.appviewx.com/wp-content/uploads/2023/02/Microservices-Architecture.png",
+      "images": [],
+      "technologies": ["keycloak", "docker", "kubernetes", "java", "react"],
+      "tags": ["Architecture", "Microservices", "DevOps", "Cloud", "Security", "Modernization"],
+      "category": "API Service",
+      "releaseDate": "2021-08-31",
+      "status": "Production",
+      "experienceId": 2
+    },
+    {
+      "id": 6,
+      "title": "E-Learning Platform",
+      "slug": "e-learning-platform",
+      "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
+      "longDescription": "A personal e-learning platform designed to help users follow and track their courses from any device. The platform integrates AI tools to generate course summaries, enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. Built to enhance the online learning experience with modern web technologies and intelligent features.",
+      "capsuleImage": "https://picsum.photos/800/600?random=1",
+      "images": [
+        "https://picsum.photos/800/600?random=2",
+        "https://picsum.photos/800/600?random=3"
+      ],
+      "technologies": ["react", "python", "fastapi", "typescript"],
+      "tags": ["E-Learning", "AI", "Full-Stack", "Education", "Progress-Tracking"],
+      "category": "Web Application",
+      "releaseDate": "2026-01-30",
+      "status": "Production",
+      "links": {
+        "github": ["https://github.com/EdwinAlkins/e-learning-api", "https://github.com/EdwinAlkins/e-learning-front"]
+      },
+      "experienceId": -1
+    }
+  ]
 }

@@ -81,7 +81,7 @@ const Projects: React.FC = () => {
 
     const filteredProjects = projects.filter(project => {
         if (filter === 'all') return true;
-        const isProfessional = !!project.experienceId;
+        const isProfessional = project.experienceId !== -1;
         if (filter === 'professional') return isProfessional;
         if (filter === 'personal') return !isProfessional;
         return true;

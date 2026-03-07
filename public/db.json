@@ -120,6 +120,27 @@
       "releaseDate": "2021-08-31",
       "status": "Production",
       "experienceId": 2
+    },
+    {
+      "id": 6,
+      "title": "E-Learning Platform",
+      "slug": "e-learning-platform",
+      "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
+      "longDescription": "A personal e-learning platform designed to help users follow and track their courses from any device. The platform integrates AI tools to generate course summaries, enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. Built to enhance the online learning experience with modern web technologies and intelligent features.",
+      "capsuleImage": "https://picsum.photos/800/600?random=1",
+      "images": [
+        "https://picsum.photos/800/600?random=2",
+        "https://picsum.photos/800/600?random=3"
+      ],
+      "technologies": ["react", "python", "fastapi", "typescript"],
+      "tags": ["E-Learning", "AI", "Full-Stack", "Education", "Progress-Tracking"],
+      "category": "Web Application",
+      "releaseDate": "2026-01-30",
+      "status": "Production",
+      "links": {
+        "github": ["https://github.com/EdwinAlkins/e-learning-api", "https://github.com/EdwinAlkins/e-learning-front"]
+      },
+      "experienceId": -1
     }
   ]
 }

@@ -397,19 +397,49 @@ const Project: React.FC = () => {
                         <SectionTitle>Links</SectionTitle>
                         <LinksContainer>
                             {project.links.github && (
-                                <LinkButton href={project.links.github} target="_blank" rel="noopener noreferrer">
-                                    <i className="fab fa-github"></i> GitHub
-                                </LinkButton>
+                                <>
+                                    {Array.isArray(project.links.github) ? (
+                                        project.links.github.map((githubUrl, index) => (
+                                            <LinkButton key={index} href={githubUrl} target="_blank" rel="noopener noreferrer">
+                                                <i className="fab fa-github"></i> GitHub {project.links!.github!.length > 1 ? `#${index + 1}` : ''}
+                                            </LinkButton>
+                                        ))
+                                    ) : (
+                                        <LinkButton href={project.links.github} target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i> GitHub
+                                        </LinkButton>
+                                    )}
+                                </>
                             )}
                             {project.links.demo && (
-                                <LinkButton href={project.links.demo} target="_blank" rel="noopener noreferrer">
-                                    <i className="fas fa-external-link-alt"></i> Live Demo
-                                </LinkButton>
+                                <>
+                                    {Array.isArray(project.links.demo) ? (
+                                        project.links.demo.map((demoUrl, index) => (
+                                            <LinkButton key={index} href={demoUrl} target="_blank" rel="noopener noreferrer">
+                                                <i className="fas fa-external-link-alt"></i> Live Demo {project.links!.demo!.length > 1 ? `#${index + 1}` : ''}
+                                            </LinkButton>
+                                        ))
+                                    ) : (
+                                        <LinkButton href={project.links.demo} target="_blank" rel="noopener noreferrer">
+                                            <i className="fas fa-external-link-alt"></i> Live Demo
+                                        </LinkButton>
+                                    )}
+                                </>
                             )}
                             {project.links.documentation && (
-                                <LinkButton href={project.links.documentation} target="_blank" rel="noopener noreferrer">
-                                    <i className="fas fa-book"></i> Documentation
-                                </LinkButton>
+                                <>
+                                    {Array.isArray(project.links.documentation) ? (
+                                        project.links.documentation.map((docUrl, index) => (
+                                            <LinkButton key={index} href={docUrl} target="_blank" rel="noopener noreferrer">
+                                                <i className="fas fa-book"></i> Documentation {project.links!.documentation!.length > 1 ? `#${index + 1}` : ''}
+                                            </LinkButton>
+                                        ))
+                                    ) : (
+                                        <LinkButton href={project.links.documentation} target="_blank" rel="noopener noreferrer">
+                                            <i className="fas fa-book"></i> Documentation
+                                        </LinkButton>
+                                    )}
+                                </>
                             )}
                         </LinksContainer>
                     </Section>

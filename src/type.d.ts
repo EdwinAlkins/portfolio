@@ -16,9 +16,9 @@ export interface Experience {
 }
 
 export interface ProjectLinks {
-    github?: string;
-    demo?: string;
-    documentation?: string;
+    github?: string | string[];
+    demo?: string | string[];
+    documentation?: string | string[];
 }
 
 export interface Project {

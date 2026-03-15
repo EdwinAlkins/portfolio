@@ -15,7 +15,7 @@
       "startDate": "2022",
       "endDate": "Present",
       "description": "Development of web and desktop applications for maritime routing. Scrapping of weather data.",
-      "technologies": "Technologies used are Kubernetes,  AWS, Python, React, Node.js, Vue.js, PostgreSQL, Docker, React Native."
+      "technologies": "Technologies used are Kubernetes, AWS, Python, React, Node.js, Vue.js, PostgreSQL, Docker, React Native, C++, Go."
     },
     {
       "id": 2,
@@ -39,13 +39,33 @@
     },
     {
       "id": 3,
-      "title": "Interim Software Developer",
+      "title": "Software Developer",
       "company": "LPG System",
       "companyUrl": "https://www.lpg-group.com",
       "startDate": "Mai 2018",
       "endDate": "August 2018",
       "description": "Internship and interim assignments in industrial supervision software development.",
-      "technologies": "Technologies used are Java, MySQL, Android."
+      "technologies": "Technologies used are Java, MySQL, Android, PHP."
+    },
+    {
+      "id": 5,
+      "title": "Polytech Nantes",
+      "company": "Polytech Nantes",
+      "companyUrl": "https://www.polytech-nantes.fr",
+      "startDate": "2018",
+      "endDate": "2021",
+      "description": "Computer science engineering degree.",
+      "technologies": ""
+    },
+    {
+      "id": 6,
+      "title": "DUT Informatique",
+      "company": "IUT of Valences",
+      "companyUrl": "https://www.iut-valence.fr/",
+      "startDate": "201",
+      "endDate": "2018",
+      "description": "Informatique degree.",
+      "technologies": ""
     }
   ],
   "projects": [
@@ -70,8 +90,8 @@
       "title": "High-Performance Routing Orchestrator",
       "slug": "high-performance-routing-orchestrator",
       "shortDescription": "API REST FastAPI pour l'orchestration de calculs de routage intensifs dans le cloud",
-      "longDescription": "Solution d'orchestration de calculs de routage pouvant durer plusieurs dizaines de minutes. Architecture basée sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
-      "capsuleImage": "https://i.ibb.co/SX1XPT2n/hq720.jpg",
+      "longDescription": "Solution d'orchestration de calculs de routage dans Kubernetes. Architecture basée sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
+      "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/6764379621511589daf3ce56_TACTiCS.avif",
       "images": [
       ],
       "technologies": ["python", "fastapi", "kubernetes", "aws", "cpp", "docker", "rds", "sqs", "argo"],
@@ -103,8 +123,11 @@
       "slug": "application-desktop-visualisation-meteo-routage",
       "shortDescription": "Application desktop et mobile de routage maritime avec visualisation de données météo, satellite et panneaux statistiques d'analyse",
       "longDescription": "Logiciel complet de routage maritime (Tactics & SquidX) permettant de lancer des calculs de routage, visualiser les trajets, afficher des données météo et satellite, et analyser les performances via des panneaux statistiques. Développé en React avec Electron pour le desktop et React Native pour mobile.",
-      "capsuleImage": "https://www.squid-sailing.com/img/cms/squidx-1-10-0-tides-2.png",
+      "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
       "images": [
+        "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
+        "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67643782dee2c32fcec98a45_TACTiCS%20Metoc%20Analysis-p-1600.avif",
+        "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/676575360912d25387a06299_TACTiCS-floute%CC%81-bd-p-1600.avif",
         "https://www.squid-sailing.com/img/cms/squidx-1-10-0-tides-2.png",
         "https://i.ibb.co/SX1XPT2n/hq720.jpg",
         "https://www.squid-sailing.com/img/cms/0x0ss%20(1).png"
@@ -136,11 +159,9 @@
       "title": "E-Learning Platform",
       "slug": "e-learning-platform",
       "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
-      "longDescription": "A personal e-learning platform designed to help users follow and track their courses from any device. The platform integrates AI tools to generate course summaries, enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. Built to enhance the online learning experience with modern web technologies and intelligent features.",
-      "capsuleImage": "https://picsum.photos/800/600?random=1",
+      "longDescription": "A personal e-learning platform designed to help users to follow and to track their courses from any device. The platform enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. It integrates AI tools to generate learning course summaries. The platform is built to enhance the online learning experience with modern web technologies and intelligent features.",
+      "capsuleImage": "https://cdn.elearningindustry.com/wp-content/uploads/2022/01/shutterstock_1060195475.jpg",
       "images": [
-        "https://picsum.photos/800/600?random=2",
-        "https://picsum.photos/800/600?random=3"
       ],
       "technologies": ["react", "python", "fastapi", "typescript"],
       "tags": ["E-Learning", "AI", "Full-Stack", "Education", "Progress-Tracking"],
@@ -151,6 +172,25 @@
         "github": ["https://github.com/EdwinAlkins/e-learning-api", "https://github.com/EdwinAlkins/e-learning-front"]
       },
       "experienceId": -1
+    },
+    {
+      "id": 7,
+      "title": "Software Supervisor",
+      "slug": "software-supervisor",
+      "shortDescription": "Ensemble de logiciels Java pour la supervision d'opérateurs, la saisie de données et la gestion d'inventaire, développés durant un stage chez LPG System.",
+      "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'opérateurs et de saisie de données en temps réel\n- **Logiciel Android de bordereaux d'expédition** : Application mobile pour la gestion et l'édition des documents d'expédition\n- **Logiciel d'inventaire** : Système de gestion et de suivi des stocks\n\nCes applications Java utilisaient des tâches planifiées (cron jobs) pour l'automatisation. Ce projet m'a permis de maîtriser le développement Java desktop et mobile dans un environnement de production industriel.",
+      "capsuleImage": "https://picsum.photos/800/600",
+      "images": [
+        "https://picsum.photos/800/600",
+        "https://picsum.photos/800/601",
+        "https://picsum.photos/800/602"
+      ],
+      "technologies": ["java", "android", "php"],
+      "tags": ["Full-Stack", "Industrial", "Automation", "Inventory", "Desktop"],
+      "category": "Desktop Application",
+      "releaseDate": "2018-08-31",
+      "status": "Production",
+      "experienceId": 3
     }
   ]
 }

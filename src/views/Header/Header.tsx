@@ -149,8 +149,8 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Logo>
-        <Link to="/portfolio" style={{ textDecoration: 'none', color: 'inherit' }}>
-          YourLogo
+        <Link to="/portfolio" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src="/portfolio/logov2.png" alt="Logo" width={40} height={40} />
         </Link>
       </Logo>
 

@@ -38,16 +38,6 @@
       "technologies": "Technologies used are RAD Studio, C, Rust."
     },
     {
-      "id": 3,
-      "title": "Software Developer",
-      "company": "LPG System",
-      "companyUrl": "https://www.lpg-group.com",
-      "startDate": "Mai 2018",
-      "endDate": "August 2018",
-      "description": "Internship and interim assignments in industrial supervision software development.",
-      "technologies": "Technologies used are Java, MySQL, Android, PHP."
-    },
-    {
       "id": 5,
       "title": "Polytech Nantes",
       "company": "Polytech Nantes",
@@ -58,13 +48,23 @@
       "technologies": ""
     },
     {
+      "id": 3,
+      "title": "Software Developer",
+      "company": "LPG System",
+      "companyUrl": "https://www.lpg-group.com",
+      "startDate": "Mai 2018",
+      "endDate": "August 2018",
+      "description": "Internship and interim assignments in industrial supervision software development.",
+      "technologies": "Technologies used are Java, MySQL, Android, PHP."
+    },
+    {
       "id": 6,
       "title": "DUT Informatique",
       "company": "IUT of Valences",
       "companyUrl": "https://www.iut-valence.fr/",
       "startDate": "2016",
       "endDate": "2018",
-      "description": "Informatique degree.",
+      "description": "Technical university degree in computer science.",
       "technologies": ""
     }
   ],
@@ -191,6 +191,24 @@
       "releaseDate": "2018-08-31",
       "status": "Production",
       "experienceId": 3
+    },
+    {
+      "id": 8,
+      "title": "HDR vs LDR Visual Attention Comparison",
+      "slug": "hdr-vs-ldr-visual-attention-comparison",
+      "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR à l'aide d'algorithmes d'IA pour déterminer quelle méthode de conversion préserve le mieux les patterns d'attention humaine.",
+      "longDescription": "Ce projet de recherche, mené dans le cadre d’études à Polytech, avait pour but de comparer différentes méthodes pour convertir des images très lumineuses (HDR) en images classiques (LDR), tout en conservant la façon dont l’œil humain est attiré par certains éléments de l’image originale.Pour y parvenir, une intelligence artificielle a été entraînée pour apprendre à reconnaître les zones qui attirent le regard sur une image HDR. Cette IA utilisait trois techniques principales :\n - Un système de comparaison (réseau siamois) pour évaluer les différences entre les images.\n - Une méthode d’apprentissage appelée triplet loss, qui permet à l’IA de distinguer plus finement les similitudes et les différences entre trois images à la fois (une image de référence, une image similaire, et une image différente), afin d’affiner ses prédictions.\n - Une mémoire des séquences (couches LSTM) pour analyser comment le regard se déplace dans le temps sur une image.\nL’originalité de ce travail réside dans le fait d’avoir combiné ces techniques pour la première fois, en intégrant des données sur le mouvement du regard (données temporelles) dans l’analyse. Grâce à cette méthode, il a été possible de déterminer quels algorithmes de conversion préservent le mieux la perception naturelle de l’image, c’est-à-dire ceux qui gardent une apparence la plus proche de ce que l’œil humain voit et retient.",
+      "capsuleImage": "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
+      "images": [
+        "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
+        "https://qdrant.tech/articles_data/triplet-loss/loss_objective.png"
+      ],
+      "technologies": ["python", "tensorflow", "keras", "lstm"],
+      "tags": ["Vision par Ordinateur", "Deep Learning", "HDR", "Recherche", "Attention Visuelle"],
+      "category": "Research Project",
+      "releaseDate": "2021-03-01",
+      "status": "Production",
+      "experienceId": 5
     }
   ]
 }

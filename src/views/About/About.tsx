@@ -95,7 +95,7 @@ const TechIcon = styled.a`
 `;
 
 const About: React.FC = () => {
-  const technologies = ["react", "node", "python", "docker", "aws", "git", "linux", "js", "java"]
+  const technologies = ["python", "docker", "aws", "react", "node", "git", "linux", "js", "java", "rust"]
   return (
     <AboutContainer>
       <Title>About Me</Title>
@@ -105,14 +105,14 @@ const About: React.FC = () => {
           <CompanyLink href="https://dice-engineering.com/" target="_blank" rel="noopener noreferrer">
             D-ICE Engineering
           </CompanyLink>{' '}
-          as a <span>Software Engineer</span>.
+          as a <span>Full Stack Engineer</span>.
           <br />
           <br />
           I graduated from the{' '}
           <CompanyLink href="https://polytech.univ-nantes.fr/" target="_blank" rel="noopener noreferrer">
             Polytech Nantes
           </CompanyLink>{' '}
-          in computer science. I'm a full stack developer (frontend, backend, architecture and datascience).
+          in computer science. I'm a full stack engineer (frontend, backend, architecture and datascience).
           <br />
           <br />
           <TechIcons>

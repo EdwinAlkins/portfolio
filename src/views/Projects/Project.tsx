@@ -101,11 +101,112 @@ const SectionTitle = styled.h2`
   border-bottom: 2px solid rgba(144, 205, 244, 0.3);
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   font-size: 1rem;
   line-height: 1.7;
   opacity: 0.9;
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin: 0.25rem 0;
+  }
+
+  strong {
+    color: ${blue1};
+    font-weight: 600;
+  }
 `;
+
+const parseDescription = (text: string): React.ReactNode => {
+    if (!text) return null;
+
+    const lines = text.split('\n');
+    const elements: React.ReactNode[] = [];
+    let inList = false;
+    let listItems: React.ReactNode[] = [];
+    let paragraphLines: string[] = [];
+
+    const flushParagraph = () => {
+        if (paragraphLines.length > 0) {
+            const paragraphText = paragraphLines.join(' ');
+            elements.push(
+                <p key={`p-${elements.length}`}>
+                    {parseInlineFormatting(paragraphText)}
+                </p>
+            );
+            paragraphLines = [];
+        }
+    };
+
+    const flushList = () => {
+        if (listItems.length > 0) {
+            elements.push(
+                <ul key={`ul-${elements.length}`}>
+                    {listItems.map((item, index) => (
+                        <li key={`li-${index}`}>{item}</li>
+                    ))}
+                </ul>
+            );
+            listItems = [];
+        }
+    };
+
+    const parseInlineFormatting = (line: string): React.ReactNode => {
+        // Parse **text** for bold formatting
+        const parts: React.ReactNode[] = [];
+        const regex = /\*\*(.+?)\*\*/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = regex.exec(line)) !== null) {
+            if (match.index > lastIndex) {
+                parts.push(line.substring(lastIndex, match.index));
+            }
+            parts.push(<strong key={`b-${match.index}`}>{match[1]}</strong>);
+            lastIndex = match.index + match[0].length;
+        }
+
+        if (lastIndex < line.length) {
+            parts.push(line.substring(lastIndex));
+        }
+
+        return parts.length > 0 ? parts : line;
+    };
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+
+        // Check if line is a bullet point
+        if (line.startsWith('- ') || line.startsWith('* ')) {
+            flushParagraph();
+            inList = true;
+            const content = line.substring(2);
+            listItems.push(parseInlineFormatting(content));
+        } else if (line === '') {
+            // Empty line - flush both paragraph and list
+            flushParagraph();
+            flushList();
+        } else {
+            flushList();
+            inList = false;
+            paragraphLines.push(line);
+        }
+    }
+
+    // Flush remaining content
+    flushParagraph();
+    flushList();
+
+    return elements;
+};
 
 const TagsContainer = styled.div`
   display: flex;
@@ -349,7 +450,7 @@ const Project: React.FC = () => {
 
                 <Section>
                     <SectionTitle>About</SectionTitle>
-                    <Description>{project.longDescription}</Description>
+                    <Description>{parseDescription(project.longDescription)}</Description>
                 </Section>
 
                 <Section>

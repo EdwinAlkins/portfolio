@@ -74,6 +74,48 @@ const CardDescription = styled.p`
     line-height: 1.4;
 `;
 
+const Tooltip = styled.div`
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: ${black2};
+    border: 1px solid rgba(144, 205, 244, 0.3);
+    color: ${gray1};
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 350px;
+    width: max-content;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 10;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: ${black2};
+    }
+`;
+
+const DescriptionWrapper = styled.div`
+    position: relative;
+    width: 100%;
+
+    &:hover ${Tooltip} {
+        opacity: 1;
+        visibility: visible;
+    }
+`;
+
 const CardTags = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -143,7 +185,10 @@ const CardProject: React.FC<CardProjectProps> = ({ project }) => {
                 </CardImage>
                 <CardContent>
                     <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.shortDescription}</CardDescription>
+                    <DescriptionWrapper>
+                        <CardDescription>{project.shortDescription}</CardDescription>
+                        <Tooltip>{project.shortDescription}</Tooltip>
+                    </DescriptionWrapper>
                     <CardTags>
                         {project.tags.slice(0, 3).map((tag) => (
                             <Tag key={tag}>{tag}</Tag>

@@ -1,6 +1,6 @@
 import { Database, Article, Project, Experience } from '../type';
 
-const dbPath = '/portfolio/db.json'
+const dbPath = `${import.meta.env.BASE_URL}db.json`
 
 export const getDatabase = async (): Promise<Database> => {
     const response = await fetch(`${dbPath}`);

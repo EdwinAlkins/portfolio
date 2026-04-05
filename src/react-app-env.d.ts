@@ -1,1 +1,14 @@
-/// <reference types="react-scripts" />
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly BASE_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+declare module '*.css' {
+  const content: Record<string, string>;
+  export default content;
+}

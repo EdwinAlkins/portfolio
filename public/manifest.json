@@ -3,24 +3,29 @@
   "name": "Nauroy William - Portfolio",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logov2.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logov2_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logov2_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "logov2_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/portfolio/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "theme_color": "#90cdf4",
+  "background_color": "#030711",
   "description": "Nauroy William - Portfolio. Discover my projects, skills, and professional experience."
 }

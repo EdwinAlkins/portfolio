@@ -484,9 +484,6 @@ const Project: React.FC = () => {
                                     src={image} 
                                     alt={`${project.title} - Image ${index + 1}`}
                                     onClick={() => openModal(index)}
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300/030711/90cdf4?text=Image+' + (index + 1);
-                                    }}
                                 />
                             ))}
                         </ImagesGrid>

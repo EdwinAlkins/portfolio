@@ -178,9 +178,6 @@ const CardProject: React.FC<CardProjectProps> = ({ project }) => {
                     <CardImageImg 
                         src={project.capsuleImage} 
                         alt={project.title} 
-                        onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x225/030711/90cdf4?text=' + encodeURIComponent(project.title);
-                        }} 
                     />
                 </CardImage>
                 <CardContent>

@@ -197,7 +197,7 @@
       "title": "HDR vs LDR Visual Attention Comparison",
       "slug": "hdr-vs-ldr-visual-attention-comparison",
       "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR à l'aide d'algorithmes d'IA pour déterminer quelle méthode de conversion préserve le mieux les patterns d'attention humaine.",
-      "longDescription": "Ce projet de recherche, mené dans le cadre d’études à Polytech, avait pour but de comparer différentes méthodes pour convertir des images très lumineuses (HDR) en images classiques (LDR), tout en conservant la façon dont l’œil humain est attiré par certains éléments de l’image originale.Pour y parvenir, une intelligence artificielle a été entraînée pour apprendre à reconnaître les zones qui attirent le regard sur une image HDR. Cette IA utilisait trois techniques principales :\n - Un système de comparaison (réseau siamois) pour évaluer les différences entre les images.\n - Une méthode d’apprentissage appelée triplet loss, qui permet à l’IA de distinguer plus finement les similitudes et les différences entre trois images à la fois (une image de référence, une image similaire, et une image différente), afin d’affiner ses prédictions.\n - Une mémoire des séquences (couches LSTM) pour analyser comment le regard se déplace dans le temps sur une image.\nL’originalité de ce travail réside dans le fait d’avoir combiné ces techniques pour la première fois, en intégrant des données sur le mouvement du regard (données temporelles) dans l’analyse. Grâce à cette méthode, il a été possible de déterminer quels algorithmes de conversion préservent le mieux la perception naturelle de l’image, c’est-à-dire ceux qui gardent une apparence la plus proche de ce que l’œil humain voit et retient.",
+      "longDescription": "Ce projet de recherche, mené dans le cadre d'études à Polytech, avait pour but de comparer différentes méthodes pour convertir des images très lumineuses (HDR) en images classiques (LDR), tout en conservant la façon dont l'œil humain est attiré par certains éléments de l'image originale.Pour y parvenir, une intelligence artificielle a été entraînée pour apprendre à reconnaître les zones qui attirent le regard sur une image HDR. Cette IA utilisait trois techniques principales :\n - Un système de comparaison (réseau siamois) pour évaluer les différences entre les images.\n - Une méthode d'apprentissage appelée triplet loss, qui permet à l'IA de distinguer plus finement les similitudes et les différences entre trois images à la fois (une image de référence, une image similaire, et une image différente), afin d'affiner ses prédictions.\n - Une mémoire des séquences (couches LSTM) pour analyser comment le regard se déplace dans le temps sur une image.\nL'originalité de ce travail réside dans le fait d'avoir combiné ces techniques pour la première fois, en intégrant des données sur le mouvement du regard (données temporelles) dans l'analyse. Grâce à cette méthode, il a été possible de déterminer quels algorithmes de conversion préservent le mieux la perception naturelle de l'image, c'est-à-dire ceux qui gardent une apparence la plus proche de ce que l'œil humain voit et retient.",
       "capsuleImage": "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
       "images": [
         "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
@@ -209,6 +209,26 @@
       "releaseDate": "2021-03-01",
       "status": "Production",
       "experienceId": 5
+    },
+    {
+      "id": 9,
+      "title": "protoruf",
+      "slug": "protoruf",
+      "shortDescription": "Bibliothèque Python haute performance écrite en Rust pour la conversion JSON ↔ Protobuf avec gestion typée des messages.",
+      "longDescription": "**Protoruf** est une bibliothèque Python haute performance pour la conversion bidirectionnelle entre JSON et Protobuf, développée en Rust.\nPoints clés :\n - Conversion rapide JSON ↔ Protobuf grâce à Rust.\n- Intégration native des modèles Pydantic.\n- Compilation des fichiers .proto sans dépendances externes.\n- Sortie JSON formatée et typage strict.\n\nIdéal pour les projets nécessitant des échanges de données performants et structurés.",
+      "capsuleImage": "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg",
+      "images": [
+        "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg"
+      ],
+      "technologies": ["python", "rust", "pyo3", "maturin", "protobuf", "pydantic"],
+      "tags": ["Haute Performance", "Rust", "Python", "Protobuf", "Sérialisation de Données"],
+      "category": "Library",
+      "releaseDate": "2026-04-09",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/EdwinAlkins/protoruf"
+      },
+      "experienceId": -1
     }
   ]
 }

@@ -76,10 +76,24 @@
       "shortDescription": "Migration of authentication system from AWS Cognito to Keycloak with Stripe billing integration. Building a trust service to synchronize user subscriptions and roles between both platforms.",
       "longDescription": "A comprehensive authentication and billing migration project aimed at modernizing the user management infrastructure. The system replaces the legacy AWS Cognito authentication with Keycloak for enhanced security and flexibility. A custom trust service acts as a bridge between Keycloak and Stripe, automatically synchronizing user subscriptions, payment status, and role assignments. The solution leverages Argo Workflows for orchestration, AWS SQS for message queuing, and Kubernetes for container orchestration. This ensures seamless user experience while maintaining data consistency across platforms. Built with Python, the service handles complex workflows including subscription lifecycle management, role-based access control, and real-time synchronization between identity and billing systems.",
       "capsuleImage": "https://upload.wikimedia.org/wikipedia/commons/2/29/Keycloak_Logo.png",
-      "images": [
+      "images": [],
+      "technologies": [
+        "python",
+        "keycloak",
+        "stripe",
+        "docker",
+        "kubernetes",
+        "postgresql",
+        "aws",
+        "argo"
       ],
-      "technologies": ["python", "keycloak", "stripe", "docker", "kubernetes", "postgresql", "aws", "argo"],
-      "tags": ["Authentication", "Billing", "Security", "Cloud", "DevOps"],
+      "tags": [
+        "Authentication",
+        "Billing",
+        "Security",
+        "Cloud",
+        "DevOps"
+      ],
       "category": "API Service",
       "releaseDate": "2026-02-26",
       "status": "Development",
@@ -90,12 +104,27 @@
       "title": "High-Performance Routing Orchestrator",
       "slug": "high-performance-routing-orchestrator",
       "shortDescription": "API REST FastAPI pour l'orchestration de calculs de routage intensifs dans le cloud",
-      "longDescription": "Solution d'orchestration de calculs de routage dans Kubernetes. Architecture basée sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
+      "longDescription": "Solution d'orchestration de calculs de routage dans Kubernetes. Architecture bas\u00e9e sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
       "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/6764379621511589daf3ce56_TACTiCS.avif",
-      "images": [
+      "images": [],
+      "technologies": [
+        "python",
+        "fastapi",
+        "kubernetes",
+        "aws",
+        "cpp",
+        "docker",
+        "rds",
+        "sqs",
+        "argo"
       ],
-      "technologies": ["python", "fastapi", "kubernetes", "aws", "cpp", "docker", "rds", "sqs", "argo"],
-      "tags": ["API", "Cloud", "DevOps", "High-Performance", "Orchestration"],
+      "tags": [
+        "API",
+        "Cloud",
+        "DevOps",
+        "High-Performance",
+        "Orchestration"
+      ],
       "category": "API Service",
       "releaseDate": "2026-02-26",
       "status": "Production",
@@ -103,15 +132,28 @@
     },
     {
       "id": 3,
-      "title": "Plateforme de Distribution de Données Météo",
+      "title": "Plateforme de Distribution de Donn\u00e9es M\u00e9t\u00e9o",
       "slug": "plateforme-distribution-donnees-meteo",
-      "shortDescription": "Pipeline de données météo multi-sources avec ingestion, transformation et distribution à très faible latence (<200ms)",
-      "longDescription": "Solution d'intégration de données météo concurrente de Windy, développée en Node.js avec optimisations C++. Architecture basée sur un système de cache distribué avec etcd et gestion de cache en mémoire pour une redistribution ultra-rapide. Le système propose également des données météo historiques grâce à un mécanisme de workers et d'orchestration permettant de lancer des batches de calcul. Une analyse prédictive des besoins utilisateurs permet de pré-charger les données météo dans le cache avant même la demande, garantissant une latence minimale.",
+      "shortDescription": "Pipeline de donn\u00e9es m\u00e9t\u00e9o multi-sources avec ingestion, transformation et distribution \u00e0 tr\u00e8s faible latence (<200ms)",
+      "longDescription": "Solution d'int\u00e9gration de donn\u00e9es m\u00e9t\u00e9o concurrente de Windy, d\u00e9velopp\u00e9e en Node.js avec optimisations C++. Architecture bas\u00e9e sur un syst\u00e8me de cache distribu\u00e9 avec etcd et gestion de cache en m\u00e9moire pour une redistribution ultra-rapide. Le syst\u00e8me propose \u00e9galement des donn\u00e9es m\u00e9t\u00e9o historiques gr\u00e2ce \u00e0 un m\u00e9canisme de workers et d'orchestration permettant de lancer des batches de calcul. Une analyse pr\u00e9dictive des besoins utilisateurs permet de pr\u00e9-charger les donn\u00e9es m\u00e9t\u00e9o dans le cache avant m\u00eame la demande, garantissant une latence minimale.",
       "capsuleImage": "https://www.notre-environnement.gouv.fr/local/cache-vignettes/L1200xH630/1d104c6aba46e5323b70f2e943b530-4c512.png",
-      "images": [
+      "images": [],
+      "technologies": [
+        "nodejs",
+        "cpp",
+        "kubernetes",
+        "etcd",
+        "docker",
+        "aws",
+        "redis"
       ],
-      "technologies": ["nodejs", "cpp", "kubernetes", "etcd", "docker", "aws", "redis"],
-      "tags": ["Data Engineering", "High-Performance", "Caching", "Real-Time", "Weather"],
+      "tags": [
+        "Data Engineering",
+        "High-Performance",
+        "Caching",
+        "Real-Time",
+        "Weather"
+      ],
       "category": "API Service",
       "releaseDate": "2026-02-26",
       "status": "Beta",
@@ -119,10 +161,10 @@
     },
     {
       "id": 4,
-      "title": "Application Desktop de Visualisation Météo & Routage",
+      "title": "Application Desktop de Visualisation M\u00e9t\u00e9o & Routage",
       "slug": "application-desktop-visualisation-meteo-routage",
-      "shortDescription": "Application desktop et mobile de routage maritime avec visualisation de données météo, satellite et panneaux statistiques d'analyse",
-      "longDescription": "Logiciel complet de routage maritime (Tactics & SquidX) permettant de lancer des calculs de routage, visualiser les trajets, afficher des données météo et satellite, et analyser les performances via des panneaux statistiques. Développé en React avec Electron pour le desktop et React Native pour mobile.",
+      "shortDescription": "Application desktop et mobile de routage maritime avec visualisation de donn\u00e9es m\u00e9t\u00e9o, satellite et panneaux statistiques d'analyse",
+      "longDescription": "Logiciel complet de routage maritime (Tactics & SquidX) permettant de lancer des calculs de routage, visualiser les trajets, afficher des donn\u00e9es m\u00e9t\u00e9o et satellite, et analyser les performances via des panneaux statistiques. D\u00e9velopp\u00e9 en React avec Electron pour le desktop et React Native pour mobile.",
       "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
       "images": [
         "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
@@ -132,8 +174,21 @@
         "https://i.ibb.co/SX1XPT2n/hq720.jpg",
         "https://www.squid-sailing.com/img/cms/0x0ss%20(1).png"
       ],
-      "technologies": ["react", "electron", "react-native", "typescript", "docker", "tauri"],
-      "tags": ["Desktop", "Mobile", "Data Visualization", "Maritime", "Full-Stack"],
+      "technologies": [
+        "react",
+        "electron",
+        "react-native",
+        "typescript",
+        "docker",
+        "tauri"
+      ],
+      "tags": [
+        "Desktop",
+        "Mobile",
+        "Data Visualization",
+        "Maritime",
+        "Full-Stack"
+      ],
       "category": "Desktop Application",
       "releaseDate": "2026-02-26",
       "status": "Production",
@@ -143,12 +198,25 @@
       "id": 5,
       "title": "Cartographie des system d'information",
       "slug": "cartographie-systemes-information",
-      "shortDescription": "Étude et cartographie d'un système d'information en vue de sa mutualisation. Migration d'applications monolithiques vers une architecture micro-services avec mise en place de services d'authentification Keycloak.",
-      "longDescription": "Projet de cartographie complète d'un système d'informatique d'entreprise dans l'objectif d'étudier et mettre en œuvre une mutualisation des services. L'initiative visait à transformer des applications monolithiques existantes en une architecture micro-services moderne et évolutive. Parmi les réalisations clés : conception et déploiement d'un micro-service d'authentification centralisé avec Keycloak, permettant une gestion unifiée des identités et des accès. Cette modernisation a amélioré la scalabilité, la maintenabilité et la sécurité du système d'information tout en facilitant l'intégration de nouveaux services.",
+      "shortDescription": "\u00c9tude et cartographie d'un syst\u00e8me d'information en vue de sa mutualisation. Migration d'applications monolithiques vers une architecture micro-services avec mise en place de services d'authentification Keycloak.",
+      "longDescription": "Projet de cartographie compl\u00e8te d'un syst\u00e8me d'informatique d'entreprise dans l'objectif d'\u00e9tudier et mettre en \u0153uvre une mutualisation des services. L'initiative visait \u00e0 transformer des applications monolithiques existantes en une architecture micro-services moderne et \u00e9volutive. Parmi les r\u00e9alisations cl\u00e9s : conception et d\u00e9ploiement d'un micro-service d'authentification centralis\u00e9 avec Keycloak, permettant une gestion unifi\u00e9e des identit\u00e9s et des acc\u00e8s. Cette modernisation a am\u00e9lior\u00e9 la scalabilit\u00e9, la maintenabilit\u00e9 et la s\u00e9curit\u00e9 du syst\u00e8me d'information tout en facilitant l'int\u00e9gration de nouveaux services.",
       "capsuleImage": "https://www.appviewx.com/wp-content/uploads/2023/02/Microservices-Architecture.png",
       "images": [],
-      "technologies": ["keycloak", "docker", "kubernetes", "java", "react"],
-      "tags": ["Architecture", "Microservices", "DevOps", "Cloud", "Security", "Modernization"],
+      "technologies": [
+        "keycloak",
+        "docker",
+        "kubernetes",
+        "java",
+        "react"
+      ],
+      "tags": [
+        "Architecture",
+        "Microservices",
+        "DevOps",
+        "Cloud",
+        "Security",
+        "Modernization"
+      ],
       "category": "API Service",
       "releaseDate": "2021-08-31",
       "status": "Production",
@@ -161,15 +229,28 @@
       "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
       "longDescription": "A personal e-learning platform designed to help users to follow and to track their courses from any device. The platform enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. It integrates AI tools to generate learning course summaries. The platform is built to enhance the online learning experience with modern web technologies and intelligent features.",
       "capsuleImage": "https://cdn.elearningindustry.com/wp-content/uploads/2022/01/shutterstock_1060195475.jpg",
-      "images": [
+      "images": [],
+      "technologies": [
+        "react",
+        "python",
+        "fastapi",
+        "typescript"
       ],
-      "technologies": ["react", "python", "fastapi", "typescript"],
-      "tags": ["E-Learning", "AI", "Full-Stack", "Education", "Progress-Tracking"],
+      "tags": [
+        "E-Learning",
+        "AI",
+        "Full-Stack",
+        "Education",
+        "Progress-Tracking"
+      ],
       "category": "Web Application",
       "releaseDate": "2026-01-30",
       "status": "Production",
       "links": {
-        "github": ["https://github.com/EdwinAlkins/e-learning-api", "https://github.com/EdwinAlkins/e-learning-front"]
+        "github": [
+          "https://github.com/EdwinAlkins/e-learning-api",
+          "https://github.com/EdwinAlkins/e-learning-front"
+        ]
       },
       "experienceId": -1
     },
@@ -177,16 +258,26 @@
       "id": 7,
       "title": "Software Supervisor",
       "slug": "software-supervisor",
-      "shortDescription": "Ensemble de logiciels Java pour la supervision d'opérateurs, la saisie de données et la gestion d'inventaire, développés durant un stage chez LPG System.",
-      "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'opérateurs et de saisie de données en temps réel\n- **Logiciel Android de bordereaux d'expédition** : Application mobile pour la gestion et l'édition des documents d'expédition\n- **Logiciel d'inventaire** : Système de gestion et de suivi des stocks\n\nCes applications Java utilisaient des tâches planifiées (cron jobs) pour l'automatisation. Ce projet m'a permis de maîtriser le développement Java desktop et mobile dans un environnement de production industriel.",
+      "shortDescription": "Ensemble de logiciels Java pour la supervision d'op\u00e9rateurs, la saisie de donn\u00e9es et la gestion d'inventaire, d\u00e9velopp\u00e9s durant un stage chez LPG System.",
+      "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'op\u00e9rateurs et de saisie de donn\u00e9es en temps r\u00e9el\n- **Logiciel Android de bordereaux d'exp\u00e9dition** : Application mobile pour la gestion et l'\u00e9dition des documents d'exp\u00e9dition\n- **Logiciel d'inventaire** : Syst\u00e8me de gestion et de suivi des stocks\n\nCes applications Java utilisaient des t\u00e2ches planifi\u00e9es (cron jobs) pour l'automatisation. Ce projet m'a permis de ma\u00eetriser le d\u00e9veloppement Java desktop et mobile dans un environnement de production industriel.",
       "capsuleImage": "https://picsum.photos/800/600",
       "images": [
         "https://picsum.photos/800/600",
         "https://picsum.photos/800/601",
         "https://picsum.photos/800/602"
       ],
-      "technologies": ["java", "android", "php"],
-      "tags": ["Full-Stack", "Industrial", "Automation", "Inventory", "Desktop"],
+      "technologies": [
+        "java",
+        "android",
+        "php"
+      ],
+      "tags": [
+        "Full-Stack",
+        "Industrial",
+        "Automation",
+        "Inventory",
+        "Desktop"
+      ],
       "category": "Desktop Application",
       "releaseDate": "2018-08-31",
       "status": "Production",
@@ -196,15 +287,26 @@
       "id": 8,
       "title": "HDR vs LDR Visual Attention Comparison",
       "slug": "hdr-vs-ldr-visual-attention-comparison",
-      "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR à l'aide d'algorithmes d'IA pour déterminer quelle méthode de conversion préserve le mieux les patterns d'attention humaine.",
-      "longDescription": "Ce projet de recherche, mené dans le cadre d'études à Polytech, avait pour but de comparer différentes méthodes pour convertir des images très lumineuses (HDR) en images classiques (LDR), tout en conservant la façon dont l'œil humain est attiré par certains éléments de l'image originale.Pour y parvenir, une intelligence artificielle a été entraînée pour apprendre à reconnaître les zones qui attirent le regard sur une image HDR. Cette IA utilisait trois techniques principales :\n - Un système de comparaison (réseau siamois) pour évaluer les différences entre les images.\n - Une méthode d'apprentissage appelée triplet loss, qui permet à l'IA de distinguer plus finement les similitudes et les différences entre trois images à la fois (une image de référence, une image similaire, et une image différente), afin d'affiner ses prédictions.\n - Une mémoire des séquences (couches LSTM) pour analyser comment le regard se déplace dans le temps sur une image.\nL'originalité de ce travail réside dans le fait d'avoir combiné ces techniques pour la première fois, en intégrant des données sur le mouvement du regard (données temporelles) dans l'analyse. Grâce à cette méthode, il a été possible de déterminer quels algorithmes de conversion préservent le mieux la perception naturelle de l'image, c'est-à-dire ceux qui gardent une apparence la plus proche de ce que l'œil humain voit et retient.",
+      "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR \u00e0 l'aide d'algorithmes d'IA pour d\u00e9terminer quelle m\u00e9thode de conversion pr\u00e9serve le mieux les patterns d'attention humaine.",
+      "longDescription": "Ce projet de recherche, men\u00e9 dans le cadre d'\u00e9tudes \u00e0 Polytech, avait pour but de comparer diff\u00e9rentes m\u00e9thodes pour convertir des images tr\u00e8s lumineuses (HDR) en images classiques (LDR), tout en conservant la fa\u00e7on dont l'\u0153il humain est attir\u00e9 par certains \u00e9l\u00e9ments de l'image originale.Pour y parvenir, une intelligence artificielle a \u00e9t\u00e9 entra\u00een\u00e9e pour apprendre \u00e0 reconna\u00eetre les zones qui attirent le regard sur une image HDR. Cette IA utilisait trois techniques principales :\n - Un syst\u00e8me de comparaison (r\u00e9seau siamois) pour \u00e9valuer les diff\u00e9rences entre les images.\n - Une m\u00e9thode d'apprentissage appel\u00e9e triplet loss, qui permet \u00e0 l'IA de distinguer plus finement les similitudes et les diff\u00e9rences entre trois images \u00e0 la fois (une image de r\u00e9f\u00e9rence, une image similaire, et une image diff\u00e9rente), afin d'affiner ses pr\u00e9dictions.\n - Une m\u00e9moire des s\u00e9quences (couches LSTM) pour analyser comment le regard se d\u00e9place dans le temps sur une image.\nL'originalit\u00e9 de ce travail r\u00e9side dans le fait d'avoir combin\u00e9 ces techniques pour la premi\u00e8re fois, en int\u00e9grant des donn\u00e9es sur le mouvement du regard (donn\u00e9es temporelles) dans l'analyse. Gr\u00e2ce \u00e0 cette m\u00e9thode, il a \u00e9t\u00e9 possible de d\u00e9terminer quels algorithmes de conversion pr\u00e9servent le mieux la perception naturelle de l'image, c'est-\u00e0-dire ceux qui gardent une apparence la plus proche de ce que l'\u0153il humain voit et retient.",
       "capsuleImage": "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
       "images": [
         "https://pyimagesearch.com/wp-content/uploads/2020/11/keras_siamese_networks_header.png",
         "https://qdrant.tech/articles_data/triplet-loss/loss_objective.png"
       ],
-      "technologies": ["python", "tensorflow", "keras", "lstm"],
-      "tags": ["Vision par Ordinateur", "Deep Learning", "HDR", "Recherche", "Attention Visuelle"],
+      "technologies": [
+        "python",
+        "tensorflow",
+        "keras",
+        "lstm"
+      ],
+      "tags": [
+        "Vision par Ordinateur",
+        "Deep Learning",
+        "HDR",
+        "Recherche",
+        "Attention Visuelle"
+      ],
       "category": "Research Project",
       "releaseDate": "2021-03-01",
       "status": "Production",
@@ -214,19 +316,66 @@
       "id": 9,
       "title": "protoruf",
       "slug": "protoruf",
-      "shortDescription": "Bibliothèque Python haute performance écrite en Rust pour la conversion JSON ↔ Protobuf avec gestion typée des messages.",
-      "longDescription": "**Protoruf** est une bibliothèque Python haute performance pour la conversion bidirectionnelle entre JSON et Protobuf, développée en Rust.\nPoints clés :\n - Conversion rapide JSON ↔ Protobuf grâce à Rust.\n- Intégration native des modèles Pydantic.\n- Compilation des fichiers .proto sans dépendances externes.\n- Sortie JSON formatée et typage strict.\n\nIdéal pour les projets nécessitant des échanges de données performants et structurés.",
+      "shortDescription": "Biblioth\u00e8que Python haute performance \u00e9crite en Rust pour la conversion JSON \u2194 Protobuf avec gestion typ\u00e9e des messages.",
+      "longDescription": "**Protoruf** est une biblioth\u00e8que Python haute performance pour la conversion bidirectionnelle entre JSON et Protobuf, d\u00e9velopp\u00e9e en Rust.\nPoints cl\u00e9s :\n - Conversion rapide JSON \u2194 Protobuf gr\u00e2ce \u00e0 Rust.\n- Int\u00e9gration native des mod\u00e8les Pydantic.\n- Compilation des fichiers .proto sans d\u00e9pendances externes.\n- Sortie JSON format\u00e9e et typage strict.\n\nId\u00e9al pour les projets n\u00e9cessitant des \u00e9changes de donn\u00e9es performants et structur\u00e9s.",
       "capsuleImage": "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg",
       "images": [
         "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg"
       ],
-      "technologies": ["python", "rust", "pyo3", "maturin", "protobuf", "pydantic"],
-      "tags": ["Haute Performance", "Rust", "Python", "Protobuf", "Sérialisation de Données"],
+      "technologies": [
+        "python",
+        "rust",
+        "pyo3",
+        "maturin",
+        "protobuf",
+        "pydantic"
+      ],
+      "tags": [
+        "Haute Performance",
+        "Rust",
+        "Python",
+        "Protobuf",
+        "S\u00e9rialisation de Donn\u00e9es"
+      ],
       "category": "Library",
       "releaseDate": "2026-04-09",
       "status": "Production",
       "links": {
         "github": "https://github.com/EdwinAlkins/protoruf"
+      },
+      "experienceId": -1
+    },
+    {
+      "id": 10,
+      "title": "Bot Analyste Quantitatif",
+      "slug": "bot-analyste-quantitatif",
+      "shortDescription": "Dashboard interactif d'analyse de march\u00e9 utilisant une convergence de mod\u00e8les quantitatifs (Machine Learning et statistiques) pour g\u00e9n\u00e9rer des opinions de march\u00e9 structur\u00e9es.",
+      "longDescription": "Ce projet personnel consiste en un dashboard interactif d'analyse de march\u00e9 construit avec Streamlit, combinant plusieurs mod\u00e8les quantitatifs pour g\u00e9n\u00e9rer des signaux de trading structur\u00e9s. L'application int\u00e8gre cinq mod\u00e8les distincts : XGBoost et Random Forest pour la classification directionnelle, ARIMA pour la pr\u00e9vision de prix, GARCH pour l'estimation de la volatilit\u00e9, et Prophet pour la d\u00e9tection de tendances et de cycles saisonniers.\n\nLe syst\u00e8me calcule plus de 100 features techniques incluant les indicateurs de tendance (SMA, EMA), de momentum (RSI, MACD, Stochastic), de volatilit\u00e9 (Bandes de Bollinger, ATR), et de volume (OBV, VWAP, MFI). Il d\u00e9tecte \u00e9galement des patterns de chandeliers japonais et int\u00e8gre des donn\u00e9es fondamentales via Yahoo Finance (ratios de valuation, profitabilit\u00e9, croissance).\n\nUn syst\u00e8me de d\u00e9cision par vote pond\u00e9r\u00e9 combine les pr\u00e9dictions des mod\u00e8les avec des poids optimis\u00e9s (XGBoost 25%, Random Forest 25%, ARIMA 20%, Prophet 30%), ajust\u00e9s par la pr\u00e9cision de chaque mod\u00e8le sur le jeu de test. La volatilit\u00e9 GARCH agit comme modificateur de conviction, r\u00e9duisant la confiance en cas de volatilit\u00e9 \u00e9lev\u00e9e.\n\nL'application propose une interface CLI compl\u00e8te pour l'automatisation avec des outils comme n8n ou Zapier, permettant la g\u00e9n\u00e9ration de rapports en JSON, Markdown ou texte. Le projet inclut \u00e9galement une architecture Docker pour le d\u00e9ploiement et des workflows n8n pr\u00eats \u00e0 l'emploi pour l'int\u00e9gration dans des pipelines d'automatisation.",
+      "capsuleImage": "https://storage.ghost.io/c/62/b4/62b4c760-ea29-4ca1-bfee-6ed6d992c5d0/content/images/2025/06/Cover-16-1.png",
+      "images": [],
+      "technologies": [
+        "python",
+        "xgboost",
+        "random forest",
+        "arima",
+        "garch",
+        "prophet",
+        "streamlit",
+        "yfinance"
+      ],
+      "tags": [
+        "Finance",
+        "Machine Learning",
+        "Data Science",
+        "Trading",
+        "Quantitative Analysis",
+        "Dashboard"
+      ],
+      "category": "Tool",
+      "releaseDate": "2026-04-09",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/EdwinAlkins/Bot-Analyste-Quantitatif"
       },
       "experienceId": -1
     }

@@ -1,4 +1,4 @@
-import{a as e,d as t,i as n,r,s as i}from"./color-CvgIU9JW.js";t();var a=e(),o=i.div`
+import{a as e,d as t,i as n,r,s as i}from"./color-DgICJDRX.js";t();var a=e(),o=i.div`
   padding: 2rem;
   color: ${n};
   margin-top: 5rem;
@@ -73,4 +73,4 @@ import{a as e,d as t,i as n,r,s as i}from"./color-CvgIU9JW.js";t();var a=e(),o=i
     color: ${r};
   }
 `,m=()=>(0,a.jsxs)(o,{children:[(0,a.jsx)(s,{children:`About Me`}),(0,a.jsxs)(c,{children:[(0,a.jsxs)(l,{children:[`Hello, my name is `,(0,a.jsx)(`span`,{children:`William`}),` and I'm currently working at`,` `,(0,a.jsx)(d,{href:`https://dice-engineering.com/`,target:`_blank`,rel:`noopener noreferrer`,children:`D-ICE Engineering`}),` `,`as a `,(0,a.jsx)(`span`,{children:`Full Stack Engineer`}),`.`,(0,a.jsx)(`br`,{}),(0,a.jsx)(`br`,{}),`I graduated from the`,` `,(0,a.jsx)(d,{href:`https://polytech.univ-nantes.fr/`,target:`_blank`,rel:`noopener noreferrer`,children:`Polytech Nantes`}),` `,`in computer science. I'm a full stack engineer (frontend, backend, architecture and datascience).`,(0,a.jsx)(`br`,{}),(0,a.jsx)(`br`,{}),(0,a.jsx)(f,{children:[`python`,`docker`,`aws`,`react`,`node`,`git`,`linux`,`js`,`java`,`rust`].map(e=>(0,a.jsx)(p,{className:`fab fa-${e}`},e))})]}),(0,a.jsx)(u,{src:`/portfolio/IMG_20240516_220132_026.jpg`,alt:`William`})]})]});export{m as default};
-//# sourceMappingURL=About-CVu1x0As.js.map
+//# sourceMappingURL=About-CkurqMPz.js.map

@@ -1,0 +1,2 @@
+var e=`/portfolio/db.json`,t=async()=>(await fetch(`${e}`)).json(),n=async()=>(await t()).articles,r=async()=>(await t()).projects,i=async()=>(await t()).experiences,a=async e=>(await i()).find(t=>t.id===e);export{r as i,a as n,i as r,n as t};
+//# sourceMappingURL=dbUtils-D1c1EfCN.js.map

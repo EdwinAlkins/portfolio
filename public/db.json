@@ -260,11 +260,9 @@
       "slug": "software-supervisor",
       "shortDescription": "Ensemble de logiciels Java pour la supervision d'op\u00e9rateurs, la saisie de donn\u00e9es et la gestion d'inventaire, d\u00e9velopp\u00e9s durant un stage chez LPG System.",
       "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'op\u00e9rateurs et de saisie de donn\u00e9es en temps r\u00e9el\n- **Logiciel Android de bordereaux d'exp\u00e9dition** : Application mobile pour la gestion et l'\u00e9dition des documents d'exp\u00e9dition\n- **Logiciel d'inventaire** : Syst\u00e8me de gestion et de suivi des stocks\n\nCes applications Java utilisaient des t\u00e2ches planifi\u00e9es (cron jobs) pour l'automatisation. Ce projet m'a permis de ma\u00eetriser le d\u00e9veloppement Java desktop et mobile dans un environnement de production industriel.",
-      "capsuleImage": "https://picsum.photos/800/600",
+      "capsuleImage": "/portfolio/projects/supervisor/app.png",
       "images": [
-        "https://picsum.photos/800/600",
-        "https://picsum.photos/800/601",
-        "https://picsum.photos/800/602"
+          "/portfolio/projects/supervisor/app.png"
       ],
       "technologies": [
         "java",
@@ -378,6 +376,71 @@
         "github": "https://github.com/EdwinAlkins/Bot-Analyste-Quantitatif"
       },
       "experienceId": -1
+    },
+    {
+      "id": 11,
+      "title": "RVaultPass",
+      "slug": "rvaultpass",
+      "shortDescription": "Un gestionnaire de mots de passe sécurisé, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de données SQLCipher.",
+      "longDescription": "**RVaultPass** est un gestionnaire de mots de passe desktop qui garde l'intégralité de vos données sur votre propre machine — aucun serveur, aucun cloud, aucune donnée transmise sur internet. Tout est stocké dans un seul fichier chiffré.\n\nL'application permet de stocker et organiser tous vos identifiants, notes et codes à usage unique (TOTP) en toute simplicité. Elle propose un générateur de mots de passe fort, des codes TOTP qui se rafraîchissent en temps réel, une recherche instantanée dans tous vos éléments, ainsi qu'une organisation par dossiers et tags. Un système de favoris permet d'accéder rapidement à vos comptes les plus utilisés.\n\nDéveloppé avec **Rust** et **Tauri**, le projet a été conçu avec une approche \"zero-knowledge\" : l'interface ne voit jamais vos mots de passe en clair, et toutes les opérations sensibles sont traitées directement dans le noyau sécurisé de l'application. Le tout dispose d'une interface bilingue français/anglais avec un thème clair et sombre.",
+      "capsuleImage": "/portfolio/projects/rvaultpass/home.png",
+      "images": [
+        "/portfolio/projects/rvaultpass/home.png",
+        "/portfolio/projects/rvaultpass/app.png"
+      ],
+      "technologies": [
+        "rust",
+        "tauri",
+        "preact",
+        "typescript",
+        "sqlcipher",
+        "argon2",
+        "vite",
+        "zustand",
+        "tailwindcss"
+      ],
+      "tags": [
+        "Security",
+        "Desktop",
+        "Password Manager",
+        "Zero-Knowledge",
+        "Rust",
+        "Tauri",
+        "Cryptography"
+      ],
+      "category": "Desktop Application",
+      "releaseDate": "2026-04-11",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/EdwinAlkins/rvaultpass"
+      },
+      "experienceId": -1
+    },
+    {
+      "id": 12,
+      "title": "Automate Simulator",
+      "slug": "automate-simulator",
+      "shortDescription": "Logiciel de création, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'évaluation.",
+      "longDescription": "L'**Automate Simulator** est un logiciel desktop développé pour l'IUT de Valence, conçu pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de créer et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement grâce à un algorithme dédié.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalités essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'évaluer les étudiants dans des conditions contrôlées, sans accès aux outils d'aide.\n\nDéveloppé en **Java** avec **Swing**, le projet offre une interface graphique complète pour concevoir, tester et exporter des automates, servant d'outil pédagogique pour les étudiants en informatique.",
+      "capsuleImage": "/portfolio/projects/automat/app.png",
+      "images": [
+        "/portfolio/projects/automat/app.png"
+      ],
+      "technologies": [
+        "java",
+        "swing"
+      ],
+      "tags": [
+        "Automation",
+        "Desktop",
+        "Simulation",
+        "Éducation",
+        "Graphes"
+      ],
+      "category": "Desktop Application",
+      "releaseDate": "2018-08-31",
+      "status": "Production",
+      "experienceId": 6
     }
   ]
 }

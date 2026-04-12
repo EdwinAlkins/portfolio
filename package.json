@@ -21,7 +21,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "generate-pdf": "node public/cv/generate-pdf.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
@@ -39,6 +40,7 @@
     "rollup-plugin-visualizer": "^7.0.1",
     "typescript": "^6.0.2",
     "vite": "^8.0.3",
-    "vite-plugin-checker": "^0.12.0"
+    "vite-plugin-checker": "^0.12.0",
+    "puppeteer": "^24.40.0"
   }
 }

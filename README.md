@@ -2,11 +2,11 @@
 
 Personal portfolio website built with **React** and **TypeScript**.
 
-🔗 [Live Demo](https://william-d-ice.github.io/portfolio/)
+🔗 [Live Demo](https://edwinalkins.github.io/portfolio/)
 
 ## Tech Stack
 
-- **React 18** + **TypeScript**
+- **React 19** + **TypeScript**
 - **styled-components** for styling
 - **react-router-dom** for routing
 - **cmdk** for command palette navigation

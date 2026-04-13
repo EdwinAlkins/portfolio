@@ -1,4 +1,4 @@
-import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgICJDRX.js";import{n as c}from"./chunk-QFMPRPBF-B4vb-Swd.js";import{i as l}from"./dbUtils-D1c1EfCN.js";var u=r(t()),d=e(),f=o(c)`
+import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-CJPImFH7.js";import{n as c}from"./chunk-QFMPRPBF-CDfnMetc.js";import{i as l}from"./dbUtils-D1c1EfCN.js";var u=n(t()),d=e(),f=o(c)`
     text-decoration: none;
     color: inherit;
 `,p=o.div`
@@ -40,14 +40,14 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: ${n};
+    color: ${r};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `,v=o.p`
     margin: 0 0 0.75rem 0;
     font-size: 0.85rem;
-    color: ${n};
+    color: ${r};
     opacity: 0.8;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -61,7 +61,7 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
     transform: translateX(-50%);
     background: ${i};
     border: 1px solid rgba(144, 205, 244, 0.3);
-    color: ${n};
+    color: ${r};
     padding: 0.75rem 1rem;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -119,7 +119,7 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
     margin-right: 6px;
 `,T=o.span`
     font-size: 0.75rem;
-    color: ${n};
+    color: ${r};
     opacity: 0.6;
 `,E=o.span`
     color: ${a};
@@ -132,7 +132,7 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
     }
 `,D=({project:e})=>(0,d.jsx)(f,{to:`/portfolio/project/${e.id}`,children:(0,d.jsxs)(p,{children:[(0,d.jsx)(m,{children:(0,d.jsx)(h,{src:e.capsuleImage,alt:e.title})}),(0,d.jsxs)(g,{children:[(0,d.jsx)(_,{children:e.title}),(0,d.jsxs)(b,{children:[(0,d.jsx)(v,{children:e.shortDescription}),(0,d.jsx)(y,{children:e.shortDescription})]}),(0,d.jsx)(x,{children:e.tags.slice(0,3).map(e=>(0,d.jsx)(S,{children:e},e))}),(0,d.jsxs)(C,{children:[(0,d.jsxs)(`div`,{children:[(0,d.jsx)(w,{status:e.status}),(0,d.jsx)(T,{children:e.category})]}),(0,d.jsx)(E,{children:`View Details →`})]})]})]})}),O=o.div`
   padding: 2rem;
-  color: ${n};
+  color: ${r};
 `,k=o.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -161,7 +161,7 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
   gap: 0.5rem;
 `,F=o.button`
   background: ${({active:e})=>e?`rgba(144, 205, 244, 0.15)`:`transparent`};
-  color: ${({active:e})=>e?a:n};
+  color: ${({active:e})=>e?a:r};
   border: 1px solid ${({active:e})=>e?a:`rgba(255, 255, 255, 0.1)`};
   border-radius: 4px;
   padding: 0.4rem 0.85rem;
@@ -175,4 +175,4 @@ import{a as e,d as t,i as n,m as r,n as i,r as a,s as o,t as s}from"./color-DgIC
     background: ${({active:e})=>e?`rgba(144, 205, 244, 0.2)`:`rgba(255, 255, 255, 0.05)`};
   }
 `,I=()=>{let[e,t]=(0,u.useState)([]),[n,r]=(0,u.useState)(`all`);(0,u.useEffect)(()=>{(async()=>{t(await l())})()},[]);let i=e.filter(e=>{if(n===`all`)return!0;let t=e.experienceId!==-1;return n===`professional`?t:n===`personal`?!t:!0});return(0,d.jsxs)(O,{children:[(0,d.jsxs)(A,{children:[(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{children:`Projects`}),(0,d.jsx)(N,{children:`Browse my portfolio projects`})]}),(0,d.jsxs)(P,{children:[(0,d.jsx)(F,{active:n===`all`,onClick:()=>r(`all`),children:`Tous`}),(0,d.jsx)(F,{active:n===`professional`,onClick:()=>r(`professional`),children:`Professionnels`}),(0,d.jsx)(F,{active:n===`personal`,onClick:()=>r(`personal`),children:`Personnels`})]})]}),(0,d.jsx)(k,{children:i.map(e=>(0,d.jsx)(D,{project:e},e.id))})]})};export{I as default};
-//# sourceMappingURL=Projects-mG5KYEza.js.map
+//# sourceMappingURL=Projects-B-ek-A6z.js.map

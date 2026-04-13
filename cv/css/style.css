@@ -1,0 +1,161 @@
+/* css/style.css */
+:root {
+  --text: #111;
+  --accent: #0A58CA;
+  --sidebar-bg: #f4f6f9;
+  --bg: #fff;
+  --font: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --size-base: 11pt;
+  --size-secondary: 9pt;
+  --sidebar-width: 175pt;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- ATS HIDDEN TEXT ---------- */
+.ats-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--size-base);
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 210mm;
+  margin: 0 auto;
+  /* padding: 5mm; */
+}
+
+/* ---------- LAYOUT 2 colonnes ---------- */
+.cv-layout {
+  display: flex;
+  gap: 12pt;
+}
+
+.cv-sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+  padding: 12pt 10pt;
+  border-radius: 6px;
+  align-self: flex-start;
+  text-align: center;
+}
+
+.sidebar-photo {
+  margin-bottom: 10pt;
+}
+.sidebar-photo img {
+  width: 100%;
+  max-width: 150pt;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sidebar-block { margin-bottom: 14pt; }
+.sidebar-block:last-child { margin-bottom: 0; }
+.sidebar-block h2 {
+  font-size: 11pt;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3pt;
+  margin-bottom: 6pt;
+}
+
+.contact-list,
+.simple-list {
+  list-style: none;
+  font-size: 9.5pt;
+}
+.contact-list li { margin-bottom: 4pt; }
+.simple-list li { margin-bottom: 3pt; }
+.contact-list a { color: var(--accent); text-decoration: none; }
+
+.cv-main { flex: 1; min-width: 0; }
+
+/* ---------- HEADER ---------- */
+.cv-header { margin-bottom: 12pt; border-bottom: 2px solid var(--accent); padding-bottom: 8pt; }
+.cv-header h1 { font-size: 20pt; margin-bottom: 2pt; }
+.cv-lastname { text-transform: uppercase; }
+.cv-title { font-size: 13pt; color: #444; margin-bottom: 4pt; }
+
+.cv-contact-header {
+  font-size: 9pt;
+  color: #333;
+}
+.cv-contact-item { color: var(--accent); text-decoration: none; }
+.cv-contact-item:hover { text-decoration: underline; }
+.cv-contact-sep { margin: 0 4pt; color: #999; }
+
+/* ---------- SECTIONS ---------- */
+.cv-section { margin-bottom: 14pt; }
+.cv-section h2 {
+  font-size: 13pt;
+  color: var(--accent);
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3pt;
+  margin-bottom: 6pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-item { margin-bottom: 8pt; }
+.cv-item h3 { font-size: 11.5pt; margin-bottom: 1pt; }
+.cv-date { font-style: bold; color: #555; margin-bottom: 2pt; }
+.cv-company { font-style: italic; color: #555; margin-bottom: 2pt; }
+.cv-item ul { margin-left: 1.2em; font-size: var(--size-secondary); }
+.cv-item li { margin-bottom: 3pt; }
+
+/* ---------- SKILLS (sidebar) ---------- */
+.cv-skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4pt;
+}
+.cv-skills li {
+  background: #e8edf4;
+  padding: 2pt 5pt;
+  border-radius: 3px;
+  font-size: 9pt;
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 5mm;
+  }
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .no-print { display: none !important; }
+  a { color: var(--text); text-decoration: none; }
+  .cv-contact-item { color: var(--text); }
+  .cv-contact-sep { color: #666; }
+  section, ul, li, article, .sidebar-block { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  .cv-section { break-inside: avoid; }
+  .cv-sidebar { background: var(--sidebar-bg) !important; }
+}

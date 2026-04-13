@@ -1,6 +1,6 @@
-import{a as e,d as t,i as n,m as r,r as i,s as a}from"./color-DgICJDRX.js";import{r as o}from"./dbUtils-D1c1EfCN.js";var s=r(t()),c=e(),l=a.div`
+import{a as e,c as t,d as n,i as r,r as i,s as a}from"./color-CJPImFH7.js";import{r as o}from"./dbUtils-D1c1EfCN.js";var s=n(t()),c=e(),l=a.div`
   padding: 2rem;
-  color: ${n};
+  color: ${r};
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -126,4 +126,4 @@ import{a as e,d as t,i as n,m as r,r as i,s as a}from"./color-DgICJDRX.js";impor
 `,v=a.p`
   margin: 0.5rem 0;
 `,y=()=>{let[e,t]=(0,s.useState)([]);return(0,s.useEffect)(()=>{(async()=>{t(await o())})()},[]),(0,c.jsxs)(l,{children:[(0,c.jsx)(u,{children:`Experience`}),(0,c.jsx)(d,{children:e.map(e=>(0,c.jsxs)(f,{children:[(0,c.jsxs)(p,{children:[e.startDate,` - `,e.endDate]}),(0,c.jsx)(m,{children:e.title}),(0,c.jsxs)(h,{children:[(0,c.jsx)(_,{href:e.companyUrl,target:`_blank`,rel:`noopener noreferrer`,children:e.company}),(0,c.jsx)(v,{children:e.description}),(0,c.jsx)(g,{children:e.technologies})]})]},e.id))})]})};export{y as default};
-//# sourceMappingURL=Experience-DFMZF6CZ.js.map
+//# sourceMappingURL=Experience-zGlNIsVj.js.map

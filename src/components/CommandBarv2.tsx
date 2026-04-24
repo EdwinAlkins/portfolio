@@ -387,7 +387,7 @@ export const CommandBar: React.FC = () => {
                 <Command.Item 
                   value="resume" 
                   keywords={['resume', 'cv', 'resume', 'document']}
-                  onSelect={() => handleOpenLink('/portfolio/pdf/resumewn.pdf')}
+                  onSelect={() => handleOpenLink('/portfolio/pdf/cv-william-nauroy-v2.pdf')}
                 >
                   <SearchResultIcon className="far fa-file-alt" $type="page" />
                   <SearchResultTitle>Resume</SearchResultTitle>

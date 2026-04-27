@@ -90,7 +90,11 @@ body {
 .cv-main { flex: 1; min-width: 0; }
 
 /* ---------- HEADER ---------- */
-.cv-header { margin-bottom: 12pt; border-bottom: 2px solid var(--accent); padding-bottom: 8pt; }
+.cv-header { 
+  margin-bottom: 12pt; 
+  border-bottom: 2px solid var(--accent); 
+  /* padding-bottom: 8pt;  */
+}
 .cv-header h1 { font-size: 20pt; margin-bottom: 2pt; }
 .cv-lastname { text-transform: uppercase; }
 .cv-title { font-size: 13pt; color: #444; margin-bottom: 4pt; font-weight: bold; }

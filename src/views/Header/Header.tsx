@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CommandBar } from '../../components/CommandBarv2';
 import { blue1, black1, gray1 } from '../../contantes/color';
 import { Link } from 'react-router-dom';
+import { usePostHog } from '@posthog/react';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -140,6 +141,7 @@ const BurgerIcon = styled.div<{ isOpen: boolean }>`
 `;
 
 const Header: React.FC = () => {
+  const posthog = usePostHog();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -167,10 +169,10 @@ const Header: React.FC = () => {
       </BurgerButton>
 
       <Navigation isOpen={isMenuOpen}>
-        <NavLink to="/portfolio/about" onClick={toggleMenu} >About</NavLink>
-        <NavLink to="/portfolio/experience" onClick={toggleMenu}>Experience</NavLink>
-        <NavLink to="/portfolio/projects" onClick={toggleMenu}>Projects</NavLink>
-        {/* <NavLink to="/portfolio/articles" onClick={toggleMenu}>Articles</NavLink> */}
+        <NavLink to="/portfolio/about" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'About' }); }}>About</NavLink>
+        <NavLink to="/portfolio/experience" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Experience' }); }}>Experience</NavLink>
+        <NavLink to="/portfolio/projects" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Projects' }); }}>Projects</NavLink>
+        {/* <NavLink to="/portfolio/articles" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Articles' }); }}>Articles</NavLink> */}
       </Navigation>
     </HeaderContainer>
   );

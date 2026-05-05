@@ -339,7 +339,8 @@
       "releaseDate": "2026-04-09",
       "status": "Production",
       "links": {
-        "github": "https://github.com/EdwinAlkins/protoruf"
+        "github": "https://github.com/EdwinAlkins/protoruf",
+        "documentation": "https://edwinalkins.github.io/protoruf"
       },
       "experienceId": -1
     },

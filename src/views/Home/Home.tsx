@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { blue1, gray1 } from '../../contantes/color';
 import { Link } from 'react-router-dom';
+import { usePostHog } from '@posthog/react';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -80,6 +81,8 @@ const NavButton = styled(Link)`
 `;
 
 const Home: React.FC = () => {
+    const posthog = usePostHog();
+
     return (
         <HomeContainer>
             <Title>Hi, I'm Nauroy William !</Title>
@@ -89,25 +92,25 @@ const Home: React.FC = () => {
             <LookAroundSection>
                 <LookAroundTitle>Take a look around :</LookAroundTitle>
                 <ButtonGroup>
-                    <NavButton to="/portfolio/about">
+                    <NavButton to="/portfolio/about" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'About' })}>
                         <i className="fas fa-user"></i> About
                     </NavButton>
-                    <NavButton to="/portfolio/experience">
+                    <NavButton to="/portfolio/experience" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Experience' })}>
                         <i className="fas fa-briefcase"></i> Exp
                     </NavButton>
-                    <NavButton to="/portfolio/projects">
+                    <NavButton to="/portfolio/projects" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Projects' })}>
                         <i className="fas fa-folder"></i> Projects
                     </NavButton>
                 </ButtonGroup>
             </LookAroundSection>
             <SocialLinks>
-                <SocialLink href="https://github.com/EdwinAlkins" target="_blank" rel="noopener noreferrer">
+                <SocialLink href="https://github.com/EdwinAlkins" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'github' })}>
                     <i className="fab fa-github"></i>
                 </SocialLink>
-                <SocialLink href="https://www.linkedin.com/in/william-nauroy1998" target="_blank" rel="noopener noreferrer">
+                <SocialLink href="https://www.linkedin.com/in/william-nauroy1998" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'linkedin' })}>
                     <i className="fab fa-linkedin"></i>
                 </SocialLink>
-                <SocialLink href="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer">
+                <SocialLink href="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'resume' })}>
                     <i className="far fa-file-alt"></i>
                 </SocialLink>
             </SocialLinks>

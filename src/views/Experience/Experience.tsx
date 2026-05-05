@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { gray1, blue1 } from '../../contantes/color';
 import { Experience as ExperienceType } from '../../type';
 import { getExperiences } from '../../utils/dbUtils';
+import { usePostHog } from '@posthog/react';
 
 const ExperienceContainer = styled.div`
   padding: 2rem;
@@ -152,6 +153,7 @@ const Description = styled.p`
 `;
 
 const Experience: React.FC = () => {
+    const posthog = usePostHog();
     const [experiences, setExperiences] = useState<ExperienceType[]>([]);
 
     useEffect(() => {
@@ -173,7 +175,7 @@ const Experience: React.FC = () => {
                             {experience.title}
                         </TimelineTitle>
                         <TimelineDescription>
-                            <CompanyLink href={experience.companyUrl} target="_blank" rel="noopener noreferrer">
+                            <CompanyLink href={experience.companyUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('experience_company_link_clicked', { company: experience.company, url: experience.companyUrl })}>
                                 {experience.company}
                             </CompanyLink>
                             <Description>

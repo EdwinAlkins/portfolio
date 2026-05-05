@@ -5,6 +5,7 @@ import { blue1, black2, gray1 } from '../contantes/color';
 import { useNavigate } from 'react-router-dom';
 import { getProjects, getArticles } from '../utils/dbUtils';
 import { Project, Article } from '../type';
+import { usePostHog } from '@posthog/react';
 
 const SearchContainer = styled.div`
   position: relative;
@@ -220,6 +221,7 @@ const SearchResultCategory = styled.span`
 
 export const CommandBar: React.FC = () => {
   const navigate = useNavigate();
+  const posthog = usePostHog();
   const [open, setOpen] = React.useState(false);
   const [projects, setProjects] = React.useState<Project[]>([]);
   const [articles, setArticles] = React.useState<Article[]>([]);
@@ -258,15 +260,18 @@ export const CommandBar: React.FC = () => {
     }
     if (open) {
       setSearch('');
+      posthog?.capture('command_bar_opened');
     }
   }, [open]);
 
-  const handleNavigate = (path: string) => {
+  const handleNavigate = (path: string, label: string) => {
+    posthog?.capture('command_bar_item_selected', { path, label });
     navigate(path);
     setOpen(false);
   };
 
-  const handleOpenLink = (url: string) => {
+  const handleOpenLink = (url: string, label: string) => {
+    posthog?.capture('command_bar_external_link_opened', { url, label });
     window.open(url, '_blank');
     setOpen(false);
   };
@@ -292,34 +297,34 @@ export const CommandBar: React.FC = () => {
               <Command.Empty>No results found.</Command.Empty>
 
               <Command.Group heading="Pages">
-                <Command.Item 
-                  value="home" 
+                <Command.Item
+                  value="home"
                   keywords={['accueil', 'main', 'landing']}
-                  onSelect={() => handleNavigate('/portfolio')}
+                  onSelect={() => handleNavigate('/portfolio', 'Home')}
                 >
                   <SearchResultIcon className="fas fa-home" $type="page" />
                   <SearchResultTitle>Home</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
-                  value="about" 
+                <Command.Item
+                  value="about"
                   keywords={['about', 'me', 'bio', 'profile']}
-                  onSelect={() => handleNavigate('/portfolio/about')}
+                  onSelect={() => handleNavigate('/portfolio/about', 'About')}
                 >
                   <SearchResultIcon className="fas fa-user" $type="page" />
                   <SearchResultTitle>About</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
-                  value="experience" 
+                <Command.Item
+                  value="experience"
                   keywords={['experience', 'work', 'job', 'career']}
-                  onSelect={() => handleNavigate('/portfolio/experience')}
+                  onSelect={() => handleNavigate('/portfolio/experience', 'Experience')}
                 >
                   <SearchResultIcon className="fas fa-briefcase" $type="page" />
                   <SearchResultTitle>Experience</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
-                  value="projects" 
+                <Command.Item
+                  value="projects"
                   keywords={['projects', 'portfolio', 'code']}
-                  onSelect={() => handleNavigate('/portfolio/projects')}
+                  onSelect={() => handleNavigate('/portfolio/projects', 'Projects')}
                 >
                   <SearchResultIcon className="fas fa-code" $type="page" />
                   <SearchResultTitle>Projects</SearchResultTitle>
@@ -341,7 +346,7 @@ export const CommandBar: React.FC = () => {
                       key={project.id}
                       value={project.title.toLowerCase()}
                       keywords={[project.title, project.category, ...project.tags, ...project.technologies].map(k => k.toLowerCase())}
-                      onSelect={() => handleNavigate(`/portfolio/project/${project.id}`)}
+                      onSelect={() => handleNavigate(`/portfolio/project/${project.id}`, project.title)}
                     >
                       <SearchResultIcon className="fas fa-folder" $type="project" />
                       <SearchResultTitle>{project.title}</SearchResultTitle>
@@ -368,26 +373,26 @@ export const CommandBar: React.FC = () => {
               )} */}
 
               <Command.Group heading="Links">
-                <Command.Item 
-                  value="github" 
+                <Command.Item
+                  value="github"
                   keywords={['github', 'code', 'repo', 'git']}
-                  onSelect={() => handleOpenLink('https://github.com/EdwinAlkins')}
+                  onSelect={() => handleOpenLink('https://github.com/EdwinAlkins', 'GitHub Profile')}
                 >
                   <SearchResultIcon className="fab fa-github" $type="page" />
                   <SearchResultTitle>GitHub Profile</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
-                  value="linkedin" 
+                <Command.Item
+                  value="linkedin"
                   keywords={['linkedin', 'network', 'professional']}
-                  onSelect={() => handleOpenLink('https://www.linkedin.com/in/william-nauroy1998')}
+                  onSelect={() => handleOpenLink('https://www.linkedin.com/in/william-nauroy1998', 'LinkedIn')}
                 >
                   <SearchResultIcon className="fab fa-linkedin" $type="page" />
                   <SearchResultTitle>LinkedIn</SearchResultTitle>
                 </Command.Item>
-                <Command.Item 
-                  value="resume" 
+                <Command.Item
+                  value="resume"
                   keywords={['resume', 'cv', 'resume', 'document']}
-                  onSelect={() => handleOpenLink('/portfolio/pdf/cv-william-nauroy-v2.pdf')}
+                  onSelect={() => handleOpenLink('/portfolio/pdf/cv-william-nauroy-v2.pdf', 'Resume')}
                 >
                   <SearchResultIcon className="far fa-file-alt" $type="page" />
                   <SearchResultTitle>Resume</SearchResultTitle>

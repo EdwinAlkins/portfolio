@@ -4,6 +4,7 @@ import { gray1, blue1, black2 } from '../../contantes/color';
 import { getProjects, getExperienceById } from '../../utils/dbUtils';
 import { Project as ProjectType, Experience } from '../../type';
 import { Link, useParams } from 'react-router-dom';
+import { usePostHog } from '@posthog/react';
 
 
 const ProjectContainer = styled.div`
@@ -370,6 +371,7 @@ const ModalCounter = styled.div`
 
 const Project: React.FC = () => {
     const { id } = useParams();
+    const posthog = usePostHog();
     const [project, setProject] = useState<ProjectType | null>(null)
     const [experience, setExperience] = useState<Experience | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
@@ -394,7 +396,8 @@ const Project: React.FC = () => {
     const openModal = useCallback((index: number) => {
         setCurrentImageIndex(index);
         setModalOpen(true);
-    }, []);
+        posthog?.capture('project_image_modal_opened', { project_id: id, image_index: index });
+    }, [id, posthog]);
 
     const closeModal = useCallback(() => {
         setModalOpen(false);
@@ -498,12 +501,12 @@ const Project: React.FC = () => {
                                 <>
                                     {Array.isArray(project.links.github) ? (
                                         project.links.github.map((githubUrl, index) => (
-                                            <LinkButton key={index} href={githubUrl} target="_blank" rel="noopener noreferrer">
+                                            <LinkButton key={index} href={githubUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'github', url: githubUrl })}>
                                                 <i className="fab fa-github"></i> GitHub {project.links!.github!.length > 1 ? `#${index + 1}` : ''}
                                             </LinkButton>
                                         ))
                                     ) : (
-                                        <LinkButton href={project.links.github} target="_blank" rel="noopener noreferrer">
+                                        <LinkButton href={project.links.github} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'github', url: project.links!.github as string })}>
                                             <i className="fab fa-github"></i> GitHub
                                         </LinkButton>
                                     )}
@@ -513,12 +516,12 @@ const Project: React.FC = () => {
                                 <>
                                     {Array.isArray(project.links.demo) ? (
                                         project.links.demo.map((demoUrl, index) => (
-                                            <LinkButton key={index} href={demoUrl} target="_blank" rel="noopener noreferrer">
+                                            <LinkButton key={index} href={demoUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'demo', url: demoUrl })}>
                                                 <i className="fas fa-external-link-alt"></i> Live Demo {project.links!.demo!.length > 1 ? `#${index + 1}` : ''}
                                             </LinkButton>
                                         ))
                                     ) : (
-                                        <LinkButton href={project.links.demo} target="_blank" rel="noopener noreferrer">
+                                        <LinkButton href={project.links.demo} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'demo', url: project.links!.demo as string })}>
                                             <i className="fas fa-external-link-alt"></i> Live Demo
                                         </LinkButton>
                                     )}
@@ -528,12 +531,12 @@ const Project: React.FC = () => {
                                 <>
                                     {Array.isArray(project.links.documentation) ? (
                                         project.links.documentation.map((docUrl, index) => (
-                                            <LinkButton key={index} href={docUrl} target="_blank" rel="noopener noreferrer">
+                                            <LinkButton key={index} href={docUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'documentation', url: docUrl })}>
                                                 <i className="fas fa-book"></i> Documentation {project.links!.documentation!.length > 1 ? `#${index + 1}` : ''}
                                             </LinkButton>
                                         ))
                                     ) : (
-                                        <LinkButton href={project.links.documentation} target="_blank" rel="noopener noreferrer">
+                                        <LinkButton href={project.links.documentation} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'documentation', url: project.links!.documentation as string })}>
                                             <i className="fas fa-book"></i> Documentation
                                         </LinkButton>
                                     )}

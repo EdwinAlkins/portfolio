@@ -1,4 +1,4 @@
-import{a as e,c as t,d as n,i as r,r as i,s as a}from"./color-B4VygJcq.js";import{i as o,t as s}from"./index-DFEDFoql.js";var c=n(t()),l=e(),u=a.div`
+import{a as e,c as t,d as n,i as r,r as i,s as a}from"./color-B4VygJcq.js";import{i as o,t as s}from"./index-DqGrwQlf.js";var c=n(t()),l=e(),u=a.div`
   padding: 2rem;
   color: ${r};
 
@@ -126,4 +126,4 @@ import{a as e,c as t,d as n,i as r,r as i,s as a}from"./color-B4VygJcq.js";impor
 `,y=a.p`
   margin: 0.5rem 0;
 `,b=()=>{let e=s(),[t,n]=(0,c.useState)([]);return(0,c.useEffect)(()=>{(async()=>{n(await o())})()},[]),(0,l.jsxs)(u,{children:[(0,l.jsx)(d,{children:`Experience`}),(0,l.jsx)(f,{children:t.map(t=>(0,l.jsxs)(p,{children:[(0,l.jsxs)(m,{children:[t.startDate,` - `,t.endDate]}),(0,l.jsx)(h,{children:t.title}),(0,l.jsxs)(g,{children:[(0,l.jsx)(v,{href:t.companyUrl,target:`_blank`,rel:`noopener noreferrer`,onClick:()=>e?.capture(`experience_company_link_clicked`,{company:t.company,url:t.companyUrl}),children:t.company}),(0,l.jsx)(y,{children:t.description}),(0,l.jsx)(_,{children:t.technologies})]})]},t.id))})]})};export{b as default};
-//# sourceMappingURL=Experience-Dz1H6Yfv.js.map
+//# sourceMappingURL=Experience-C_Lx6zlO.js.map

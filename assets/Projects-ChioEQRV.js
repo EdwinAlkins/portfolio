@@ -1,7 +1,7 @@
-import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4VygJcq.js";import{a as c,i as l}from"./index-DyIjtO_y.js";var u=n(t()),d=e(),f=o(c)`
+import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4VygJcq.js";import{a as c,o as l,t as u}from"./index-DFEDFoql.js";var d=n(t()),f=e(),p=o(l)`
     text-decoration: none;
     color: inherit;
-`,p=o.div`
+`,m=o.div`
     position: relative;
     width: 100%;
     max-width: 400px;
@@ -15,7 +15,7 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
         transform: translateY(-4px);
         box-shadow: 0 8px 24px rgba(144, 205, 244, 0.2);
     }
-`,m=o.div`
+`,h=o.div`
     position: relative;
     width: 100%;
     min-height: 180px;
@@ -25,18 +25,18 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
     display: flex;
     align-items: center;
     justify-content: center;
-`,h=o.img`
+`,g=o.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.2s ease;
 
-    ${p}:hover & {
+    ${m}:hover & {
         transform: scale(1.05);
     }
-`,g=o.div`
+`,_=o.div`
     padding: 1rem;
-`,_=o.h3`
+`,v=o.h3`
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     font-weight: 600;
@@ -44,7 +44,7 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-`,v=o.p`
+`,y=o.p`
     margin: 0 0 0.75rem 0;
     font-size: 0.85rem;
     color: ${r};
@@ -54,7 +54,7 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.4;
-`,y=o.div`
+`,b=o.div`
     position: absolute;
     bottom: calc(100% + 8px);
     left: 50%;
@@ -84,44 +84,44 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
         border: 6px solid transparent;
         border-top-color: ${i};
     }
-`,b=o.div`
+`,x=o.div`
     position: relative;
     width: 100%;
 
-    &:hover ${y} {
+    &:hover ${b} {
         opacity: 1;
         visibility: visible;
     }
-`,x=o.div`
+`,S=o.div`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-`,S=o.span`
+`,C=o.span`
     background: rgba(144, 205, 244, 0.1);
     color: ${a};
     padding: 2px 8px;
     border-radius: 2px;
     font-size: 0.75rem;
     font-weight: 500;
-`,C=o.div`
+`,w=o.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 0.75rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-`,w=o.div`
+`,T=o.div`
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: ${({status:e})=>e===`Production`?`#4ade80`:e===`Beta`?`#fbbf24`:`#f87171`};
     margin-right: 6px;
-`,T=o.span`
+`,E=o.span`
     font-size: 0.75rem;
     color: ${r};
     opacity: 0.6;
-`,E=o.span`
+`,D=o.span`
     color: ${a};
     font-size: 0.85rem;
     font-weight: 500;
@@ -130,36 +130,36 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
     &:hover {
         opacity: 0.8;
     }
-`,D=({project:e})=>(0,d.jsx)(f,{to:`/portfolio/project/${e.id}`,children:(0,d.jsxs)(p,{children:[(0,d.jsx)(m,{children:(0,d.jsx)(h,{src:e.capsuleImage,alt:e.title})}),(0,d.jsxs)(g,{children:[(0,d.jsx)(_,{children:e.title}),(0,d.jsxs)(b,{children:[(0,d.jsx)(v,{children:e.shortDescription}),(0,d.jsx)(y,{children:e.shortDescription})]}),(0,d.jsx)(x,{children:e.tags.slice(0,3).map(e=>(0,d.jsx)(S,{children:e},e))}),(0,d.jsxs)(C,{children:[(0,d.jsxs)(`div`,{children:[(0,d.jsx)(w,{status:e.status}),(0,d.jsx)(T,{children:e.category})]}),(0,d.jsx)(E,{children:`View Details →`})]})]})]})}),O=o.div`
+`,O=({project:e})=>{let t=u();return(0,f.jsx)(p,{to:`/portfolio/project/${e.id}`,onClick:()=>t?.capture(`project_card_clicked`,{project_id:e.id,project_title:e.title,category:e.category}),children:(0,f.jsxs)(m,{children:[(0,f.jsx)(h,{children:(0,f.jsx)(g,{src:e.capsuleImage,alt:e.title})}),(0,f.jsxs)(_,{children:[(0,f.jsx)(v,{children:e.title}),(0,f.jsxs)(x,{children:[(0,f.jsx)(y,{children:e.shortDescription}),(0,f.jsx)(b,{children:e.shortDescription})]}),(0,f.jsx)(S,{children:e.tags.slice(0,3).map(e=>(0,f.jsx)(C,{children:e},e))}),(0,f.jsxs)(w,{children:[(0,f.jsxs)(`div`,{children:[(0,f.jsx)(T,{status:e.status}),(0,f.jsx)(E,{children:e.category})]}),(0,f.jsx)(D,{children:`View Details →`})]})]})]})})},k=o.div`
   padding: 2rem;
   color: ${r};
-`,k=o.div`
+`,A=o.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
-`,A=o.div`
+`,j=o.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-`,j=o.div`
+`,M=o.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`,M=o.h1`
+`,N=o.h1`
   font-size: 2rem;
   margin: 0;
   font-weight: 700;
-`,N=o.p`
+`,P=o.p`
   margin: 0;
   opacity: 0.7;
   font-size: 0.9rem;
-`,P=o.div`
+`,F=o.div`
   display: flex;
   gap: 0.5rem;
-`,F=o.button`
+`,I=o.button`
   background: ${({active:e})=>e?`rgba(144, 205, 244, 0.15)`:`transparent`};
   color: ${({active:e})=>e?a:r};
   border: 1px solid ${({active:e})=>e?a:`rgba(255, 255, 255, 0.1)`};
@@ -174,5 +174,5 @@ import{a as e,c as t,d as n,i as r,n as i,r as a,s as o,t as s}from"./color-B4Vy
     opacity: 1;
     background: ${({active:e})=>e?`rgba(144, 205, 244, 0.2)`:`rgba(255, 255, 255, 0.05)`};
   }
-`,I=()=>{let[e,t]=(0,u.useState)([]),[n,r]=(0,u.useState)(`all`);(0,u.useEffect)(()=>{(async()=>{t(await l())})()},[]);let i=e.filter(e=>{if(n===`all`)return!0;let t=e.experienceId!==-1;return n===`professional`?t:n===`personal`?!t:!0});return(0,d.jsxs)(O,{children:[(0,d.jsxs)(A,{children:[(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{children:`Projects`}),(0,d.jsx)(N,{children:`Browse my portfolio projects`})]}),(0,d.jsxs)(P,{children:[(0,d.jsx)(F,{active:n===`all`,onClick:()=>r(`all`),children:`Tous`}),(0,d.jsx)(F,{active:n===`professional`,onClick:()=>r(`professional`),children:`Professionnels`}),(0,d.jsx)(F,{active:n===`personal`,onClick:()=>r(`personal`),children:`Personnels`})]})]}),(0,d.jsx)(k,{children:i.map(e=>(0,d.jsx)(D,{project:e},e.id))})]})};export{I as default};
-//# sourceMappingURL=Projects-DgnIgmAw.js.map
+`,L=()=>{let e=u(),[t,n]=(0,d.useState)([]),[r,i]=(0,d.useState)(`all`);(0,d.useEffect)(()=>{(async()=>{n(await c())})()},[]);let a=t.filter(e=>{if(r===`all`)return!0;let t=e.experienceId!==-1;return r===`professional`?t:r===`personal`?!t:!0});return(0,f.jsxs)(k,{children:[(0,f.jsxs)(j,{children:[(0,f.jsxs)(M,{children:[(0,f.jsx)(N,{children:`Projects`}),(0,f.jsx)(P,{children:`Browse my portfolio projects`})]}),(0,f.jsxs)(F,{children:[(0,f.jsx)(I,{active:r===`all`,onClick:()=>{i(`all`),e?.capture(`projects_filter_changed`,{filter:`all`})},children:`Tous`}),(0,f.jsx)(I,{active:r===`professional`,onClick:()=>{i(`professional`),e?.capture(`projects_filter_changed`,{filter:`professional`})},children:`Professionnels`}),(0,f.jsx)(I,{active:r===`personal`,onClick:()=>{i(`personal`),e?.capture(`projects_filter_changed`,{filter:`personal`})},children:`Personnels`})]})]}),(0,f.jsx)(A,{children:a.map(e=>(0,f.jsx)(O,{project:e},e.id))})]})};export{L as default};
+//# sourceMappingURL=Projects-ChioEQRV.js.map

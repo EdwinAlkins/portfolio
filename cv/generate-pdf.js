@@ -21,7 +21,7 @@ const path = require('path');
 
   // Charger le fichier HTML local
   await page.goto(`file://${htmlPath}`, {
-    waitUntil: 'networkidle0',
+    waitUntil: 'networkidle2',
   });
 
   // Générer le PDF format A4

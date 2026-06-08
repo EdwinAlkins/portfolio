@@ -4,6 +4,7 @@ import { gray1, blue1 } from '../../contantes/color';
 import ProjectCard from './CardProject';
 import { getProjects } from '../../utils/dbUtils';
 import { Project as ProjectType } from '../../type';
+import { usePostHog } from '@posthog/react';
 
 const ProjectContainer = styled.div`
   padding: 2rem;
@@ -68,6 +69,7 @@ const FilterButton = styled.button<{ active: boolean }>`
 type FilterType = 'all' | 'personal' | 'professional';
 
 const Projects: React.FC = () => {
+    const posthog = usePostHog();
     const [projects, setProjects] = useState<ProjectType[]>([])
     const [filter, setFilter] = useState<FilterType>('all')
 
@@ -97,19 +99,19 @@ const Projects: React.FC = () => {
                 <FilterContainer>
                     <FilterButton
                         active={filter === 'all'}
-                        onClick={() => setFilter('all')}
+                        onClick={() => { setFilter('all'); posthog?.capture('projects_filter_changed', { filter: 'all' }); }}
                     >
                         Tous
                     </FilterButton>
                     <FilterButton
                         active={filter === 'professional'}
-                        onClick={() => setFilter('professional')}
+                        onClick={() => { setFilter('professional'); posthog?.capture('projects_filter_changed', { filter: 'professional' }); }}
                     >
                         Professionnels
                     </FilterButton>
                     <FilterButton
                         active={filter === 'personal'}
-                        onClick={() => setFilter('personal')}
+                        onClick={() => { setFilter('personal'); posthog?.capture('projects_filter_changed', { filter: 'personal' }); }}
                     >
                         Personnels
                     </FilterButton>

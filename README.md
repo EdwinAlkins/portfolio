@@ -33,7 +33,13 @@ Generate a PDF version of the CV using Puppeteer:
 npm run generate-pdf
 ```
 
-This script converts the HTML CV to PDF and outputs it to `public/pdf/cv-william-nauroy.pdf`.
+Generate a PDF version of the CV using WeasyPrint:
+
+```bash
+cd public/cv && uv run main.py
+```
+
+This script converts the HTML CV to PDF and outputs it to `public/pdf/cv-william-nauroy-v2.pdf`.
 
 ## Deployment
 

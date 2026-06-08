@@ -31,15 +31,23 @@ body {
   line-height: 1.45;
   color: var(--text);
   background: var(--bg);
-  max-width: 210mm;
-  margin: 0 auto;
-  /* padding: 5mm; */
+  
+  /* 🔥 Forcer l'absence de marge/padding */
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  /* 🔥 Largeur exacte A4 moins marges si besoin */
+  width: 210mm;
+  box-sizing: border-box;
 }
 
 /* ---------- LAYOUT 2 colonnes ---------- */
 .cv-layout {
   display: flex;
   gap: 12pt;
+  padding: 8pt 10pt; /* 🔥 Ajoute un "padding interne" pour aérer le contenu */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cv-sidebar {
@@ -55,11 +63,20 @@ body {
 .sidebar-photo {
   margin-bottom: 10pt;
 }
-.sidebar-photo img {
+/* .sidebar-photo img {
   width: 100%;
   max-width: 150pt;
   height: auto;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+} */
+ /* ✅ Ajout d'un fallback pour aspect-ratio (support partiel dans WeasyPrint) */
+.sidebar-photo img {
+  width: 150pt;
+  height: 150pt; /* ✅ Fallback carré fixe */
   object-fit: cover;
   border-radius: 50%;
   display: block;
@@ -118,10 +135,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+.cv-section p {
+  font-size: 10pt;
+}
 
 .cv-item { margin-bottom: 8pt; }
 .cv-item h3 { font-size: 11.5pt; margin-bottom: 1pt; }
-.cv-date { font-style: bold; color: #555; margin-bottom: 2pt; font-size: var(--size-secondary); }
+.cv-date { font-weight: bold; color: #555; margin-bottom: 2pt; font-size: var(--size-secondary); }
 .cv-company { font-style: italic; color: #555; margin-bottom: 2pt; font-size: var(--size-secondary); }
 .cv-item ul { margin-left: 1.2em; font-size: var(--size-secondary); }
 .cv-item li { margin-bottom: 3pt; }
@@ -162,4 +182,16 @@ body {
   h2, h3 { page-break-after: avoid; }
   .cv-section { break-inside: avoid; }
   .cv-sidebar { background: var(--sidebar-bg) !important; }
+}
+
+/* ✅ Optionnel : forcer la conservation des couleurs de fond */
+@media print {
+  @page {
+    size: A4;
+    margin: 0; /* 🔥 Supprime TOUTE marge par défaut */
+  }
+  body {
+    -weasy-print-color-adjust: exact;
+    color-adjust: exact;
+  }
 }

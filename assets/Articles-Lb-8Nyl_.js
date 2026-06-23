@@ -1,4 +1,4 @@
-import{c as e,d as t,f as n,g as r,h as i,l as a,n as o,u as s}from"./index-C9qPAoau.js";var c=r(i()),l=t(),u=n.div`
+import{c as e,d as t,f as n,g as r,h as i,l as a,n as o,u as s}from"./index-BX9bjXl6.js";var c=r(i()),l=t(),u=n.div`
   padding: 2rem;
   color: ${a};
 `,d=n.div`
@@ -34,4 +34,4 @@ import{c as e,d as t,f as n,g as r,h as i,l as a,n as o,u as s}from"./index-C9qP
   font-size: 0.95rem;
   line-height: 1.5;
 `,g=()=>{let[e,t]=(0,c.useState)([]);return(0,c.useEffect)(()=>{(async()=>{t(await o())})()},[]),(0,l.jsxs)(u,{children:[(0,l.jsx)(`h1`,{children:`Articles`}),(0,l.jsx)(d,{children:e.map(e=>(0,l.jsxs)(f,{href:e.url,target:`_blank`,rel:`noopener noreferrer`,children:[(0,l.jsxs)(p,{children:[e.title,(0,l.jsx)(m,{className:`fas fa-external-link-alt`})]}),e.description&&(0,l.jsx)(h,{children:e.description})]},e.id))})]})};export{g as default};
-//# sourceMappingURL=Articles-BZmMXqkU.js.map
+//# sourceMappingURL=Articles-Lb-8Nyl_.js.map

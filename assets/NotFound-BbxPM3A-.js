@@ -1,4 +1,4 @@
-import{c as e,d as t,f as n,h as r,l as i,p as a,u as o}from"./index-C9qPAoau.js";r();var s=t(),c=n.div`
+import{c as e,d as t,f as n,h as r,l as i,p as a,u as o}from"./index-BX9bjXl6.js";r();var s=t(),c=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,4 +31,4 @@ import{c as e,d as t,f as n,h as r,l as i,p as a,u as o}from"./index-C9qPAoau.js
     color: #030711;
   }
 `,p=()=>(0,s.jsxs)(c,{children:[(0,s.jsx)(l,{children:`404`}),(0,s.jsx)(u,{children:`Page introuvable`}),(0,s.jsx)(d,{children:`La page que vous cherchez n'existe pas ou a été déplacée.`}),(0,s.jsx)(f,{to:`/portfolio`,children:`Retour à l'accueil`})]});export{p as default};
-//# sourceMappingURL=NotFound-Cgwyc5Pk.js.map
+//# sourceMappingURL=NotFound-BbxPM3A-.js.map

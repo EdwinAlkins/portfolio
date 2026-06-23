@@ -2,8 +2,9 @@
   "articles": [
     {
       "id": 1,
-      "title": "Python Tutorial",
-      "slug": "python-tuto.md"
+      "title": "Protobuf without protoc: the ultimate developer experience for Python",
+      "url": "https://dev.to/edwinalkins/protobuf-without-protoc-the-ultimate-developer-experience-for-python-42b4",
+      "description": "How to get a great Python developer experience with Protobuf, without dealing with protoc."
     }
   ],
   "experiences": [

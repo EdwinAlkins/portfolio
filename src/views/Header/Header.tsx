@@ -172,7 +172,7 @@ const Header: React.FC = () => {
         <NavLink to="/portfolio/about" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'About' }); }}>About</NavLink>
         <NavLink to="/portfolio/experience" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Experience' }); }}>Experience</NavLink>
         <NavLink to="/portfolio/projects" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Projects' }); }}>Projects</NavLink>
-        {/* <NavLink to="/portfolio/articles" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Articles' }); }}>Articles</NavLink> */}
+        <NavLink to="/portfolio/articles" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Articles' }); }}>Articles</NavLink>
       </Navigation>
     </HeaderContainer>
   );

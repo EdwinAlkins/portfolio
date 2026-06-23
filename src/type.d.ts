@@ -1,7 +1,8 @@
 export interface Article {
     id: number;
     title: string;
-    slug: string;
+    url: string;
+    description?: string;
 }
 
 export interface Experience {

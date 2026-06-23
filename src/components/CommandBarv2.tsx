@@ -356,21 +356,21 @@ export const CommandBar: React.FC = () => {
                 </Command.Group>
               )}
 
-              {/* {articles.length > 0 && (
+              {articles.length > 0 && (
                 <Command.Group heading="Articles">
                   {articles.map((article) => (
                     <Command.Item
                       key={article.id}
                       value={article.title.toLowerCase()}
-                      keywords={[article.title, article.title].map(k => k.toLowerCase())}
-                      onSelect={() => handleNavigate(`/portfolio/article/${article.id}`)}
+                      keywords={[article.title].map(k => k.toLowerCase())}
+                      onSelect={() => handleOpenLink(article.url, article.title)}
                     >
                       <SearchResultIcon className="fas fa-file-alt" $type="article" />
                       <SearchResultTitle>{article.title}</SearchResultTitle>
                     </Command.Item>
                   ))}
                 </Command.Group>
-              )} */}
+              )}
 
               <Command.Group heading="Links">
                 <Command.Item

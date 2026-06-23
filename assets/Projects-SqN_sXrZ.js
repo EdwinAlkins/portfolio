@@ -1,11 +1,11 @@
-import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t as u}from"./index-BX9bjXl6.js";var d=i(a()),f=n(),p=r(c)`
+import{n as e}from"./rolldown-runtime-Bh1tDfsg.js";import{i as t,n}from"./analytics-CpScIfsJ.js";import{r,t as i}from"./react-vendor-kOwVo2tE.js";import{a,c as o,i as s,o as c,s as l,u}from"./index-UAG53llN.js";var d=e(t()),f=i(),p=u(r)`
     text-decoration: none;
     color: inherit;
-`,m=r.div`
+`,m=u.div`
     position: relative;
     width: 100%;
     max-width: 400px;
-    background: ${l};
+    background: ${c};
     border-radius: 4px;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -15,17 +15,17 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
         transform: translateY(-4px);
         box-shadow: 0 8px 24px rgba(144, 205, 244, 0.2);
     }
-`,h=r.div`
+`,h=u.div`
     position: relative;
     width: 100%;
     min-height: 180px;
     max-height: 240px;
     overflow: hidden;
-    background: ${s};
+    background: ${a};
     display: flex;
     align-items: center;
     justify-content: center;
-`,g=r.img`
+`,g=u.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -34,9 +34,9 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
     ${m}:hover & {
         transform: scale(1.05);
     }
-`,_=r.div`
+`,_=u.div`
     padding: 1rem;
-`,v=r.h3`
+`,v=u.h3`
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     font-weight: 600;
@@ -44,7 +44,7 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-`,y=r.p`
+`,y=u.p`
     margin: 0 0 0.75rem 0;
     font-size: 0.85rem;
     color: ${o};
@@ -54,12 +54,12 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.4;
-`,b=r.div`
+`,b=u.div`
     position: absolute;
     bottom: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    background: ${l};
+    background: ${c};
     border: 1px solid rgba(144, 205, 244, 0.3);
     color: ${o};
     padding: 0.75rem 1rem;
@@ -82,9 +82,9 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
         left: 50%;
         transform: translateX(-50%);
         border: 6px solid transparent;
-        border-top-color: ${l};
+        border-top-color: ${c};
     }
-`,x=r.div`
+`,x=u.div`
     position: relative;
     width: 100%;
 
@@ -92,37 +92,37 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
         opacity: 1;
         visibility: visible;
     }
-`,S=r.div`
+`,S=u.div`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-`,C=r.span`
+`,C=u.span`
     background: rgba(144, 205, 244, 0.1);
-    color: ${t};
+    color: ${l};
     padding: 2px 8px;
     border-radius: 2px;
     font-size: 0.75rem;
     font-weight: 500;
-`,w=r.div`
+`,w=u.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 0.75rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-`,T=r.div`
+`,T=u.div`
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: ${({status:e})=>e===`Production`?`#4ade80`:e===`Beta`?`#fbbf24`:`#f87171`};
     margin-right: 6px;
-`,E=r.span`
+`,E=u.span`
     font-size: 0.75rem;
     color: ${o};
     opacity: 0.6;
-`,D=r.span`
-    color: ${t};
+`,D=u.span`
+    color: ${l};
     font-size: 0.85rem;
     font-weight: 500;
     transition: opacity 0.2s ease;
@@ -130,39 +130,39 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
     &:hover {
         opacity: 0.8;
     }
-`,O=({project:e})=>{let t=u();return(0,f.jsx)(p,{to:`/portfolio/project/${e.id}`,onClick:()=>t?.capture(`project_card_clicked`,{project_id:e.id,project_title:e.title,category:e.category}),children:(0,f.jsxs)(m,{children:[(0,f.jsx)(h,{children:(0,f.jsx)(g,{src:e.capsuleImage,alt:e.title})}),(0,f.jsxs)(_,{children:[(0,f.jsx)(v,{children:e.title}),(0,f.jsxs)(x,{children:[(0,f.jsx)(y,{children:e.shortDescription}),(0,f.jsx)(b,{children:e.shortDescription})]}),(0,f.jsx)(S,{children:e.tags.slice(0,3).map(e=>(0,f.jsx)(C,{children:e},e))}),(0,f.jsxs)(w,{children:[(0,f.jsxs)(`div`,{children:[(0,f.jsx)(T,{status:e.status}),(0,f.jsx)(E,{children:e.category})]}),(0,f.jsx)(D,{children:`View Details →`})]})]})]})})},k=r.div`
+`,O=({project:e})=>{let t=n();return(0,f.jsx)(p,{to:`/portfolio/project/${e.id}`,onClick:()=>t?.capture(`project_card_clicked`,{project_id:e.id,project_title:e.title,category:e.category}),children:(0,f.jsxs)(m,{children:[(0,f.jsx)(h,{children:(0,f.jsx)(g,{src:e.capsuleImage,alt:e.title})}),(0,f.jsxs)(_,{children:[(0,f.jsx)(v,{children:e.title}),(0,f.jsxs)(x,{children:[(0,f.jsx)(y,{children:e.shortDescription}),(0,f.jsx)(b,{children:e.shortDescription})]}),(0,f.jsx)(S,{children:e.tags.slice(0,3).map(e=>(0,f.jsx)(C,{children:e},e))}),(0,f.jsxs)(w,{children:[(0,f.jsxs)(`div`,{children:[(0,f.jsx)(T,{status:e.status}),(0,f.jsx)(E,{children:e.category})]}),(0,f.jsx)(D,{children:`View Details →`})]})]})]})})},k=u.div`
   padding: 2rem;
   color: ${o};
-`,A=r.div`
+`,A=u.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
-`,j=r.div`
+`,j=u.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-`,M=r.div`
+`,M=u.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`,N=r.h1`
+`,N=u.h1`
   font-size: 2rem;
   margin: 0;
   font-weight: 700;
-`,P=r.p`
+`,P=u.p`
   margin: 0;
   opacity: 0.7;
   font-size: 0.9rem;
-`,F=r.div`
+`,F=u.div`
   display: flex;
   gap: 0.5rem;
-`,I=r.button`
+`,I=u.button`
   background: ${({active:e})=>e?`rgba(144, 205, 244, 0.15)`:`transparent`};
-  color: ${({active:e})=>e?t:o};
-  border: 1px solid ${({active:e})=>e?t:`rgba(255, 255, 255, 0.1)`};
+  color: ${({active:e})=>e?l:o};
+  border: 1px solid ${({active:e})=>e?l:`rgba(255, 255, 255, 0.1)`};
   border-radius: 4px;
   padding: 0.4rem 0.85rem;
   font-size: 0.85rem;
@@ -174,5 +174,4 @@ import{a as e,c as t,d as n,f as r,g as i,h as a,l as o,o as s,p as c,s as l,t a
     opacity: 1;
     background: ${({active:e})=>e?`rgba(144, 205, 244, 0.2)`:`rgba(255, 255, 255, 0.05)`};
   }
-`,L=()=>{let t=u(),[n,r]=(0,d.useState)([]),[i,a]=(0,d.useState)(`all`);(0,d.useEffect)(()=>{(async()=>{r(await e())})()},[]);let o=n.filter(e=>{if(i===`all`)return!0;let t=e.experienceId!==-1;return i===`professional`?t:i===`personal`?!t:!0});return(0,f.jsxs)(k,{children:[(0,f.jsxs)(j,{children:[(0,f.jsxs)(M,{children:[(0,f.jsx)(N,{children:`Projects`}),(0,f.jsx)(P,{children:`Browse my portfolio projects`})]}),(0,f.jsxs)(F,{children:[(0,f.jsx)(I,{active:i===`all`,onClick:()=>{a(`all`),t?.capture(`projects_filter_changed`,{filter:`all`})},children:`Tous`}),(0,f.jsx)(I,{active:i===`professional`,onClick:()=>{a(`professional`),t?.capture(`projects_filter_changed`,{filter:`professional`})},children:`Professionnels`}),(0,f.jsx)(I,{active:i===`personal`,onClick:()=>{a(`personal`),t?.capture(`projects_filter_changed`,{filter:`personal`})},children:`Personnels`})]})]}),(0,f.jsx)(A,{children:o.map(e=>(0,f.jsx)(O,{project:e},e.id))})]})};export{L as default};
-//# sourceMappingURL=Projects-CCVQwCOc.js.map
+`,L=()=>{let e=n(),[t,r]=(0,d.useState)([]),[i,a]=(0,d.useState)(`all`);(0,d.useEffect)(()=>{(async()=>{r(await s())})()},[]);let o=t.filter(e=>{if(i===`all`)return!0;let t=e.experienceId!==-1;return i===`professional`?t:i===`personal`?!t:!0});return(0,f.jsxs)(k,{children:[(0,f.jsxs)(j,{children:[(0,f.jsxs)(M,{children:[(0,f.jsx)(N,{children:`Projects`}),(0,f.jsx)(P,{children:`Browse my portfolio projects`})]}),(0,f.jsxs)(F,{children:[(0,f.jsx)(I,{active:i===`all`,onClick:()=>{a(`all`),e?.capture(`projects_filter_changed`,{filter:`all`})},children:`Tous`}),(0,f.jsx)(I,{active:i===`professional`,onClick:()=>{a(`professional`),e?.capture(`projects_filter_changed`,{filter:`professional`})},children:`Professionnels`}),(0,f.jsx)(I,{active:i===`personal`,onClick:()=>{a(`personal`),e?.capture(`projects_filter_changed`,{filter:`personal`})},children:`Personnels`})]})]}),(0,f.jsx)(A,{children:o.map(e=>(0,f.jsx)(O,{project:e},e.id))})]})};export{L as default};

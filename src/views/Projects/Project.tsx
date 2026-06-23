@@ -5,6 +5,7 @@ import { getProjects, getExperienceById } from '../../utils/dbUtils';
 import { Project as ProjectType, Experience } from '../../type';
 import { Link, useParams } from 'react-router-dom';
 import { usePostHog } from '@posthog/react';
+import NotFound from '../NotFound/NotFound';
 
 
 const ProjectContainer = styled.div`
@@ -373,21 +374,27 @@ const Project: React.FC = () => {
     const { id } = useParams();
     const posthog = usePostHog();
     const [project, setProject] = useState<ProjectType | null>(null)
+    const [loading, setLoading] = useState(true);
     const [experience, setExperience] = useState<Experience | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         const loadContent = async () => {
-            const projects = await getProjects()
-            const foundProject = projects.find((project) => String(project.id) === id) || null
-            setProject(foundProject)
+            setLoading(true);
+            try {
+                const projects = await getProjects()
+                const foundProject = projects.find((project) => String(project.id) === id) || null
+                setProject(foundProject)
 
-            if (foundProject?.experienceId && foundProject.experienceId > 0) {
-                const exp = await getExperienceById(foundProject.experienceId);
-                setExperience(exp || null);
-            } else {
-                setExperience(null);
+                if (foundProject?.experienceId && foundProject.experienceId > 0) {
+                    const exp = await getExperienceById(foundProject.experienceId);
+                    setExperience(exp || null);
+                } else {
+                    setExperience(null);
+                }
+            } finally {
+                setLoading(false);
             }
         }
         loadContent()
@@ -427,8 +434,12 @@ const Project: React.FC = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [modalOpen, closeModal, previousImage, nextImage]);
 
+    if (loading) {
+        return <ProjectContainer><ContentWrapper>Loading...</ContentWrapper></ProjectContainer>;
+    }
+
     if (!project) {
-        return <ProjectContainer>Loading...</ProjectContainer>;
+        return <NotFound />;
     }
 
     return (

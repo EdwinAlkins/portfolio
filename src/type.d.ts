@@ -1,7 +1,8 @@
 export interface Article {
     id: number;
     title: string;
-    slug: string;
+    url: string;
+    description?: string;
 }
 
 export interface Experience {
@@ -19,6 +20,8 @@ export interface ProjectLinks {
     github?: string | string[];
     demo?: string | string[];
     documentation?: string | string[];
+    // Any other link type (e.g. "marketplace") is rendered generically, without an icon.
+    [key: string]: string | string[] | undefined;
 }
 
 export interface Project {

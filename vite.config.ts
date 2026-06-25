@@ -15,7 +15,19 @@ export default defineConfig({
   base: '/portfolio/',
   build: {
     outDir: 'build',
-    sourcemap: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('posthog')) return 'analytics';
+            if (id.includes('react-dom') || id.includes('react-router') || /[\\/]react[\\/]/.test(id)) {
+              return 'react-vendor';
+            }
+          }
+        },
+      },
+    },
   },
   server: {
     port: 3000,

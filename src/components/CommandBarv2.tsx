@@ -356,21 +356,21 @@ export const CommandBar: React.FC = () => {
                 </Command.Group>
               )}
 
-              {/* {articles.length > 0 && (
+              {articles.length > 0 && (
                 <Command.Group heading="Articles">
                   {articles.map((article) => (
                     <Command.Item
                       key={article.id}
                       value={article.title.toLowerCase()}
-                      keywords={[article.title, article.title].map(k => k.toLowerCase())}
-                      onSelect={() => handleNavigate(`/portfolio/article/${article.id}`)}
+                      keywords={[article.title].map(k => k.toLowerCase())}
+                      onSelect={() => handleOpenLink(article.url, article.title)}
                     >
                       <SearchResultIcon className="fas fa-file-alt" $type="article" />
                       <SearchResultTitle>{article.title}</SearchResultTitle>
                     </Command.Item>
                   ))}
                 </Command.Group>
-              )} */}
+              )}
 
               <Command.Group heading="Links">
                 <Command.Item
@@ -396,6 +396,14 @@ export const CommandBar: React.FC = () => {
                 >
                   <SearchResultIcon className="far fa-file-alt" $type="page" />
                   <SearchResultTitle>Resume</SearchResultTitle>
+                </Command.Item>
+                <Command.Item
+                  value="devto"
+                  keywords={['dev.to', 'devto', 'blog', 'articles', 'writing']}
+                  onSelect={() => handleOpenLink('https://dev.to/edwinalkins', 'DEV.to')}
+                >
+                  <SearchResultIcon className="fab fa-dev" $type="page" />
+                  <SearchResultTitle>DEV.to</SearchResultTitle>
                 </Command.Item>
               </Command.Group>
             </Command.List>

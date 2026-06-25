@@ -11,7 +11,7 @@ const Experience = lazy(() => import('./views/Experience/Experience'));
 const Projects = lazy(() => import('./views/Projects/Projects'));
 const Project = lazy(() => import('./views/Projects/Project'));
 const Articles = lazy(() => import('./views/Articles/Articles'));
-const Article = lazy(() => import('./views/Articles/Article'));
+const NotFound = lazy(() => import('./views/NotFound/NotFound'));
 
 const AppContainer = styled.div`
   background-color: ${black1};
@@ -47,7 +47,7 @@ function App() {
               <Route path="/portfolio/projects" element={<Projects />} />
               <Route path="/portfolio/project/:id" element={<Project />} />
               <Route path="/portfolio/articles" element={<Articles />} />
-              <Route path="/portfolio/article/:id" element={<Article />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </PageContainer>

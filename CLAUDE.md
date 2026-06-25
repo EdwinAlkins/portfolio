@@ -34,7 +34,9 @@ Static assets referenced by db.json entries (project images, article markdown fi
 | `/portfolio/projects` | Projects list |
 | `/portfolio/project/:id` | Single project (Project.tsx) |
 | `/portfolio/articles` | Articles list |
-| `/portfolio/article/:id` | Single article |
+| `*` (any other) | NotFound (catch-all 404) |
+
+Note: there is **no** `/portfolio/article/:id` route registered in `App.tsx` — an article-detail URL currently falls through to the `NotFound` catch-all.
 
 ### Styling
 
@@ -60,9 +62,13 @@ Font Awesome icons are loaded via CDN in `index.html` (`<link>` tag) — no npm 
 
 The CV lives as a standalone HTML file at `public/cv/index.html` (self-contained, no bundler dependency). `npm run generate-pdf` runs `public/cv/generate-pdf.js` with Puppeteer to produce `public/pdf/cv-william-nauroy-v2.pdf`.
 
+### Analytics
+
+PostHog is initialized in `src/index.tsx` and the app is wrapped in `PostHogProvider` (`@posthog/react`). It reads two Vite env vars at build time — `VITE_PUBLIC_POSTHOG_TOKEN` and `VITE_PUBLIC_POSTHOG_HOST` — so a `.env` (or CI secrets) must define these for analytics to work.
+
 ### Build output
 
-Vite outputs to `build/` (not `dist/`) with sourcemaps enabled. The `@` alias resolves to `./src`.
+Vite outputs to `build/` (not `dist/`) with sourcemaps **disabled** (`sourcemap: false`). The `@` alias resolves to `./src`. `rollupOptions.output.manualChunks` splits vendor code into separate chunks: `analytics` (posthog) and `react-vendor` (react / react-dom / react-router).
 
 ### Deployment
 

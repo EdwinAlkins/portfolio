@@ -107,11 +107,14 @@ const Home: React.FC = () => {
                 <SocialLink href="https://github.com/EdwinAlkins" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'github' })}>
                     <i className="fab fa-github"></i>
                 </SocialLink>
-                <SocialLink href="https://www.linkedin.com/in/william-nauroy1998" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'linkedin' })}>
+                <SocialLink href="https://www.linkedin.com/in/william-nauroy" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'linkedin' })}>
                     <i className="fab fa-linkedin"></i>
                 </SocialLink>
                 <SocialLink href="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'resume' })}>
                     <i className="far fa-file-alt"></i>
+                </SocialLink>
+                <SocialLink href="https://dev.to/edwinalkins" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'devto' })}>
+                    <i className="fab fa-dev"></i>
                 </SocialLink>
             </SocialLinks>
         </HomeContainer>

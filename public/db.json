@@ -2,8 +2,9 @@
   "articles": [
     {
       "id": 1,
-      "title": "Python Tutorial",
-      "slug": "python-tuto.md"
+      "title": "Protobuf without protoc: the ultimate developer experience for Python",
+      "url": "https://dev.to/edwinalkins/protobuf-without-protoc-the-ultimate-developer-experience-for-python-42b4",
+      "description": "How to get a great Python developer experience with Protobuf, without dealing with protoc."
     }
   ],
   "experiences": [
@@ -314,11 +315,11 @@
       "id": 9,
       "title": "protoruf",
       "slug": "protoruf",
-      "shortDescription": "Biblioth\u00e8que Python haute performance \u00e9crite en Rust pour la conversion JSON \u2194 Protobuf avec gestion typ\u00e9e des messages.",
-      "longDescription": "**Protoruf** est une biblioth\u00e8que Python haute performance pour la conversion bidirectionnelle entre JSON et Protobuf, d\u00e9velopp\u00e9e en Rust.\nPoints cl\u00e9s :\n - Conversion rapide JSON \u2194 Protobuf gr\u00e2ce \u00e0 Rust.\n- Int\u00e9gration native des mod\u00e8les Pydantic.\n- Compilation des fichiers .proto sans d\u00e9pendances externes.\n- Sortie JSON format\u00e9e et typage strict.\n\nId\u00e9al pour les projets n\u00e9cessitant des \u00e9changes de donn\u00e9es performants et structur\u00e9s.",
+      "shortDescription": "A high-performance Python library, written in Rust, for converting data between JSON and Protobuf \u2014 faster than Google's standard library and with no tedious setup.",
+      "longDescription": "**Protoruf** is a high-performance Python library for two-way conversion between JSON and Protobuf, written in Rust. It removes the tedious, error-prone setup that the usual Protobuf workflow demands: nothing to install or configure by hand, and no generated files to maintain. Developers can change their data structure and keep working instantly, without ever leaving their editor.\n\nKey points:\n - Fast JSON \u2194 Protobuf conversion thanks to Rust \u2014 up to 10 times faster than Google's standard `google.protobuf` library.\n - Native integration with Pydantic models, for automatic data validation with no extra code.\n - In-memory compilation of .proto files, with no external dependencies (no `protoc` to install).\n - Formatted JSON output and strict typing.\n\nIdeal for projects that need fast, structured and reliable data exchange. Freely available on PyPI with full documentation and a published article explaining the approach.",
       "capsuleImage": "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg",
       "images": [
-        "https://blog.postman.com/wp-content/uploads/2024/01/What-is-Protobuf.jpg"
+        "https://edwinalkins.github.io/protoruf/assets/logo.png"
       ],
       "technologies": [
         "python",
@@ -329,18 +330,21 @@
         "pydantic"
       ],
       "tags": [
-        "Haute Performance",
-        "Rust",
+        "Open Source",
+        "Developer Experience",
+        "High Performance",
         "Python",
-        "Protobuf",
-        "S\u00e9rialisation de Donn\u00e9es"
+        "Rust",
+        "Protobuf"
       ],
       "category": "Library",
       "releaseDate": "2026-04-09",
       "status": "Production",
       "links": {
         "github": "https://github.com/EdwinAlkins/protoruf",
-        "documentation": "https://edwinalkins.github.io/protoruf"
+        "documentation": "https://edwinalkins.github.io/protoruf",
+        "pypi": "https://pypi.org/project/protoruf",
+        "article": "https://dev.to/edwinalkins/protobuf-without-protoc-the-ultimate-developer-experience-for-python-42b4"
       },
       "experienceId": -1
     },
@@ -442,6 +446,35 @@
       "releaseDate": "2018-08-31",
       "status": "Production",
       "experienceId": 6
+    },
+    {
+      "id": 13,
+      "title": "Copy Contents",
+      "slug": "copy-contents",
+      "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click — ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
+      "longDescription": "**Copy Contents** is a Visual Studio Code extension that copies the combined contents of all files within a folder straight to your clipboard in a single click. It is built for developers who want to quickly share code with language models (ChatGPT, Claude, Copilot) without opening each file one by one.\n\nKey features:\n - **Copy folder contents**: recursively copy everything in a folder in one click from the context menu.\n - **Selective copy**: a dialog lets you pick exactly which files to include, with a per-folder toggle to check/uncheck all of its files at once.\n - **Multi-selection**: the commands operate on the entire selection (files and/or folders).\n - **Smart filtering**: automatic exclusion of common folders (`.git`, `node_modules`, `dist`, etc.), configurable extensions, and file size / count limits.\n - **Structured output**: each file is prefixed with a header showing its path (optional) to help the LLM understand the project layout.\n\nBuilt with TypeScript, the extension is published on the Visual Studio Marketplace.",
+      "capsuleImage": "https://edwinalkins.gallerycdn.vsassets.io/extensions/edwinalkins/copy-contents/0.0.5/1782393257155/Microsoft.VisualStudio.Services.Icons.Default",
+      "images": [],
+      "technologies": [
+        "typescript",
+        "vscode",
+        "nodejs"
+      ],
+      "tags": [
+        "VS Code",
+        "Extension",
+        "Developer Tools",
+        "LLM",
+        "Productivity"
+      ],
+      "category": "Tool",
+      "releaseDate": "2026-06-25",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/edwinalkins/copy-contents",
+        "marketplace": "https://marketplace.visualstudio.com/items?itemName=edwinalkins.copy-contents"
+      },
+      "experienceId": -1
     }
   ]
 }

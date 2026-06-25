@@ -87,7 +87,7 @@ const Home: React.FC = () => {
         <HomeContainer>
             <Title>Hi, I'm Nauroy William !</Title>
             <Subtitle>
-                I'm a <span>full stack engineer</span>.
+                I'm a <span>Full Stack & DevOps Engineer</span>.
             </Subtitle>
             <LookAroundSection>
                 <LookAroundTitle>Take a look around :</LookAroundTitle>

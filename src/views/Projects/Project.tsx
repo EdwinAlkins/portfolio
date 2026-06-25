@@ -8,6 +8,20 @@ import { usePostHog } from '@posthog/react';
 import NotFound from '../NotFound/NotFound';
 
 
+// Known link types get a dedicated icon and label. Any other key is rendered
+// generically (label derived from the key, no icon).
+const LINK_META: Record<string, { icon?: string; label: string }> = {
+    github: { icon: 'fab fa-github', label: 'GitHub' },
+    demo: { icon: 'fas fa-external-link-alt', label: 'Live Demo' },
+    documentation: { icon: 'fas fa-book', label: 'Documentation' },
+    // Known types rendered without an icon, but with a properly cased label.
+    pypi: { label: 'PyPI' },
+    article: { label: 'Article' },
+};
+
+const formatLinkLabel = (key: string): string =>
+    key.charAt(0).toUpperCase() + key.slice(1);
+
 const ProjectContainer = styled.div`
   color: ${gray1};
 `;
@@ -508,51 +522,18 @@ const Project: React.FC = () => {
                     <Section>
                         <SectionTitle>Links</SectionTitle>
                         <LinksContainer>
-                            {project.links.github && (
-                                <>
-                                    {Array.isArray(project.links.github) ? (
-                                        project.links.github.map((githubUrl, index) => (
-                                            <LinkButton key={index} href={githubUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'github', url: githubUrl })}>
-                                                <i className="fab fa-github"></i> GitHub {project.links!.github!.length > 1 ? `#${index + 1}` : ''}
-                                            </LinkButton>
-                                        ))
-                                    ) : (
-                                        <LinkButton href={project.links.github} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'github', url: project.links!.github as string })}>
-                                            <i className="fab fa-github"></i> GitHub
-                                        </LinkButton>
-                                    )}
-                                </>
-                            )}
-                            {project.links.demo && (
-                                <>
-                                    {Array.isArray(project.links.demo) ? (
-                                        project.links.demo.map((demoUrl, index) => (
-                                            <LinkButton key={index} href={demoUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'demo', url: demoUrl })}>
-                                                <i className="fas fa-external-link-alt"></i> Live Demo {project.links!.demo!.length > 1 ? `#${index + 1}` : ''}
-                                            </LinkButton>
-                                        ))
-                                    ) : (
-                                        <LinkButton href={project.links.demo} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'demo', url: project.links!.demo as string })}>
-                                            <i className="fas fa-external-link-alt"></i> Live Demo
-                                        </LinkButton>
-                                    )}
-                                </>
-                            )}
-                            {project.links.documentation && (
-                                <>
-                                    {Array.isArray(project.links.documentation) ? (
-                                        project.links.documentation.map((docUrl, index) => (
-                                            <LinkButton key={index} href={docUrl} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'documentation', url: docUrl })}>
-                                                <i className="fas fa-book"></i> Documentation {project.links!.documentation!.length > 1 ? `#${index + 1}` : ''}
-                                            </LinkButton>
-                                        ))
-                                    ) : (
-                                        <LinkButton href={project.links.documentation} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: 'documentation', url: project.links!.documentation as string })}>
-                                            <i className="fas fa-book"></i> Documentation
-                                        </LinkButton>
-                                    )}
-                                </>
-                            )}
+                            {Object.entries(project.links).map(([linkType, value]) => {
+                                if (!value) return null;
+                                const meta = LINK_META[linkType];
+                                const icon = meta?.icon;
+                                const label = meta?.label ?? formatLinkLabel(linkType);
+                                const urls = Array.isArray(value) ? value : [value];
+                                return urls.map((url, index) => (
+                                    <LinkButton key={`${linkType}-${index}`} href={url} target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('project_link_clicked', { project_id: id, link_type: linkType, url })}>
+                                        {icon && <i className={icon}></i>} {label}{urls.length > 1 ? ` #${index + 1}` : ''}
+                                    </LinkButton>
+                                ));
+                            })}
                         </LinksContainer>
                     </Section>
                 )}

@@ -101,6 +101,9 @@ const Home: React.FC = () => {
                     <NavButton to="/portfolio/projects" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Projects' })}>
                         <i className="fas fa-folder"></i> Projects
                     </NavButton>
+                    <NavButton to="/portfolio/articles" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Articles' })}>
+                        <i className="fas fa-newspaper"></i> Articles
+                    </NavButton>
                 </ButtonGroup>
             </LookAroundSection>
             <SocialLinks>

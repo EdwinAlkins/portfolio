@@ -397,6 +397,14 @@ export const CommandBar: React.FC = () => {
                   <SearchResultIcon className="far fa-file-alt" $type="page" />
                   <SearchResultTitle>Resume</SearchResultTitle>
                 </Command.Item>
+                <Command.Item
+                  value="devto"
+                  keywords={['dev.to', 'devto', 'blog', 'articles', 'writing']}
+                  onSelect={() => handleOpenLink('https://dev.to/edwinalkins', 'DEV.to')}
+                >
+                  <SearchResultIcon className="fab fa-dev" $type="page" />
+                  <SearchResultTitle>DEV.to</SearchResultTitle>
+                </Command.Item>
               </Command.Group>
             </Command.List>
             <Overlay onClick={() => setOpen(false)} />

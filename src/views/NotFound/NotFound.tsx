@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { usePostHog } from '@posthog/react';
 import { blue1, gray1, gray2 } from '../../contantes/color';
 
 const NotFoundContainer = styled.div`
@@ -46,6 +47,17 @@ const HomeLink = styled(Link)`
 `;
 
 const NotFound: React.FC = () => {
+  const posthog = usePostHog();
+
+  useEffect(() => {
+    // Surfaces dead links (e.g. stale CV URLs in circulation) hitting the
+    // catch-all route or a missing project id.
+    posthog?.capture('page_not_found', {
+      attempted_path: window.location.pathname,
+      referrer: document.referrer,
+    });
+  }, [posthog]);
+
   return (
     <NotFoundContainer>
       <Code>404</Code>

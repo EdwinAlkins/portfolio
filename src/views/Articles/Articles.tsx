@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { usePostHog } from '@posthog/react';
 import { blue1, gray1, gray2 } from '../../contantes/color';
 
 import { getArticles } from '../../utils/dbUtils';
@@ -54,6 +55,7 @@ const ArticleDescription = styled.p`
 
 const Article: React.FC = () => {
     const [articles, setArticles] = useState<ArticleType[]>([])
+    const posthog = usePostHog();
 
     useEffect(() => {
         const loadContent = async () => {
@@ -73,6 +75,7 @@ const Article: React.FC = () => {
                         href={article.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => posthog?.capture('article_clicked', { article_id: article.id, title: article.title, url: article.url })}
                     >
                         <ArticleTitle>
                             {article.title}

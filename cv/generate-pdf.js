@@ -8,7 +8,7 @@ const path = require('path');
 
 (async () => {
   const htmlPath = path.resolve(__dirname, 'index.html');
-  const outputPath = path.resolve(__dirname, '../pdf/cv-william-nauroy-v2.pdf');
+  const outputPath = path.resolve(__dirname, '../public/pdf/cv-william-nauroy-v2.pdf');
 
   console.log('🚀 Conversion HTML → PDF avec Puppeteer...');
 

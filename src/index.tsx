@@ -8,7 +8,19 @@ import { PostHogProvider } from '@posthog/react';
 
 posthog.init(import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN, {
   api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+  // The '2026-01-30' defaults already enable autocapture and SPA pageview
+  // capture (capture_pageview: 'history_change'), so React Router navigations
+  // are tracked automatically — no manual $pageview needed.
   defaults: '2026-01-30',
+  // The site has no login, so every visitor is anonymous. 'always' lets us
+  // attach person properties (e.g. has_viewed_resume) and build cohorts on
+  // those otherwise-anonymous recruiters.
+  person_profiles: 'always',
+  capture_performance: true,
+  loaded: (ph) => {
+    // Avoid polluting production analytics with local dev traffic.
+    if (import.meta.env.DEV) ph.opt_out_capturing();
+  },
 });
 
 const root = ReactDOM.createRoot(

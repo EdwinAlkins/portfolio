@@ -21,7 +21,8 @@
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "generate-pdf": "node public/cv/generate-pdf.js"
+    "generate-pdf": "uv run --directory cv main.py",
+    "generate-pdf:old": "node cv/generate-pdf.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

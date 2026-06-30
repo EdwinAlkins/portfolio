@@ -83,6 +83,19 @@ const NavButton = styled(Link)`
 const Home: React.FC = () => {
     const posthog = usePostHog();
 
+    const handleResumeClick = () => {
+        // High-intent signal: a recruiter opening the CV.
+        posthog?.capture('resume_opened', {
+            source: 'home_page',
+            file: 'cv-william-nauroy-v2.pdf',
+        });
+        // Flag the visitor so they can be filtered/cohorted in PostHog later.
+        posthog?.setPersonProperties({
+            has_viewed_resume: true,
+            last_resume_view: new Date().toISOString(),
+        });
+    };
+
     return (
         <HomeContainer>
             <Title>Hi, I'm Nauroy William !</Title>
@@ -92,16 +105,16 @@ const Home: React.FC = () => {
             <LookAroundSection>
                 <LookAroundTitle>Take a look around :</LookAroundTitle>
                 <ButtonGroup>
-                    <NavButton to="/portfolio/about" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'About' })}>
+                    <NavButton to="/portfolio/about" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'About', source: 'home' })}>
                         <i className="fas fa-user"></i> About
                     </NavButton>
-                    <NavButton to="/portfolio/experience" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Experience' })}>
+                    <NavButton to="/portfolio/experience" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Experience', source: 'home' })}>
                         <i className="fas fa-briefcase"></i> Exp
                     </NavButton>
-                    <NavButton to="/portfolio/projects" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Projects' })}>
+                    <NavButton to="/portfolio/projects" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Projects', source: 'home' })}>
                         <i className="fas fa-folder"></i> Projects
                     </NavButton>
-                    <NavButton to="/portfolio/articles" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Articles' })}>
+                    <NavButton to="/portfolio/articles" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Articles', source: 'home' })}>
                         <i className="fas fa-newspaper"></i> Articles
                     </NavButton>
                 </ButtonGroup>
@@ -113,7 +126,7 @@ const Home: React.FC = () => {
                 <SocialLink href="https://www.linkedin.com/in/william-nauroy" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'linkedin' })}>
                     <i className="fab fa-linkedin"></i>
                 </SocialLink>
-                <SocialLink href="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'resume' })}>
+                <SocialLink href="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer" onClick={handleResumeClick}>
                     <i className="far fa-file-alt"></i>
                 </SocialLink>
                 <SocialLink href="https://dev.to/edwinalkins" target="_blank" rel="noopener noreferrer" onClick={() => posthog?.capture('home_social_link_clicked', { platform: 'devto' })}>

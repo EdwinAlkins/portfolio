@@ -227,6 +227,23 @@ export const CommandBar: React.FC = () => {
   const [articles, setArticles] = React.useState<Article[]>([]);
   const [search, setSearch] = React.useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  // Capture what visitors search for, debounced so we log the settled query
+  // instead of every keystroke.
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    const query = value.trim();
+    if (query.length < 2) return;
+    searchDebounceRef.current = setTimeout(() => {
+      posthog?.capture('command_bar_search', { query });
+    }, 600);
+  };
+
+  useEffect(() => () => {
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+  }, []);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -272,6 +289,11 @@ export const CommandBar: React.FC = () => {
 
   const handleOpenLink = (url: string, label: string) => {
     posthog?.capture('command_bar_external_link_opened', { url, label });
+    // Keep the high-intent CV signal unified with the home-page button.
+    if (url.includes('cv-william-nauroy')) {
+      posthog?.capture('resume_opened', { source: 'command_bar', file: 'cv-william-nauroy-v2.pdf' });
+      posthog?.setPersonProperties({ has_viewed_resume: true, last_resume_view: new Date().toISOString() });
+    }
     window.open(url, '_blank');
     setOpen(false);
   };
@@ -287,7 +309,7 @@ export const CommandBar: React.FC = () => {
         <Command.Input 
           ref={inputRef}
           value={search}
-          onValueChange={setSearch}
+          onValueChange={handleSearchChange}
           placeholder={open ? "Search pages, projects, articles..." : "Search..."}
           onClick={() => setOpen(true)}
         />

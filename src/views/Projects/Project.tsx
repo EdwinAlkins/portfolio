@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { gray1, blue1, black2 } from '../../contantes/color';
 import { getProjects, getExperienceById } from '../../utils/dbUtils';
@@ -392,6 +392,33 @@ const Project: React.FC = () => {
     const [experience, setExperience] = useState<Experience | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    // Kept in a ref so the title is available in the time-tracking cleanup
+    // without making that effect re-run (and reset the timer) on load.
+    const projectTitleRef = useRef<string | undefined>(undefined);
+
+    useEffect(() => {
+        projectTitleRef.current = project?.title;
+    }, [project]);
+
+    // Measure how long the visitor stays on a project page. The effect is keyed
+    // on `id` only, so the timer starts once per project and the cleanup fires
+    // on unmount or when navigating to another project.
+    useEffect(() => {
+        if (!id) return;
+        const startTime = Date.now();
+        return () => {
+            const timeSpentSeconds = Math.round((Date.now() - startTime) / 1000);
+            if (timeSpentSeconds < 1) return;
+            posthog?.capture('project_view_time', {
+                project_id: id,
+                project_title: projectTitleRef.current,
+                time_spent_seconds: timeSpentSeconds,
+            });
+            if (timeSpentSeconds > 20) {
+                posthog?.setPersonProperties({ is_engaged_reader: true });
+            }
+        };
+    }, [id, posthog]);
 
     useEffect(() => {
         const loadContent = async () => {

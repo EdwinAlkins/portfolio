@@ -11,7 +11,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HTML_PATH = os.path.join(BASE_DIR, 'index.html')
 CSS_PATH = os.path.join(BASE_DIR, 'css', 'style.css')
-OUTPUT_PATH = os.path.join(BASE_DIR, '../pdf/cv-william-nauroy-v2.pdf')
+OUTPUT_PATH = os.path.join(BASE_DIR, '../public/pdf/cv-william-nauroy-v2.pdf')
 
 # Création du dossier de sortie s'il n'existe pas
 os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)

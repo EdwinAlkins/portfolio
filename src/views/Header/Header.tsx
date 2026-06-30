@@ -169,10 +169,10 @@ const Header: React.FC = () => {
       </BurgerButton>
 
       <Navigation isOpen={isMenuOpen}>
-        <NavLink to="/portfolio/about" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'About' }); }}>About</NavLink>
-        <NavLink to="/portfolio/experience" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Experience' }); }}>Experience</NavLink>
-        <NavLink to="/portfolio/projects" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Projects' }); }}>Projects</NavLink>
-        <NavLink to="/portfolio/articles" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Articles' }); }}>Articles</NavLink>
+        <NavLink to="/portfolio/about" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'About', source: 'header' }); }}>About</NavLink>
+        <NavLink to="/portfolio/experience" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Experience', source: 'header' }); }}>Experience</NavLink>
+        <NavLink to="/portfolio/projects" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Projects', source: 'header' }); }}>Projects</NavLink>
+        <NavLink to="/portfolio/articles" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Articles', source: 'header' }); }}>Articles</NavLink>
       </Navigation>
     </HeaderContainer>
   );

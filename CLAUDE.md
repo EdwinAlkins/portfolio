@@ -9,7 +9,7 @@ npm start          # Dev server at http://localhost:3000 (alias: npm run dev)
 npm run build      # TypeScript check + Vite build → build/
 npm run lint       # ESLint
 npm run deploy     # Build then push to GitHub Pages
-npm run generate-pdf  # Convert public/cv/index.html → public/pdf/cv-william-nauroy-v2.pdf via Puppeteer
+npm run generate-pdf  # Render cv/index.html → public/pdf/cv-william-nauroy-v2.pdf via WeasyPrint (uv run --directory cv main.py)
 ```
 
 There are no tests beyond the placeholder `App.test.tsx`.
@@ -60,7 +60,7 @@ Font Awesome icons are loaded via CDN in `index.html` (`<link>` tag) — no npm 
 
 ### CV
 
-The CV lives as a standalone HTML file at `public/cv/index.html` (self-contained, no bundler dependency). `npm run generate-pdf` runs `public/cv/generate-pdf.js` with Puppeteer to produce `public/pdf/cv-william-nauroy-v2.pdf`.
+The CV lives as a standalone HTML/CSS file at `cv/index.html` (top-level, outside `public/` — it is *not* served by the app, only used to generate the PDF). `npm run generate-pdf` runs `cv/main.py` via `uv` (Python ≥ 3.14, WeasyPrint) to render it to `public/pdf/cv-william-nauroy-v2.pdf`, which the app *does* serve. The old Puppeteer-based generator is kept as `cv/generate-pdf.js` and exposed via `npm run generate-pdf:old`.
 
 ### Analytics
 

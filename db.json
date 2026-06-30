@@ -454,7 +454,7 @@
       "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click — ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
       "longDescription": "**Copy Contents** is a Visual Studio Code extension that copies the combined contents of all files within a folder straight to your clipboard in a single click. It is built for developers who want to quickly share code with language models (ChatGPT, Claude, Copilot) without opening each file one by one.\n\nKey features:\n - **Copy folder contents**: recursively copy everything in a folder in one click from the context menu.\n - **Selective copy**: a dialog lets you pick exactly which files to include, with a per-folder toggle to check/uncheck all of its files at once.\n - **Multi-selection**: the commands operate on the entire selection (files and/or folders).\n - **Smart filtering**: automatic exclusion of common folders (`.git`, `node_modules`, `dist`, etc.), configurable extensions, and file size / count limits.\n - **Structured output**: each file is prefixed with a header showing its path (optional) to help the LLM understand the project layout.\n\nBuilt with TypeScript, the extension is published on the Visual Studio Marketplace.",
       "capsuleImage": "https://edwinalkins.gallerycdn.vsassets.io/extensions/edwinalkins/copy-contents/0.0.5/1782393257155/Microsoft.VisualStudio.Services.Icons.Default",
-      "images": [],
+      "images": ["https://github.com/edwinalkins/copy-contents/blob/main/usage.gif?raw=true"],
       "technologies": [
         "typescript",
         "vscode",

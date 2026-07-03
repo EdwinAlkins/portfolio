@@ -270,10 +270,8 @@
       "slug": "software-supervisor",
       "shortDescription": "Ensemble de logiciels Java pour la supervision d'op\u00e9rateurs, la saisie de donn\u00e9es et la gestion d'inventaire, d\u00e9velopp\u00e9s durant un stage chez LPG System.",
       "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'op\u00e9rateurs et de saisie de donn\u00e9es en temps r\u00e9el\n- **Logiciel Android de bordereaux d'exp\u00e9dition** : Application mobile pour la gestion et l'\u00e9dition des documents d'exp\u00e9dition\n- **Logiciel d'inventaire** : Syst\u00e8me de gestion et de suivi des stocks\n\nCes applications Java utilisaient des t\u00e2ches planifi\u00e9es (cron jobs) pour l'automatisation. Ce projet m'a permis de ma\u00eetriser le d\u00e9veloppement Java desktop et mobile dans un environnement de production industriel.",
-      "capsuleImage": "/portfolio/projects/supervisor/app.png",
-      "images": [
-        "/portfolio/projects/supervisor/app.png"
-      ],
+      "capsuleImage": "/portfolio/projects/supervisor/app-v2.png",
+      "images": [],
       "technologies": [
         "java",
         "android",
@@ -441,8 +439,10 @@
       "slug": "automate-simulator",
       "shortDescription": "Logiciel de cr\u00e9ation, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'\u00e9valuation.",
       "longDescription": "L'**Automate Simulator** est un logiciel desktop d\u00e9velopp\u00e9 pour l'IUT de Valence, con\u00e7u pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de cr\u00e9er et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement gr\u00e2ce \u00e0 un algorithme d\u00e9di\u00e9.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalit\u00e9s essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'\u00e9valuer les \u00e9tudiants dans des conditions contr\u00f4l\u00e9es, sans acc\u00e8s aux outils d'aide.\n\nD\u00e9velopp\u00e9 en **Java** avec **Swing**, le projet offre une interface graphique compl\u00e8te pour concevoir, tester et exporter des automates, servant d'outil p\u00e9dagogique pour les \u00e9tudiants en informatique.",
-      "capsuleImage": "/portfolio/projects/automat/app-v2.png",
-      "images": [],
+      "capsuleImage": "/portfolio/projects/automat/app.png",
+      "images": [
+        "/portfolio/projects/automat/app.png"
+      ],
       "technologies": [
         "java",
         "swing"

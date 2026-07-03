@@ -105,14 +105,14 @@ const About: React.FC = () => {
           <CompanyLink href="https://dice-engineering.com/" target="_blank" rel="noopener noreferrer">
             D-ICE Engineering
           </CompanyLink>{' '}
-          as a <span>Full Stack Engineer</span>.
+          as a <span>Full Stack & DevOps Engineer</span>.
           <br />
           <br />
           I graduated from the{' '}
           <CompanyLink href="https://polytech.univ-nantes.fr/" target="_blank" rel="noopener noreferrer">
             Polytech Nantes
           </CompanyLink>{' '}
-          in computer science. I'm a full stack engineer (frontend, backend, architecture and datascience).
+          in computer science. I'm a Full Stack & DevOps Engineer (frontend, backend, architecture and datascience).
           <br />
           <br />
           <TechIcons>

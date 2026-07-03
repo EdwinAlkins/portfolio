@@ -1,11 +1,31 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+
+// Dev-only: serve the app when visiting the base path without its trailing
+// slash ('/portfolio' instead of '/portfolio/'). Vite otherwise shows a
+// "did you mean to visit /portfolio/" hint page. We rewrite the request
+// internally so the app loads while the address bar keeps '/portfolio'.
+// (In production, GitHub Pages already redirects '/portfolio' to '/portfolio/'.)
+const serveBaseWithoutSlash = (): Plugin => ({
+  name: 'serve-base-without-slash',
+  configureServer(server) {
+    server.middlewares.use((req, _res, next) => {
+      if (req.url === '/portfolio') {
+        req.url = '/portfolio/';
+      } else if (req.url?.startsWith('/portfolio?')) {
+        req.url = '/portfolio/' + req.url.slice('/portfolio'.length);
+      }
+      next();
+    });
+  },
+});
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    serveBaseWithoutSlash(),
   ],
   resolve: {
     alias: {

@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './views/Header/Header';
 import Home from './views/Home/Home';
+import ConsentBanner from './components/ConsentBanner';
 import styled from 'styled-components';
 import { black1 } from './contantes/color';
 
@@ -11,6 +12,7 @@ const Experience = lazy(() => import('./views/Experience/Experience'));
 const Projects = lazy(() => import('./views/Projects/Projects'));
 const Project = lazy(() => import('./views/Projects/Project'));
 const Articles = lazy(() => import('./views/Articles/Articles'));
+const Privacy = lazy(() => import('./views/Privacy/Privacy'));
 const NotFound = lazy(() => import('./views/NotFound/NotFound'));
 
 const AppContainer = styled.div`
@@ -47,10 +49,12 @@ function App() {
               <Route path="/portfolio/projects" element={<Projects />} />
               <Route path="/portfolio/project/:id" element={<Project />} />
               <Route path="/portfolio/articles" element={<Articles />} />
+              <Route path="/portfolio/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </PageContainer>
+        <ConsentBanner />
       </AppContainer>
     </BrowserRouter>
   );

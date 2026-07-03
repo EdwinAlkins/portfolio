@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { blue1, gray1 } from '../../contantes/color';
+import { blue1, gray1, gray2 } from '../../contantes/color';
 import { Link } from 'react-router-dom';
 import { usePostHog } from '@posthog/react';
 
 const HomeContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +13,22 @@ const HomeContainer = styled.div`
   min-height: calc(100vh - 80px); // Adjust based on your header height
   text-align: center;
   padding: 0 2rem;
+`;
+
+const PrivacyLink = styled(Link)`
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+  color: ${gray2};
+  font-size: 0.75rem;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    color: ${blue1};
+  }
 `;
 
 const Title = styled.h1`
@@ -89,7 +106,8 @@ const Home: React.FC = () => {
             source: 'home_page',
             file: 'cv-william-nauroy-v2.pdf',
         });
-        // Flag the visitor so they can be filtered/cohorted in PostHog later.
+        // Flag the visitor so they can be filtered/cohorted in PostHog later
+        // (only persists for visitors who consented to cookies).
         posthog?.setPersonProperties({
             has_viewed_resume: true,
             last_resume_view: new Date().toISOString(),
@@ -133,6 +151,7 @@ const Home: React.FC = () => {
                     <i className="fab fa-dev"></i>
                 </SocialLink>
             </SocialLinks>
+            <PrivacyLink to="/portfolio/privacy" onClick={() => posthog?.capture('privacy_link_clicked', { source: 'home' })}>Privacy Policy</PrivacyLink>
         </HomeContainer>
     );
 };

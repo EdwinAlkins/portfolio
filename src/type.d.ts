@@ -39,6 +39,8 @@ export interface Project {
     status: string;
     links?: ProjectLinks;
     experienceId?: number;
+    // Display order (ascending) in the Projects list. Lower = shown first.
+    order: number;
 }
 
 export interface Database {

@@ -81,13 +81,15 @@ const Projects: React.FC = () => {
         loadContent()
     }, [])
 
-    const filteredProjects = projects.filter(project => {
-        if (filter === 'all') return true;
-        const isProfessional = project.experienceId !== -1;
-        if (filter === 'professional') return isProfessional;
-        if (filter === 'personal') return !isProfessional;
-        return true;
-    });
+    const filteredProjects = projects
+        .filter(project => {
+            if (filter === 'all') return true;
+            const isProfessional = project.experienceId !== -1;
+            if (filter === 'professional') return isProfessional;
+            if (filter === 'personal') return !isProfessional;
+            return true;
+        })
+        .sort((a, b) => (a.order !== b.order ? a.order - b.order : a.id - b.id));
 
     return (
         <ProjectContainer>

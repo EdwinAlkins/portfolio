@@ -72,11 +72,10 @@
   "projects": [
     {
       "id": 1,
-      "order": 1,
       "title": "Auth and Billing Migrations",
       "slug": "auth-billing-migrations",
-      "shortDescription": "Migration of the login system from AWS Cognito to Keycloak, paired with Stripe billing \u2014 giving users single sign-on while their access is automatically tied to their subscription.",
-      "longDescription": "This project modernizes how users sign in and pay across the platform. It replaces the previous AWS Cognito login with Keycloak, a more flexible and secure identity system, and connects it to Stripe for billing. The goal is to give users a smoother single sign-on experience while opening the door to paid, subscription-based access.\n\nIn practice, users log in once to reach all the connected applications, and what they can access depends directly on their subscription. When someone subscribes, upgrades, or cancels through Stripe, their permissions update automatically \u2014 with no manual intervention. The experience stays consistent and always in sync with what each customer is actually paying for.\n\nAt the heart of the system is a custom \"trust\" service, built in Python, that acts as a bridge between the login system (Keycloak) and the payment platform (Stripe), keeping user accounts, roles, and subscriptions in agreement in real time. Running on Kubernetes in the AWS cloud, it is designed to stay reliable and consistent as the number of users grows.",
+      "shortDescription": "Migration of authentication system from AWS Cognito to Keycloak with Stripe billing integration. Building a trust service to synchronize user subscriptions and roles between both platforms.",
+      "longDescription": "A comprehensive authentication and billing migration project aimed at modernizing the user management infrastructure. The system replaces the legacy AWS Cognito authentication with Keycloak for enhanced security and flexibility. A custom trust service acts as a bridge between Keycloak and Stripe, automatically synchronizing user subscriptions, payment status, and role assignments. The solution leverages Argo Workflows for orchestration, AWS SQS for message queuing, and Kubernetes for container orchestration. This ensures seamless user experience while maintaining data consistency across platforms. Built with Python, the service handles complex workflows including subscription lifecycle management, role-based access control, and real-time synchronization between identity and billing systems.",
       "capsuleImage": "https://upload.wikimedia.org/wikipedia/commons/2/29/Keycloak_Logo.png",
       "images": [],
       "technologies": [
@@ -98,16 +97,15 @@
       ],
       "category": "API Service",
       "releaseDate": "2026-02-26",
-      "status": "Beta",
+      "status": "Development",
       "experienceId": 1
     },
     {
       "id": 2,
-      "order": 2,
       "title": "High-Performance Routing Orchestrator",
       "slug": "high-performance-routing-orchestrator",
-      "shortDescription": "A FastAPI REST API that orchestrates intensive maritime routing computations on Amazon EKS \u2014 queuing requests through SQS and spinning up compute pods on demand via Argo Events, at scale and reliably.",
-      "longDescription": "This service is the **backend engine** that powers **Tactics**, D-ICE's B2B maritime routing software. It acts as the **central entry point** through which the application requests ship route calculations \u2014 computing the best possible routes for vessels by accounting for weather, travel time, and fuel \u2014 and exposes that capability through a single, consistent **FastAPI** (Python) REST API.\n\nBecause these calculations are heavy, incoming requests are queued through **AWS SQS** and picked up by compute pods that are **spun up on demand via Argo Events** inside a Kubernetes cluster on **Amazon EKS**, then scaled back down once the work is done. This lets many routing jobs run in parallel without slowing each other down, and keeps the system **reliable** even during peak demand. Persistent data lives in **AWS RDS (PostgreSQL)**, with **PgBouncer** handling connection pooling so the database stays stable under bursts of parallel workers.\n\nThe platform also comes with dedicated observability. A **Grafana** dashboard gives an at-a-glance overview of usage and basic routing visualizations, while a **custom React tool** allows deeper inspection of individual routings \u2014 helping to understand why certain calculations failed and to **export results in a decision-support format**, used to guide and support ship captains on the routes they have actually sailed.\n\nRather than developing the C++ routing engine itself, the project focuses on wrapping it in a **robust, scalable, and highly available** orchestration layer \u2014 from the API surface down to the on-demand compute and monitoring \u2014 that reliably connects the engine to the applications and clients that depend on it.",
+      "shortDescription": "API REST FastAPI pour l'orchestration de calculs de routage intensifs dans le cloud",
+      "longDescription": "Solution d'orchestration de calculs de routage dans Kubernetes. Architecture bas\u00e9e sur FastAPI (Python) pour l'API REST, avec un moteur de calcul en C++ avec bindings Python. L'infrastructure utilise AWS RDS pour la persistance, SQS pour la gestion des files d'attente, et Argo Workflows/Events pour l'orchestration Kubernetes.",
       "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/6764379621511589daf3ce56_TACTiCS.avif",
       "images": [],
       "technologies": [
@@ -119,10 +117,7 @@
         "docker",
         "rds",
         "sqs",
-        "argo",
-        "pgbouncer",
-        "grafana",
-        "react"
+        "argo"
       ],
       "tags": [
         "API",
@@ -138,20 +133,20 @@
     },
     {
       "id": 3,
-      "order": 3,
-      "title": "Weather Data Distribution Platform",
-      "slug": "weather-data-distribution-platform",
-      "shortDescription": "A low-latency weather data platform (sub-200ms) that ingests, processes, and distributes multi-source weather data \u2014 powering the weather layers and map visualizations of D-ICE's Tactics and SquidX routing software.",
-      "longDescription": "This platform ingests, processes, and distributes weather data with very low latency, acting as D-ICE's in-house alternative to services like **Windy**. It feeds the weather layers and **map-based visualizations** of the **Tactics** and **SquidX** maritime routing software, giving navigators a fast, reliable view of current and forecast conditions.\n\nTo keep response times **under 200ms**, the platform combines a **distributed cache** (**etcd**) with **in-memory caching** powered by **Dragonfly** (a high-performance, Redis-compatible store) for ultra-fast redistribution. A **predictive preloading** mechanism analyzes usage patterns to load weather data into the cache before it is even requested. It also serves **historical weather data**, produced by a fleet of **workers** running orchestrated batch computations.\n\nThe entire platform is built in **Node.js** and runs on **Kubernetes** in the **AWS** cloud. A notable engineering decision shaped the project: C++ optimizations were initially planned but ultimately dropped \u2014 the overhead of bridging data between JavaScript and C++ cancelled out the raw compute gains, so a **pure Node.js** implementation proved both faster to build and fast enough in production.",
+      "title": "Plateforme de Distribution de Donn\u00e9es M\u00e9t\u00e9o",
+      "slug": "plateforme-distribution-donnees-meteo",
+      "shortDescription": "Pipeline de donn\u00e9es m\u00e9t\u00e9o multi-sources avec ingestion, transformation et distribution \u00e0 tr\u00e8s faible latence (<200ms)",
+      "longDescription": "Solution d'int\u00e9gration de donn\u00e9es m\u00e9t\u00e9o concurrente de Windy, d\u00e9velopp\u00e9e en Node.js avec optimisations C++. Architecture bas\u00e9e sur un syst\u00e8me de cache distribu\u00e9 avec etcd et gestion de cache en m\u00e9moire pour une redistribution ultra-rapide. Le syst\u00e8me propose \u00e9galement des donn\u00e9es m\u00e9t\u00e9o historiques gr\u00e2ce \u00e0 un m\u00e9canisme de workers et d'orchestration permettant de lancer des batches de calcul. Une analyse pr\u00e9dictive des besoins utilisateurs permet de pr\u00e9-charger les donn\u00e9es m\u00e9t\u00e9o dans le cache avant m\u00eame la demande, garantissant une latence minimale.",
       "capsuleImage": "https://www.notre-environnement.gouv.fr/local/cache-vignettes/L1200xH630/1d104c6aba46e5323b70f2e943b530-4c512.png",
       "images": [],
       "technologies": [
         "nodejs",
+        "cpp",
         "kubernetes",
         "etcd",
         "docker",
         "aws",
-        "dragonfly"
+        "redis"
       ],
       "tags": [
         "Data Engineering",
@@ -162,16 +157,15 @@
       ],
       "category": "API Service",
       "releaseDate": "2026-02-26",
-      "status": "Production",
+      "status": "Beta",
       "experienceId": 1
     },
     {
       "id": 4,
-      "order": 4,
-      "title": "Maritime Weather & Routing Desktop App",
-      "slug": "maritime-weather-routing-desktop-app",
-      "shortDescription": "The desktop and mobile front-end of D-ICE's Tactics and SquidX maritime routing software \u2014 letting navigators run and compare route calculations and overlay weather and satellite data on an interactive map.",
-      "longDescription": "This is the user-facing application of D-ICE's **Tactics** and **SquidX** maritime routing software \u2014 the desktop and mobile front-end that navigators and ship captains rely on at sea. It brings together, in a single interface, the route calculations served by the routing backend and the weather data streamed from the in-house weather platform.\n\nFrom the app, users can **launch route calculations and compare the proposed trajectories**, **overlay weather and satellite imagery** on an interactive map, and dig into performance through dedicated **statistics panels**.\n\nThe desktop application \u2014 the core of the project \u2014 is built with **React** and **TypeScript** and packaged with **Electron**. A lightweight companion app is built with **React Native**.",
+      "title": "Application Desktop de Visualisation M\u00e9t\u00e9o & Routage",
+      "slug": "application-desktop-visualisation-meteo-routage",
+      "shortDescription": "Application desktop et mobile de routage maritime avec visualisation de donn\u00e9es m\u00e9t\u00e9o, satellite et panneaux statistiques d'analyse",
+      "longDescription": "Logiciel complet de routage maritime (Tactics & SquidX) permettant de lancer des calculs de routage, visualiser les trajets, afficher des donn\u00e9es m\u00e9t\u00e9o et satellite, et analyser les performances via des panneaux statistiques. D\u00e9velopp\u00e9 en React avec Electron pour le desktop et React Native pour mobile.",
       "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
       "images": [
         "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
@@ -186,7 +180,8 @@
         "electron",
         "react-native",
         "typescript",
-        "docker"
+        "docker",
+        "tauri"
       ],
       "tags": [
         "Desktop",
@@ -202,20 +197,18 @@
     },
     {
       "id": 5,
-      "order": 5,
-      "title": "Information System Mapping & Modernization",
-      "slug": "information-system-mapping-modernization",
-      "shortDescription": "Mapping and modernization of a key account's information system: studying the existing setup, designing a microservices architecture to break down legacy monoliths, and implementing a centralized Keycloak authentication service.",
-      "longDescription": "As a **software architect** at ASI, I led the mapping and modernization of a key account's information system, with the goal of pooling and streamlining its services. The mission combined analysis, architecture design, and hands-on implementation, together with advisory support to the client throughout.\n\nThe work started with a full **study and mapping of the existing IS** to identify what could be shared and consolidated. From there, I designed a target **microservices architecture** to progressively break down legacy **monolithic applications** into smaller, independent services \u2014 more scalable and easier to maintain.\n\nA key deliverable was a **centralized authentication service built with Keycloak**, providing unified identity and access management across the system. The stack relied on **Java** for backend services, **React** for the front-end interfaces, and **Microsoft Azure** for hosting \u2014 and the role also involved advising the client on modernization and security choices.",
+      "title": "Cartographie des system d'information",
+      "slug": "cartographie-systemes-information",
+      "shortDescription": "\u00c9tude et cartographie d'un syst\u00e8me d'information en vue de sa mutualisation. Migration d'applications monolithiques vers une architecture micro-services avec mise en place de services d'authentification Keycloak.",
+      "longDescription": "Projet de cartographie compl\u00e8te d'un syst\u00e8me d'informatique d'entreprise dans l'objectif d'\u00e9tudier et mettre en \u0153uvre une mutualisation des services. L'initiative visait \u00e0 transformer des applications monolithiques existantes en une architecture micro-services moderne et \u00e9volutive. Parmi les r\u00e9alisations cl\u00e9s : conception et d\u00e9ploiement d'un micro-service d'authentification centralis\u00e9 avec Keycloak, permettant une gestion unifi\u00e9e des identit\u00e9s et des acc\u00e8s. Cette modernisation a am\u00e9lior\u00e9 la scalabilit\u00e9, la maintenabilit\u00e9 et la s\u00e9curit\u00e9 du syst\u00e8me d'information tout en facilitant l'int\u00e9gration de nouveaux services.",
       "capsuleImage": "https://www.appviewx.com/wp-content/uploads/2023/02/Microservices-Architecture.png",
       "images": [],
       "technologies": [
         "keycloak",
-        "java",
-        "react",
-        "azure",
         "docker",
-        "kubernetes"
+        "kubernetes",
+        "java",
+        "react"
       ],
       "tags": [
         "Architecture",
@@ -232,7 +225,6 @@
     },
     {
       "id": 6,
-      "order": 7,
       "title": "E-Learning Platform",
       "slug": "e-learning-platform",
       "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
@@ -265,14 +257,13 @@
     },
     {
       "id": 7,
-      "order": 8,
       "title": "Software Supervisor",
       "slug": "software-supervisor",
       "shortDescription": "Ensemble de logiciels Java pour la supervision d'op\u00e9rateurs, la saisie de donn\u00e9es et la gestion d'inventaire, d\u00e9velopp\u00e9s durant un stage chez LPG System.",
       "longDescription": "Solution d'automatisation et d'optimisation des processus industriels consistant en plusieurs logiciels Java :\n- **Software Supervisor** : Logiciel de supervision d'op\u00e9rateurs et de saisie de donn\u00e9es en temps r\u00e9el\n- **Logiciel Android de bordereaux d'exp\u00e9dition** : Application mobile pour la gestion et l'\u00e9dition des documents d'exp\u00e9dition\n- **Logiciel d'inventaire** : Syst\u00e8me de gestion et de suivi des stocks\n\nCes applications Java utilisaient des t\u00e2ches planifi\u00e9es (cron jobs) pour l'automatisation. Ce projet m'a permis de ma\u00eetriser le d\u00e9veloppement Java desktop et mobile dans un environnement de production industriel.",
       "capsuleImage": "/portfolio/projects/supervisor/app.png",
       "images": [
-        "/portfolio/projects/supervisor/app.png"
+          "/portfolio/projects/supervisor/app.png"
       ],
       "technologies": [
         "java",
@@ -293,7 +284,6 @@
     },
     {
       "id": 8,
-      "order": 9,
       "title": "HDR vs LDR Visual Attention Comparison",
       "slug": "hdr-vs-ldr-visual-attention-comparison",
       "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR \u00e0 l'aide d'algorithmes d'IA pour d\u00e9terminer quelle m\u00e9thode de conversion pr\u00e9serve le mieux les patterns d'attention humaine.",
@@ -323,7 +313,6 @@
     },
     {
       "id": 9,
-      "order": 10,
       "title": "protoruf",
       "slug": "protoruf",
       "shortDescription": "A high-performance Python library, written in Rust, for converting data between JSON and Protobuf \u2014 faster than Google's standard library and with no tedious setup.",
@@ -361,7 +350,6 @@
     },
     {
       "id": 10,
-      "order": 11,
       "title": "Bot Analyste Quantitatif",
       "slug": "bot-analyste-quantitatif",
       "shortDescription": "Dashboard interactif d'analyse de march\u00e9 utilisant une convergence de mod\u00e8les quantitatifs (Machine Learning et statistiques) pour g\u00e9n\u00e9rer des opinions de march\u00e9 structur\u00e9es.",
@@ -396,11 +384,10 @@
     },
     {
       "id": 11,
-      "order": 12,
       "title": "RVaultPass",
       "slug": "rvaultpass",
-      "shortDescription": "Un gestionnaire de mots de passe s\u00e9curis\u00e9, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de donn\u00e9es SQLCipher.",
-      "longDescription": "**RVaultPass** est un gestionnaire de mots de passe desktop qui garde l'int\u00e9gralit\u00e9 de vos donn\u00e9es sur votre propre machine \u2014 aucun serveur, aucun cloud, aucune donn\u00e9e transmise sur internet. Tout est stock\u00e9 dans un seul fichier chiffr\u00e9.\n\nL'application permet de stocker et organiser tous vos identifiants, notes et codes \u00e0 usage unique (TOTP) en toute simplicit\u00e9. Elle propose un g\u00e9n\u00e9rateur de mots de passe fort, des codes TOTP qui se rafra\u00eechissent en temps r\u00e9el, une recherche instantan\u00e9e dans tous vos \u00e9l\u00e9ments, ainsi qu'une organisation par dossiers et tags. Un syst\u00e8me de favoris permet d'acc\u00e9der rapidement \u00e0 vos comptes les plus utilis\u00e9s.\n\nD\u00e9velopp\u00e9 avec **Rust** et **Tauri**, le projet a \u00e9t\u00e9 con\u00e7u avec une approche \"zero-knowledge\" : l'interface ne voit jamais vos mots de passe en clair, et toutes les op\u00e9rations sensibles sont trait\u00e9es directement dans le noyau s\u00e9curis\u00e9 de l'application. Le tout dispose d'une interface bilingue fran\u00e7ais/anglais avec un th\u00e8me clair et sombre.",
+      "shortDescription": "Un gestionnaire de mots de passe sécurisé, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de données SQLCipher.",
+      "longDescription": "**RVaultPass** est un gestionnaire de mots de passe desktop qui garde l'intégralité de vos données sur votre propre machine — aucun serveur, aucun cloud, aucune donnée transmise sur internet. Tout est stocké dans un seul fichier chiffré.\n\nL'application permet de stocker et organiser tous vos identifiants, notes et codes à usage unique (TOTP) en toute simplicité. Elle propose un générateur de mots de passe fort, des codes TOTP qui se rafraîchissent en temps réel, une recherche instantanée dans tous vos éléments, ainsi qu'une organisation par dossiers et tags. Un système de favoris permet d'accéder rapidement à vos comptes les plus utilisés.\n\nDéveloppé avec **Rust** et **Tauri**, le projet a été conçu avec une approche \"zero-knowledge\" : l'interface ne voit jamais vos mots de passe en clair, et toutes les opérations sensibles sont traitées directement dans le noyau sécurisé de l'application. Le tout dispose d'une interface bilingue français/anglais avec un thème clair et sombre.",
       "capsuleImage": "/portfolio/projects/rvaultpass/home.png",
       "images": [
         "/portfolio/projects/rvaultpass/home.png",
@@ -436,11 +423,10 @@
     },
     {
       "id": 12,
-      "order": 13,
       "title": "Automate Simulator",
       "slug": "automate-simulator",
-      "shortDescription": "Logiciel de cr\u00e9ation, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'\u00e9valuation.",
-      "longDescription": "L'**Automate Simulator** est un logiciel desktop d\u00e9velopp\u00e9 pour l'IUT de Valence, con\u00e7u pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de cr\u00e9er et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement gr\u00e2ce \u00e0 un algorithme d\u00e9di\u00e9.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalit\u00e9s essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'\u00e9valuer les \u00e9tudiants dans des conditions contr\u00f4l\u00e9es, sans acc\u00e8s aux outils d'aide.\n\nD\u00e9velopp\u00e9 en **Java** avec **Swing**, le projet offre une interface graphique compl\u00e8te pour concevoir, tester et exporter des automates, servant d'outil p\u00e9dagogique pour les \u00e9tudiants en informatique.",
+      "shortDescription": "Logiciel de création, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'évaluation.",
+      "longDescription": "L'**Automate Simulator** est un logiciel desktop développé pour l'IUT de Valence, conçu pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de créer et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement grâce à un algorithme dédié.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalités essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'évaluer les étudiants dans des conditions contrôlées, sans accès aux outils d'aide.\n\nDéveloppé en **Java** avec **Swing**, le projet offre une interface graphique complète pour concevoir, tester et exporter des automates, servant d'outil pédagogique pour les étudiants en informatique.",
       "capsuleImage": "/portfolio/projects/automat/app.png",
       "images": [
         "/portfolio/projects/automat/app.png"
@@ -453,7 +439,7 @@
         "Automation",
         "Desktop",
         "Simulation",
-        "\u00c9ducation",
+        "Éducation",
         "Graphes"
       ],
       "category": "Desktop Application",
@@ -463,15 +449,12 @@
     },
     {
       "id": 13,
-      "order": 14,
       "title": "Copy Contents",
       "slug": "copy-contents",
-      "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click \u2014 ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
+      "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click — ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
       "longDescription": "**Copy Contents** is a Visual Studio Code extension that copies the combined contents of all files within a folder straight to your clipboard in a single click. It is built for developers who want to quickly share code with language models (ChatGPT, Claude, Copilot) without opening each file one by one.\n\nKey features:\n - **Copy folder contents**: recursively copy everything in a folder in one click from the context menu.\n - **Selective copy**: a dialog lets you pick exactly which files to include, with a per-folder toggle to check/uncheck all of its files at once.\n - **Multi-selection**: the commands operate on the entire selection (files and/or folders).\n - **Smart filtering**: automatic exclusion of common folders (`.git`, `node_modules`, `dist`, etc.), configurable extensions, and file size / count limits.\n - **Structured output**: each file is prefixed with a header showing its path (optional) to help the LLM understand the project layout.\n\nBuilt with TypeScript, the extension is published on the Visual Studio Marketplace.",
       "capsuleImage": "https://edwinalkins.gallerycdn.vsassets.io/extensions/edwinalkins/copy-contents/0.0.5/1782393257155/Microsoft.VisualStudio.Services.Icons.Default",
-      "images": [
-        "https://github.com/edwinalkins/copy-contents/blob/main/usage.gif?raw=true"
-      ],
+      "images": ["https://github.com/edwinalkins/copy-contents/blob/main/usage.gif?raw=true"],
       "technologies": [
         "typescript",
         "vscode",
@@ -492,39 +475,6 @@
         "marketplace": "https://marketplace.visualstudio.com/items?itemName=edwinalkins.copy-contents"
       },
       "experienceId": -1
-    },
-    {
-      "id": 14,
-      "order": 6,
-      "title": "Best Start",
-      "slug": "best-start",
-      "shortDescription": "A \"best start\" optimization service that runs thousands of routing simulations per day to predict travel time on the first leg of a voyage and recommend the optimal departure \u2014 consistently beating the previously planned start.",
-      "longDescription": "**Best Start** helps ship operators leave at the right moment. It runs **thousands of routing simulations every day** to predict how long the first leg of a voyage will take under different departure conditions, then recommends the **optimal start** \u2014 one that improves on the previously planned departure and shortens the overall trip.\n\nEach request fans out into many parallel routing computations. Incoming jobs are queued through **AWS SQS** and picked up by compute pods **spun up on demand via Argo Events** on **Amazon EKS**, so the platform absorbs large daily volumes and scales up or down automatically. Results are stored in **PostgreSQL**, with **PgBouncer** managing connection pooling to keep the database stable under heavy parallel load.\n\nThe service is built as a **FastAPI** (Python) backend paired with a **Vue.js** front-end for configuring runs and visualizing the recommended departures. Containerized with **Docker** and running on **Kubernetes** in the **AWS** cloud, it is designed to handle its high daily throughput reliably.\n\nIn practice, Best Start contributed to a landmark achievement: it helped optimize the opening leg of **Sodebo Ultim 3**'s campaign, which set a new **Jules Verne Trophy** world record on **January 25, 2026** (round-the-world in 40d 10h) \u2014 including a record-breaking **North Atlantic descent** (Ushant to the equator) on the very first part of the course.",
-      "capsuleImage": "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/6764379621511589daf3ce56_TACTiCS.avif",
-      "images": [],
-      "technologies": [
-        "fastapi",
-        "python",
-        "postgresql",
-        "pgbouncer",
-        "vuejs",
-        "sqs",
-        "argo",
-        "kubernetes",
-        "aws",
-        "docker"
-      ],
-      "tags": [
-        "Optimization",
-        "Maritime",
-        "Routing",
-        "High-Performance",
-        "Cloud"
-      ],
-      "category": "API Service",
-      "releaseDate": "2026-07-03",
-      "status": "Production",
-      "experienceId": 1
     }
   ]
 }

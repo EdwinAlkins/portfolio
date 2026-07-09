@@ -38,6 +38,13 @@ posthog.init(import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN, {
   // those otherwise-anonymous recruiters — once they consent.
   person_profiles: 'always',
   capture_performance: true,
+  // Default every new visitor to opted-out. Without this, a visitor who has made
+  // no choice yet ('pending') is neither rejected nor opted-in, so is_capturing()
+  // returns false and NOTHING is captured until they click the banner — which most
+  // visitors never do. Combined with cookieless_mode: 'on_reject' below, defaulting
+  // to opt-out means pending visitors are treated as rejected, so capture runs in
+  // anonymous cookieless mode from the first page load (no cookie, GDPR-safe).
+  opt_out_capturing_by_default: true,
   // GDPR / ePrivacy (art. 82 loi Informatique et Libertés) consent strategy:
   // with 'on_reject', PostHog writes nothing to the visitor's device (no cookie,
   // no localStorage) until they explicitly opt in via the consent banner. Before

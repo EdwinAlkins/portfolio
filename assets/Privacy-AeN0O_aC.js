@@ -1,4 +1,4 @@
-import"./rolldown-runtime-Bh1tDfsg.js";import{i as e,n as t}from"./analytics-CpScIfsJ.js";import{r as n,t as r}from"./react-vendor-kOwVo2tE.js";import{c as i,l as a,s as o,u as s}from"./index-xtDBjWKn.js";e();var c=r(),l=s.div`
+import"./rolldown-runtime-Bh1tDfsg.js";import{i as e,n as t}from"./analytics-CpScIfsJ.js";import{r as n,t as r}from"./react-vendor-kOwVo2tE.js";import{c as i,l as a,s as o,u as s}from"./index-ySiwxgTQ.js";e();var c=r(),l=s.div`
   max-width: 720px;
   margin: 0 auto;
   padding: 3rem 1.5rem 5rem;

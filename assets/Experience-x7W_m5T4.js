@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-Bh1tDfsg.js";import{i as t,n}from"./analytics-CpScIfsJ.js";import{t as r}from"./react-vendor-kOwVo2tE.js";import{c as i,r as a,s as o,u as s}from"./index-ySiwxgTQ.js";var c=e(t()),l=r(),u=s.div`
+import{n as e}from"./rolldown-runtime-Bh1tDfsg.js";import{i as t,n}from"./analytics-C5fX1eIR.js";import{t as r}from"./react-vendor-BYMjTRr2.js";import{c as i,r as a,s as o,u as s}from"./index-BP1pvXDa.js";var c=e(t()),l=r(),u=s.div`
   padding: 2rem;
   color: ${i};
 
@@ -125,4 +125,4 @@ import{n as e}from"./rolldown-runtime-Bh1tDfsg.js";import{i as t,n}from"./analyt
   }
 `,y=s.p`
   margin: 0.5rem 0;
-`,b=()=>{let e=n(),[t,r]=(0,c.useState)([]);return(0,c.useEffect)(()=>{(async()=>{r(await a())})()},[]),(0,l.jsxs)(u,{children:[(0,l.jsx)(d,{children:`Experience`}),(0,l.jsx)(f,{children:t.map(t=>(0,l.jsxs)(p,{children:[(0,l.jsxs)(m,{children:[t.startDate,` - `,t.endDate]}),(0,l.jsx)(h,{children:t.title}),(0,l.jsxs)(g,{children:[(0,l.jsx)(v,{href:t.companyUrl,target:`_blank`,rel:`noopener noreferrer`,onClick:()=>e?.capture(`experience_company_link_clicked`,{company:t.company,url:t.companyUrl}),children:t.company}),(0,l.jsx)(y,{children:t.description}),(0,l.jsx)(_,{children:t.technologies})]})]},t.id))})]})};export{b as default};
+`,b=()=>{let e=n(),[t,r]=(0,c.useState)([]);return(0,c.useEffect)(()=>{(async()=>{let e=await a();r(e)})()},[]),(0,l.jsxs)(u,{children:[(0,l.jsx)(d,{children:`Experience`}),(0,l.jsx)(f,{children:t.map(t=>(0,l.jsxs)(p,{children:[(0,l.jsxs)(m,{children:[t.startDate,` - `,t.endDate]}),(0,l.jsx)(h,{children:t.title}),(0,l.jsxs)(g,{children:[(0,l.jsx)(v,{href:t.companyUrl,target:`_blank`,rel:`noopener noreferrer`,onClick:()=>e?.capture(`experience_company_link_clicked`,{company:t.company,url:t.companyUrl}),children:t.company}),(0,l.jsx)(y,{children:t.description}),(0,l.jsx)(_,{children:t.technologies})]})]},t.id))})]})};export{b as default};

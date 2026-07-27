@@ -129,6 +129,9 @@ const Home: React.FC = () => {
                     <NavButton to="/portfolio/experience" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Experience', source: 'home' })}>
                         <i className="fas fa-briefcase"></i> Exp
                     </NavButton>
+                    <NavButton to="/portfolio/pdf/cv-william-nauroy-v2.pdf" target="_blank" rel="noopener noreferrer" onClick={handleResumeClick}>
+                        <i className="far fa-file-alt"></i> CV
+                    </NavButton>
                     <NavButton to="/portfolio/projects" onClick={() => posthog?.capture('home_nav_button_clicked', { label: 'Projects', source: 'home' })}>
                         <i className="fas fa-folder"></i> Projects
                     </NavButton>

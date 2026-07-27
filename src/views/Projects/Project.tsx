@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { gray1, blue1, black2 } from '../../contantes/color';
 import { getProjects, getExperienceById } from '../../utils/dbUtils';
 import { Project as ProjectType, Experience } from '../../type';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router';
 import { usePostHog } from '@posthog/react';
 import NotFound from '../NotFound/NotFound';
 

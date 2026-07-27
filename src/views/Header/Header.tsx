@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CommandBar } from '../../components/CommandBarv2';
 import { blue1, black1, gray1 } from '../../contantes/color';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { usePostHog } from '@posthog/react';
 
 const HeaderContainer = styled.header`

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { usePostHog } from '@posthog/react';
 import { blue1, gray1, gray2 } from '../../contantes/color';
 

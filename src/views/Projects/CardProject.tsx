@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { gray1, blue1, black1, black2 } from '../../contantes/color';
 import { Project } from '../../type';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { usePostHog } from '@posthog/react';
 
 const CardLink = styled(Link)`

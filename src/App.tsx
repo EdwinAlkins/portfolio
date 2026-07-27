@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import Header from './views/Header/Header';
 import Home from './views/Home/Home';
 import ConsentBanner from './components/ConsentBanner';

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Command } from 'cmdk';
 import { blue1, black2, gray1 } from '../contantes/color';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { getProjects, getArticles } from '../utils/dbUtils';
 import { Project, Article } from '../type';
 import { usePostHog } from '@posthog/react';

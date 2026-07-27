@@ -101,12 +101,12 @@ const Privacy: React.FC = () => {
           This site is a personal portfolio operated by William Nauroy. For any
           question about your data, you can reach me at{' '}
           <a
-            href="mailto:william.nauroy@gmail.com"
+            href="mailto:william.nauroy+privacy@gmail.com"
             onClick={() =>
               posthog?.capture('privacy_contact_clicked', { source: 'who_is_responsible' })
             }
           >
-            william.nauroy@gmail.com
+            william.nauroy+privacy@gmail.com
           </a>
           .
         </Text>
@@ -189,12 +189,12 @@ const Privacy: React.FC = () => {
           the processing of your data, as well as to withdraw consent at any time.
           To exercise these rights, contact{' '}
           <a
-            href="mailto:william.nauroy@gmail.com"
+            href="mailto:william.nauroy+privacy@gmail.com"
             onClick={() =>
               posthog?.capture('privacy_contact_clicked', { source: 'your_rights' })
             }
           >
-            william.nauroy@gmail.com
+            william.nauroy+privacy@gmail.com
           </a>
           . You may also lodge a complaint with the CNIL (
           <a

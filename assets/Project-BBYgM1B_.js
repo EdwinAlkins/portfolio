@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analytics-Dp3J18LJ.js";import{c as r,r as i,t as a}from"./react-vendor-BqQkOddo.js";import{c as o,i as s,n as c,o as l,s as u,u as d}from"./index-BQ7MtHUz.js";import ee from"./NotFound-CwFO2chi.js";var f=e(t()),p=a(),m={github:{icon:`fab fa-github`,label:`GitHub`},demo:{icon:`fas fa-external-link-alt`,label:`Live Demo`},documentation:{icon:`fas fa-book`,label:`Documentation`},pypi:{label:`PyPI`},article:{label:`Article`}},h=e=>e.charAt(0).toUpperCase()+e.slice(1),g=d.div`
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analytics-DnCAkIcr.js";import{c as r,r as i,t as a}from"./react-vendor-BWRll_9A.js";import{c as o,i as s,n as c,o as l,s as u,u as d}from"./index-CY-BlhK2.js";import ee from"./NotFound-BMSeVBB6.js";var f=e(t()),p=a(),m={github:{icon:`fab fa-github`,label:`GitHub`},demo:{icon:`fas fa-external-link-alt`,label:`Live Demo`},documentation:{icon:`fas fa-book`,label:`Documentation`},pypi:{label:`PyPI`},article:{label:`Article`}},h=e=>e.charAt(0).toUpperCase()+e.slice(1),g=d.div`
   color: ${o};
 `,_=d.div`
   max-width: 1000px;

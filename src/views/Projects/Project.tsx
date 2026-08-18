@@ -97,12 +97,12 @@ const PersonalBadge = styled.span`
   font-weight: 500;
 `;
 
-const StatusDot = styled.span<{ status: string }>`
+const StatusDot = styled.span<{ $status: string }>`
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${({ status }) => status === 'Production' ? '#4ade80' : status === 'Beta' ? '#fbbf24' : '#f87171'};
+  background: ${({ $status }) => $status === 'Production' ? '#4ade80' : $status === 'Beta' ? '#fbbf24' : '#f87171'};
   margin-right: 6px;
 `;
 
@@ -491,7 +491,7 @@ const Project: React.FC = () => {
                 <ProjectHeader>
                     <ProjectTitle>{project.title}</ProjectTitle>
                     <ProjectMeta>
-                        <Badge><StatusDot status={project.status} />{project.status}</Badge>
+                        <Badge><StatusDot $status={project.status} />{project.status}</Badge>
                         <Badge>{project.category}</Badge>
                         {experience ? (
                             <ExperienceBadge href={experience.companyUrl} target="_blank" rel="noopener noreferrer">

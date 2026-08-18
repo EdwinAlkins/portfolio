@@ -40,12 +40,12 @@ const SearchContainer = styled.div`
   }
 `;
 
-const Navigation = styled.nav<{ isOpen: boolean }>`
+const Navigation = styled.nav<{ $isOpen: boolean }>`
   display: flex;
   gap: 2rem;
 
   @media (max-width: 768px) {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
     flex-direction: column;
     position: absolute;
     top: 3rem;
@@ -92,7 +92,7 @@ const BurgerButton = styled.button`
   }
 `;
 
-const BurgerIcon = styled.div<{ isOpen: boolean }>`
+const BurgerIcon = styled.div<{ $isOpen: boolean }>`
   width: 24px;
   height: 24px;
   position: relative;
@@ -112,7 +112,7 @@ const BurgerIcon = styled.div<{ isOpen: boolean }>`
     &:nth-child(1) {
       top: 4px;
       transform-origin: left center;
-      ${({ isOpen }) => isOpen && `
+      ${({ $isOpen }) => $isOpen && `
         transform: rotate(45deg);
         top: 3px;
         left: 4px;
@@ -122,7 +122,7 @@ const BurgerIcon = styled.div<{ isOpen: boolean }>`
     &:nth-child(2) {
       top: 11px;
       transform-origin: left center;
-      ${({ isOpen }) => isOpen && `
+      ${({ $isOpen }) => $isOpen && `
         width: 0%;
         opacity: 0;
       `}
@@ -131,7 +131,7 @@ const BurgerIcon = styled.div<{ isOpen: boolean }>`
     &:nth-child(3) {
       top: 18px;
       transform-origin: left center;
-      ${({ isOpen }) => isOpen && `
+      ${({ $isOpen }) => $isOpen && `
         transform: rotate(-45deg);
         top: 20px;
         left: 4px;
@@ -161,14 +161,14 @@ const Header: React.FC = () => {
       </SearchContainer>
 
       <BurgerButton onClick={toggleMenu}>
-        <BurgerIcon isOpen={isMenuOpen}>
+        <BurgerIcon $isOpen={isMenuOpen}>
           <span></span>
           <span></span>
           <span></span>
         </BurgerIcon>
       </BurgerButton>
 
-      <Navigation isOpen={isMenuOpen}>
+      <Navigation $isOpen={isMenuOpen}>
         <NavLink to="/portfolio/about" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'About', source: 'header' }); }}>About</NavLink>
         <NavLink to="/portfolio/experience" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Experience', source: 'header' }); }}>Experience</NavLink>
         <NavLink to="/portfolio/projects" onClick={() => { toggleMenu(); posthog?.capture('home_nav_button_clicked', { label: 'Projects', source: 'header' }); }}>Projects</NavLink>

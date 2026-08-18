@@ -49,20 +49,20 @@ const FilterContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const FilterButton = styled.button<{ active: boolean }>`
-  background: ${({ active }) => (active ? 'rgba(144, 205, 244, 0.15)' : 'transparent')};
-  color: ${({ active }) => (active ? blue1 : gray1)};
-  border: 1px solid ${({ active }) => (active ? blue1 : 'rgba(255, 255, 255, 0.1)')};
+const FilterButton = styled.button<{ $active: boolean }>`
+  background: ${({ $active }) => ($active ? 'rgba(144, 205, 244, 0.15)' : 'transparent')};
+  color: ${({ $active }) => ($active ? blue1 : gray1)};
+  border: 1px solid ${({ $active }) => ($active ? blue1 : 'rgba(255, 255, 255, 0.1)')};
   border-radius: 4px;
   padding: 0.4rem 0.85rem;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  opacity: ${({ active }) => (active ? 1 : 0.7)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.7)};
 
   &:hover {
     opacity: 1;
-    background: ${({ active }) => (active ? 'rgba(144, 205, 244, 0.2)' : 'rgba(255, 255, 255, 0.05)')};
+    background: ${({ $active }) => ($active ? 'rgba(144, 205, 244, 0.2)' : 'rgba(255, 255, 255, 0.05)')};
   }
 `;
 
@@ -100,19 +100,22 @@ const Projects: React.FC = () => {
                 </HeaderContent>
                 <FilterContainer>
                     <FilterButton
-                        active={filter === 'all'}
+                        $active={filter === 'all'}
+                        aria-pressed={filter === 'all'}
                         onClick={() => { setFilter('all'); posthog?.capture('projects_filter_changed', { filter: 'all' }); }}
                     >
                         Tous
                     </FilterButton>
                     <FilterButton
-                        active={filter === 'professional'}
+                        $active={filter === 'professional'}
+                        aria-pressed={filter === 'professional'}
                         onClick={() => { setFilter('professional'); posthog?.capture('projects_filter_changed', { filter: 'professional' }); }}
                     >
                         Professionnels
                     </FilterButton>
                     <FilterButton
-                        active={filter === 'personal'}
+                        $active={filter === 'personal'}
+                        aria-pressed={filter === 'personal'}
                         onClick={() => { setFilter('personal'); posthog?.capture('projects_filter_changed', { filter: 'personal' }); }}
                     >
                         Personnels

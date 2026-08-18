@@ -141,12 +141,12 @@ const CardMeta = styled.div`
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
-const StatusIndicator = styled.div<{ status: string }>`
+const StatusIndicator = styled.div<{ $status: string }>`
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: ${({ status }) => status === 'Production' ? '#4ade80' : status === 'Beta' ? '#fbbf24' : '#f87171'};
+    background: ${({ $status }) => $status === 'Production' ? '#4ade80' : $status === 'Beta' ? '#fbbf24' : '#f87171'};
     margin-right: 6px;
 `;
 
@@ -196,7 +196,7 @@ const CardProject: React.FC<CardProjectProps> = ({ project }) => {
                     </CardTags>
                     <CardMeta>
                         <div>
-                            <StatusIndicator status={project.status} />
+                            <StatusIndicator $status={project.status} />
                             <StatusText>{project.category}</StatusText>
                         </div>
                         <ViewDetailsLink>View Details →</ViewDetailsLink>

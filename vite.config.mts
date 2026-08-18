@@ -1,6 +1,9 @@
 import { defineConfig, type Plugin } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import path from 'path';
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 // Dev-only: serve the app when visiting the base path without its trailing
 // slash ('/portfolio' instead of '/portfolio/'). Vite otherwise shows a
@@ -29,7 +32,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(rootDir, './src'),
     },
   },
   base: '/portfolio/',

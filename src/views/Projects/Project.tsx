@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { gray1, blue1, black2 } from '../../contantes/color';
 import { getProjects, getExperienceById } from '../../utils/dbUtils';
+import { isVideo } from '../../utils/mediaUtils';
 import { Project as ProjectType, Experience } from '../../type';
 import { Link, useParams } from 'react-router';
 import { usePostHog } from '@posthog/react';
@@ -534,12 +535,25 @@ const Project: React.FC = () => {
                         <SectionTitle>Project Images</SectionTitle>
                         <ImagesGrid>
                             {project.images.map((image, index) => (
-                                <ImageItem 
-                                    key={index}
-                                    src={image} 
-                                    alt={`${project.title} - Image ${index + 1}`}
-                                    onClick={() => openModal(index)}
-                                />
+                                isVideo(image) ? (
+                                    <ImageItem
+                                        as="video"
+                                        key={index}
+                                        src={image}
+                                        muted
+                                        loop
+                                        autoPlay
+                                        playsInline
+                                        onClick={() => openModal(index)}
+                                    />
+                                ) : (
+                                    <ImageItem 
+                                        key={index}
+                                        src={image} 
+                                        alt={`${project.title} - Image ${index + 1}`}
+                                        onClick={() => openModal(index)}
+                                    />
+                                )
                             ))}
                         </ImagesGrid>
                     </Section>
@@ -574,10 +588,21 @@ const Project: React.FC = () => {
                         <ModalNavPrev onClick={previousImage} disabled={currentImageIndex === 0}>
                             ‹
                         </ModalNavPrev>
-                        <ModalImage 
-                            src={project.images[currentImageIndex]} 
-                            alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                        />
+                        {isVideo(project.images[currentImageIndex]) ? (
+                            <ModalImage
+                                as="video"
+                                key={currentImageIndex}
+                                src={project.images[currentImageIndex]}
+                                controls
+                                autoPlay
+                                playsInline
+                            />
+                        ) : (
+                            <ModalImage 
+                                src={project.images[currentImageIndex]} 
+                                alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                            />
+                        )}
                         <ModalNavNext onClick={nextImage} disabled={currentImageIndex === project.images.length - 1}>
                             ›
                         </ModalNavNext>

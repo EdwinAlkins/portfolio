@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { gray1, blue1, black1, black2 } from '../../contantes/color';
 import { Project } from '../../type';
+import { isVideo } from '../../utils/mediaUtils';
 import { Link } from 'react-router';
 import { usePostHog } from '@posthog/react';
 
@@ -178,10 +179,21 @@ const CardProject: React.FC<CardProjectProps> = ({ project }) => {
         <CardLink to={`/portfolio/project/${project.id}`} onClick={() => posthog?.capture('project_card_clicked', { project_id: project.id, project_title: project.title, category: project.category })}>
             <CardContainer>
                 <CardImage>
-                    <CardImageImg 
-                        src={project.capsuleImage} 
-                        alt={project.title} 
-                    />
+                    {isVideo(project.capsuleImage) ? (
+                        <CardImageImg
+                            as="video"
+                            src={project.capsuleImage}
+                            muted
+                            loop
+                            autoPlay
+                            playsInline
+                        />
+                    ) : (
+                        <CardImageImg 
+                            src={project.capsuleImage} 
+                            alt={project.title} 
+                        />
+                    )}
                 </CardImage>
                 <CardContent>
                     <CardTitle>{project.title}</CardTitle>

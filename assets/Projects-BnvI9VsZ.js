@@ -1,7 +1,7 @@
-import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analytics-C0tqWrQQ.js";import{r,t as i}from"./react-vendor-D2n8EaRx.js";import{a,c as o,i as s,o as c,s as l,u}from"./index-FF4xbdP3.js";var d=e(t()),f=i(),p=u(r)`
+import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analytics-C0tqWrQQ.js";import{r,t as i}from"./react-vendor-D2n8EaRx.js";import{a,c as o,i as s,o as c,s as l,u}from"./index-BFcZNk7S.js";import{t as d}from"./mediaUtils-DHvxRvaD.js";var f=e(t()),p=i(),m=u(r)`
     text-decoration: none;
     color: inherit;
-`,m=u.div`
+`,h=u.div`
     position: relative;
     width: 100%;
     max-width: 400px;
@@ -15,7 +15,7 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
         transform: translateY(-4px);
         box-shadow: 0 8px 24px rgba(144, 205, 244, 0.2);
     }
-`,h=u.div`
+`,g=u.div`
     position: relative;
     width: 100%;
     min-height: 180px;
@@ -25,18 +25,18 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
     display: flex;
     align-items: center;
     justify-content: center;
-`,g=u.img`
+`,_=u.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.2s ease;
 
-    ${m}:hover & {
+    ${h}:hover & {
         transform: scale(1.05);
     }
-`,_=u.div`
+`,v=u.div`
     padding: 1rem;
-`,v=u.h3`
+`,y=u.h3`
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     font-weight: 600;
@@ -44,7 +44,7 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-`,y=u.p`
+`,b=u.p`
     margin: 0 0 0.75rem 0;
     font-size: 0.85rem;
     color: ${o};
@@ -54,7 +54,7 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.4;
-`,b=u.div`
+`,x=u.div`
     position: absolute;
     bottom: calc(100% + 8px);
     left: 50%;
@@ -84,44 +84,44 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
         border: 6px solid transparent;
         border-top-color: ${c};
     }
-`,x=u.div`
+`,S=u.div`
     position: relative;
     width: 100%;
 
-    &:hover ${b} {
+    &:hover ${x} {
         opacity: 1;
         visibility: visible;
     }
-`,S=u.div`
+`,C=u.div`
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-`,C=u.span`
+`,w=u.span`
     background: rgba(144, 205, 244, 0.1);
     color: ${l};
     padding: 2px 8px;
     border-radius: 2px;
     font-size: 0.75rem;
     font-weight: 500;
-`,w=u.div`
+`,T=u.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 0.75rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-`,T=u.div`
+`,E=u.div`
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: ${({$status:e})=>e===`Production`?`#4ade80`:e===`Beta`?`#fbbf24`:`#f87171`};
     margin-right: 6px;
-`,E=u.span`
+`,D=u.span`
     font-size: 0.75rem;
     color: ${o};
     opacity: 0.6;
-`,D=u.span`
+`,O=u.span`
     color: ${l};
     font-size: 0.85rem;
     font-weight: 500;
@@ -130,36 +130,36 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
     &:hover {
         opacity: 0.8;
     }
-`,O=({project:e})=>{let t=n();return(0,f.jsx)(p,{to:`/portfolio/project/${e.id}`,onClick:()=>t?.capture(`project_card_clicked`,{project_id:e.id,project_title:e.title,category:e.category}),children:(0,f.jsxs)(m,{children:[(0,f.jsx)(h,{children:(0,f.jsx)(g,{src:e.capsuleImage,alt:e.title})}),(0,f.jsxs)(_,{children:[(0,f.jsx)(v,{children:e.title}),(0,f.jsxs)(x,{children:[(0,f.jsx)(y,{children:e.shortDescription}),(0,f.jsx)(b,{children:e.shortDescription})]}),(0,f.jsx)(S,{children:e.tags.slice(0,3).map(e=>(0,f.jsx)(C,{children:e},e))}),(0,f.jsxs)(w,{children:[(0,f.jsxs)(`div`,{children:[(0,f.jsx)(T,{$status:e.status}),(0,f.jsx)(E,{children:e.category})]}),(0,f.jsx)(D,{children:`View Details →`})]})]})]})})},k=u.div`
+`,k=({project:e})=>{let t=n();return(0,p.jsx)(m,{to:`/portfolio/project/${e.id}`,onClick:()=>t?.capture(`project_card_clicked`,{project_id:e.id,project_title:e.title,category:e.category}),children:(0,p.jsxs)(h,{children:[(0,p.jsx)(g,{children:d(e.capsuleImage)?(0,p.jsx)(_,{as:`video`,src:e.capsuleImage,muted:!0,loop:!0,autoPlay:!0,playsInline:!0}):(0,p.jsx)(_,{src:e.capsuleImage,alt:e.title})}),(0,p.jsxs)(v,{children:[(0,p.jsx)(y,{children:e.title}),(0,p.jsxs)(S,{children:[(0,p.jsx)(b,{children:e.shortDescription}),(0,p.jsx)(x,{children:e.shortDescription})]}),(0,p.jsx)(C,{children:e.tags.slice(0,3).map(e=>(0,p.jsx)(w,{children:e},e))}),(0,p.jsxs)(T,{children:[(0,p.jsxs)(`div`,{children:[(0,p.jsx)(E,{$status:e.status}),(0,p.jsx)(D,{children:e.category})]}),(0,p.jsx)(O,{children:`View Details →`})]})]})]})})},A=u.div`
   padding: 2rem;
   color: ${o};
-`,A=u.div`
+`,j=u.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
-`,j=u.div`
+`,M=u.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-`,M=u.div`
+`,N=u.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`,N=u.h1`
+`,P=u.h1`
   font-size: 2rem;
   margin: 0;
   font-weight: 700;
-`,P=u.p`
+`,F=u.p`
   margin: 0;
   opacity: 0.7;
   font-size: 0.9rem;
-`,F=u.div`
+`,I=u.div`
   display: flex;
   gap: 0.5rem;
-`,I=u.button`
+`,L=u.button`
   background: ${({$active:e})=>e?`rgba(144, 205, 244, 0.15)`:`transparent`};
   color: ${({$active:e})=>e?l:o};
   border: 1px solid ${({$active:e})=>e?l:`rgba(255, 255, 255, 0.1)`};
@@ -174,4 +174,4 @@ import{n as e}from"./rolldown-runtime-CbXtAM7H.js";import{i as t,n}from"./analyt
     opacity: 1;
     background: ${({$active:e})=>e?`rgba(144, 205, 244, 0.2)`:`rgba(255, 255, 255, 0.05)`};
   }
-`,L=()=>{let e=n(),[t,r]=(0,d.useState)([]),[i,a]=(0,d.useState)(`all`);(0,d.useEffect)(()=>{(async()=>{let e=await s();r(e)})()},[]);let o=t.filter(e=>{if(i===`all`)return!0;let t=e.experienceId!==-1;return i===`professional`?t:i!==`personal`||!t}).sort((e,t)=>e.order===t.order?e.id-t.id:e.order-t.order);return(0,f.jsxs)(k,{children:[(0,f.jsxs)(j,{children:[(0,f.jsxs)(M,{children:[(0,f.jsx)(N,{children:`Projects`}),(0,f.jsx)(P,{children:`Browse my portfolio projects`})]}),(0,f.jsxs)(F,{children:[(0,f.jsx)(I,{$active:i===`all`,"aria-pressed":i===`all`,onClick:()=>{a(`all`),e?.capture(`projects_filter_changed`,{filter:`all`})},children:`Tous`}),(0,f.jsx)(I,{$active:i===`professional`,"aria-pressed":i===`professional`,onClick:()=>{a(`professional`),e?.capture(`projects_filter_changed`,{filter:`professional`})},children:`Professionnels`}),(0,f.jsx)(I,{$active:i===`personal`,"aria-pressed":i===`personal`,onClick:()=>{a(`personal`),e?.capture(`projects_filter_changed`,{filter:`personal`})},children:`Personnels`})]})]}),(0,f.jsx)(A,{children:o.map(e=>(0,f.jsx)(O,{project:e},e.id))})]})};export{L as default};
+`,R=()=>{let e=n(),[t,r]=(0,f.useState)([]),[i,a]=(0,f.useState)(`all`);(0,f.useEffect)(()=>{(async()=>{let e=await s();r(e)})()},[]);let o=t.filter(e=>{if(i===`all`)return!0;let t=e.experienceId!==-1;return i===`professional`?t:i!==`personal`||!t}).sort((e,t)=>e.order===t.order?e.id-t.id:e.order-t.order);return(0,p.jsxs)(A,{children:[(0,p.jsxs)(M,{children:[(0,p.jsxs)(N,{children:[(0,p.jsx)(P,{children:`Projects`}),(0,p.jsx)(F,{children:`Browse my portfolio projects`})]}),(0,p.jsxs)(I,{children:[(0,p.jsx)(L,{$active:i===`all`,"aria-pressed":i===`all`,onClick:()=>{a(`all`),e?.capture(`projects_filter_changed`,{filter:`all`})},children:`Tous`}),(0,p.jsx)(L,{$active:i===`professional`,"aria-pressed":i===`professional`,onClick:()=>{a(`professional`),e?.capture(`projects_filter_changed`,{filter:`professional`})},children:`Professionnels`}),(0,p.jsx)(L,{$active:i===`personal`,"aria-pressed":i===`personal`,onClick:()=>{a(`personal`),e?.capture(`projects_filter_changed`,{filter:`personal`})},children:`Personnels`})]})]}),(0,p.jsx)(j,{children:o.map(e=>(0,p.jsx)(k,{project:e},e.id))})]})};export{R as default};

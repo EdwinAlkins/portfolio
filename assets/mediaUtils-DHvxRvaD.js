@@ -1,0 +1,1 @@
+var e=e=>/\.(mp4|webm|ogg)$/i.test(e);export{e as t};

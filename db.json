@@ -233,17 +233,25 @@
     {
       "id": 6,
       "order": 7,
-      "title": "E-Learning Platform",
+      "title": "Clad\u00e8se",
       "slug": "e-learning-platform",
-      "shortDescription": "An interactive e-learning platform that allows users to track course progress, take notes, and access AI-powered summaries from anywhere.",
-      "longDescription": "A personal e-learning platform designed to help users to follow and to track their courses from any device. The platform enables real-time note-taking during lessons, tracks learning progress, and provides centralized access to all course materials. It integrates AI tools to generate learning course summaries. The platform is built to enhance the online learning experience with modern web technologies and intelligent features.",
+      "shortDescription": "Clad\u00e8se \u2014 a self-hosted e-learning platform with a built-in RAG assistant: host your video courses, pick up where you left off, take timestamped notes, and get answers grounded in the lessons themselves, with sources.",
+      "longDescription": "**Clad\u00e8se** is a self-hosted e-learning platform for personal use or a small trusted team: courses, media and data all stay on your own infrastructure.\n\nCourses are organised into **courses \u2192 chapters \u2192 lessons** (video or audio, with attached PDFs, slides, spreadsheets or Markdown). The catalogue shows each course's length, time watched and completion rate. The player **resumes where you stopped**, chains lessons across chapters, and streams media so you can jump anywhere without downloading the whole file. **Timestamped Markdown notes** sit next to the video: click one and playback jumps back to that moment. There is no account to create: a single **identifier** carries your progress and notes from one browser or phone to another.\n\nA **studio** handles course creation, uploads and reordering, with automatic background conversion. An existing folder of courses can be imported in a single command.\n\nThe AI layer is a background pipeline. **Whisper transcribes** each lesson, and an LLM turns the transcript into a **summary you can edit** directly under the player. Transcripts, summaries and the text of attached documents are then **embedded and indexed in Qdrant**, which powers a **RAG assistant** for each course. A question is embedded, and the closest passages are retrieved **only from the current course**. The LLM is told to answer **strictly from that context** and to say so when the context isn't enough. Each answer comes with its **sources** (transcript, summary or document, with an excerpt), and one click opens the matching video or file. Indexing runs automatically after each transcription or summary. The model is your choice: **fully local** with LM Studio or Ollama and local embeddings, so no content ever leaves the machine, or any OpenAI-compatible provider.\n\nThe backend is built with **Python** and **FastAPI**, with **PostgreSQL**, **RabbitMQ** workers and **Qdrant** for vector search. The web front-end uses **Next.js**, and a **Flutter** app covers Android, iOS and Linux. Everything is deployed with **Docker Compose**.",
       "capsuleImage": "https://cdn.elearningindustry.com/wp-content/uploads/2022/01/shutterstock_1060195475.jpg",
-      "images": [],
+      "images": [
+        "https://edwinalkins.github.io/e-learning/assets/media/launch.mp4"
+      ],
       "technologies": [
-        "react",
         "python",
         "fastapi",
-        "typescript"
+        "nextjs",
+        "typescript",
+        "flutter",
+        "postgresql",
+        "rabbitmq",
+        "qdrant",
+        "whisper",
+        "docker"
       ],
       "tags": [
         "E-Learning",
@@ -258,7 +266,8 @@
       "links": {
         "github": [
           "https://github.com/EdwinAlkins/e-learning"
-        ]
+        ],
+        "documentation": "https://edwinalkins.github.io/e-learning/index.html"
       },
       "experienceId": -1
     },

@@ -177,9 +177,7 @@
         "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67618b619f21f97c19ab7e25_TACTiCS_BougainVille-Large_BD.avif",
         "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/67643782dee2c32fcec98a45_TACTiCS%20Metoc%20Analysis-p-1600.avif",
         "https://cdn.prod.website-files.com/66d9d3cde805b6a6788e488d/676575360912d25387a06299_TACTiCS-floute%CC%81-bd-p-1600.avif",
-        "https://www.squid-sailing.com/img/cms/squidx-1-10-0-tides-2.png",
-        "https://i.ibb.co/SX1XPT2n/hq720.jpg",
-        "https://www.squid-sailing.com/img/cms/0x0ss%20(1).png"
+        "https://i.ibb.co/SX1XPT2n/hq720.jpg"
       ],
       "technologies": [
         "react",
@@ -229,6 +227,39 @@
       "releaseDate": "2021-08-31",
       "status": "Production",
       "experienceId": 2
+    },
+    {
+      "id": 14,
+      "order": 6,
+      "title": "Best Start",
+      "slug": "best-start",
+      "shortDescription": "A \"best start\" optimization service that runs thousands of routing simulations per day to predict travel time on the first leg of a voyage and recommend the optimal departure \u2014 consistently beating the previously planned start.",
+      "longDescription": "**Best Start** helps ship operators leave at the right moment. It runs **thousands of routing simulations every day** to predict how long the first leg of a voyage will take under different departure conditions, then recommends the **optimal start** \u2014 one that improves on the previously planned departure and shortens the overall trip.\n\nEach request fans out into many parallel routing computations. Incoming jobs are queued through **AWS SQS** and picked up by compute pods **spun up on demand via Argo Events** on **Amazon EKS**, so the platform absorbs large daily volumes and scales up or down automatically. Results are stored in **PostgreSQL**, with **PgBouncer** managing connection pooling to keep the database stable under heavy parallel load.\n\nThe service is built as a **FastAPI** (Python) backend paired with a **Vue.js** front-end for configuring runs and visualizing the recommended departures. Containerized with **Docker** and running on **Kubernetes** in the **AWS** cloud, it is designed to handle its high daily throughput reliably.\n\nIn practice, Best Start contributed to a landmark achievement: it helped optimize the opening leg of **Sodebo Ultim 3**'s campaign, which set a new **Jules Verne Trophy** world record on **January 25, 2026** (round-the-world in 40d 10h) \u2014 including a record-breaking **North Atlantic descent** (Ushant to the equator) on the very first part of the course.",
+      "capsuleImage": "/portfolio/projects/beststart/routing.jpeg",
+      "images": [],
+      "technologies": [
+        "fastapi",
+        "python",
+        "postgresql",
+        "pgbouncer",
+        "vuejs",
+        "sqs",
+        "argo",
+        "kubernetes",
+        "aws",
+        "docker"
+      ],
+      "tags": [
+        "Optimization",
+        "Maritime",
+        "Routing",
+        "High-Performance",
+        "Cloud"
+      ],
+      "category": "API Service",
+      "releaseDate": "2026-07-03",
+      "status": "Production",
+      "experienceId": 1
     },
     {
       "id": 6,
@@ -401,140 +432,8 @@
       "experienceId": -1
     },
     {
-      "id": 11,
-      "order": 12,
-      "title": "RVaultPass",
-      "slug": "rvaultpass",
-      "shortDescription": "Un gestionnaire de mots de passe s\u00e9curis\u00e9, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de donn\u00e9es SQLCipher.",
-      "longDescription": "**RVaultPass** est un gestionnaire de mots de passe desktop qui garde l'int\u00e9gralit\u00e9 de vos donn\u00e9es sur votre propre machine \u2014 aucun serveur, aucun cloud, aucune donn\u00e9e transmise sur internet. Tout est stock\u00e9 dans un seul fichier chiffr\u00e9.\n\nL'application permet de stocker et organiser tous vos identifiants, notes et codes \u00e0 usage unique (TOTP) en toute simplicit\u00e9. Elle propose un g\u00e9n\u00e9rateur de mots de passe fort, des codes TOTP qui se rafra\u00eechissent en temps r\u00e9el, une recherche instantan\u00e9e dans tous vos \u00e9l\u00e9ments, ainsi qu'une organisation par dossiers et tags. Un syst\u00e8me de favoris permet d'acc\u00e9der rapidement \u00e0 vos comptes les plus utilis\u00e9s.\n\nD\u00e9velopp\u00e9 avec **Rust** et **Tauri**, le projet a \u00e9t\u00e9 con\u00e7u avec une approche \"zero-knowledge\" : l'interface ne voit jamais vos mots de passe en clair, et toutes les op\u00e9rations sensibles sont trait\u00e9es directement dans le noyau s\u00e9curis\u00e9 de l'application. Le tout dispose d'une interface bilingue fran\u00e7ais/anglais avec un th\u00e8me clair et sombre.",
-      "capsuleImage": "/portfolio/projects/rvaultpass/home.png",
-      "images": [
-        "/portfolio/projects/rvaultpass/home.png",
-        "/portfolio/projects/rvaultpass/app.png"
-      ],
-      "technologies": [
-        "rust",
-        "tauri",
-        "preact",
-        "typescript",
-        "sqlcipher",
-        "argon2",
-        "vite",
-        "zustand",
-        "tailwindcss"
-      ],
-      "tags": [
-        "Security",
-        "Desktop",
-        "Password Manager",
-        "Zero-Knowledge",
-        "Rust",
-        "Tauri",
-        "Cryptography"
-      ],
-      "category": "Desktop Application",
-      "releaseDate": "2026-04-11",
-      "status": "Production",
-      "links": {
-        "github": "https://github.com/EdwinAlkins/rvaultpass"
-      },
-      "experienceId": -1
-    },
-    {
-      "id": 12,
-      "order": 13,
-      "title": "Automate Simulator",
-      "slug": "automate-simulator",
-      "shortDescription": "Logiciel de cr\u00e9ation, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'\u00e9valuation.",
-      "longDescription": "L'**Automate Simulator** est un logiciel desktop d\u00e9velopp\u00e9 pour l'IUT de Valence, con\u00e7u pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de cr\u00e9er et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement gr\u00e2ce \u00e0 un algorithme d\u00e9di\u00e9.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalit\u00e9s essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'\u00e9valuer les \u00e9tudiants dans des conditions contr\u00f4l\u00e9es, sans acc\u00e8s aux outils d'aide.\n\nD\u00e9velopp\u00e9 en **Java** avec **Swing**, le projet offre une interface graphique compl\u00e8te pour concevoir, tester et exporter des automates, servant d'outil p\u00e9dagogique pour les \u00e9tudiants en informatique.",
-      "capsuleImage": "/portfolio/projects/automat/app.png",
-      "images": [
-        "/portfolio/projects/automat/app.png"
-      ],
-      "technologies": [
-        "java",
-        "swing"
-      ],
-      "tags": [
-        "Automation",
-        "Desktop",
-        "Simulation",
-        "\u00c9ducation",
-        "Graphes"
-      ],
-      "category": "Desktop Application",
-      "releaseDate": "2018-08-31",
-      "status": "Production",
-      "experienceId": 6
-    },
-    {
-      "id": 13,
-      "order": 14,
-      "title": "Copy Contents",
-      "slug": "copy-contents",
-      "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click \u2014 ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
-      "longDescription": "**Copy Contents** is a Visual Studio Code extension that copies the combined contents of all files within a folder straight to your clipboard in a single click. It is built for developers who want to quickly share code with language models (ChatGPT, Claude, Copilot) without opening each file one by one.\n\nKey features:\n - **Copy folder contents**: recursively copy everything in a folder in one click from the context menu.\n - **Selective copy**: a dialog lets you pick exactly which files to include, with a per-folder toggle to check/uncheck all of its files at once.\n - **Multi-selection**: the commands operate on the entire selection (files and/or folders).\n - **Smart filtering**: automatic exclusion of common folders (`.git`, `node_modules`, `dist`, etc.), configurable extensions, and file size / count limits.\n - **Structured output**: each file is prefixed with a header showing its path (optional) to help the LLM understand the project layout.\n\nBuilt with TypeScript, the extension is published on the Visual Studio Marketplace.",
-      "capsuleImage": "https://edwinalkins.gallerycdn.vsassets.io/extensions/edwinalkins/copy-contents/0.0.5/1782393257155/Microsoft.VisualStudio.Services.Icons.Default",
-      "images": [
-        "https://raw.githubusercontent.com/edwinalkins/copy-contents/main/usage.gif"
-      ],
-      "technologies": [
-        "typescript",
-        "vscode",
-        "nodejs"
-      ],
-      "tags": [
-        "VS Code",
-        "Extension",
-        "Developer Tools",
-        "LLM",
-        "Productivity"
-      ],
-      "category": "Tool",
-      "releaseDate": "2026-06-25",
-      "status": "Production",
-      "links": {
-        "github": "https://github.com/edwinalkins/copy-contents",
-        "marketplace": "https://marketplace.visualstudio.com/items?itemName=edwinalkins.copy-contents"
-      },
-      "experienceId": -1
-    },
-    {
-      "id": 14,
-      "order": 6,
-      "title": "Best Start",
-      "slug": "best-start",
-      "shortDescription": "A \"best start\" optimization service that runs thousands of routing simulations per day to predict travel time on the first leg of a voyage and recommend the optimal departure \u2014 consistently beating the previously planned start.",
-      "longDescription": "**Best Start** helps ship operators leave at the right moment. It runs **thousands of routing simulations every day** to predict how long the first leg of a voyage will take under different departure conditions, then recommends the **optimal start** \u2014 one that improves on the previously planned departure and shortens the overall trip.\n\nEach request fans out into many parallel routing computations. Incoming jobs are queued through **AWS SQS** and picked up by compute pods **spun up on demand via Argo Events** on **Amazon EKS**, so the platform absorbs large daily volumes and scales up or down automatically. Results are stored in **PostgreSQL**, with **PgBouncer** managing connection pooling to keep the database stable under heavy parallel load.\n\nThe service is built as a **FastAPI** (Python) backend paired with a **Vue.js** front-end for configuring runs and visualizing the recommended departures. Containerized with **Docker** and running on **Kubernetes** in the **AWS** cloud, it is designed to handle its high daily throughput reliably.\n\nIn practice, Best Start contributed to a landmark achievement: it helped optimize the opening leg of **Sodebo Ultim 3**'s campaign, which set a new **Jules Verne Trophy** world record on **January 25, 2026** (round-the-world in 40d 10h) \u2014 including a record-breaking **North Atlantic descent** (Ushant to the equator) on the very first part of the course.",
-      "capsuleImage": "/portfolio/projects/beststart/routing.jpeg",
-      "images": [],
-      "technologies": [
-        "fastapi",
-        "python",
-        "postgresql",
-        "pgbouncer",
-        "vuejs",
-        "sqs",
-        "argo",
-        "kubernetes",
-        "aws",
-        "docker"
-      ],
-      "tags": [
-        "Optimization",
-        "Maritime",
-        "Routing",
-        "High-Performance",
-        "Cloud"
-      ],
-      "category": "API Service",
-      "releaseDate": "2026-07-03",
-      "status": "Production",
-      "experienceId": 1
-    },
-    {
       "id": 15,
-      "order": 15,
+      "order": 12,
       "title": "FastAPI Hexagonal",
       "slug": "fastapi-hexagonal",
       "shortDescription": "A runnable reference for building FastAPI apps with hexagonal architecture and tactical DDD \u2014 architecture rules enforced by the build, three levels of tests, and a full path from Docker Compose to Kubernetes, with a 15-chapter course.",
@@ -570,6 +469,149 @@
           "https://github.com/EdwinAlkins/fastapi-hexagonal"
         ],
         "documentation": "https://edwinalkins.github.io/fastapi-hexagonal/"
+      },
+      "experienceId": -1
+    },
+    {
+      "id": 16,
+      "order": 13,
+      "title": "Factorio Admin RCON",
+      "slug": "factorio-admin-rcon",
+      "shortDescription": "A hardened web console that delegates Factorio server moderation without handing out the RCON password \u2014 three server-side roles, bounded commands instead of raw Lua, and an audit log of every action and every refusal.",
+      "longDescription": "**Factorio Admin RCON** is not a server manager: it is a hardened RCON admin console. Raw RCON is an all-or-nothing door \u2014 one password, no rate limiting, no trace, and full control of the server for whoever gets through it. This panel puts roles, bounded commands and an audit log in front of that door.\n\nAccess is split into **three roles enforced server-side**: viewers read the server state, moderators kick, ban, mute and message players, administrators get the raw console, saves and the audit log. Hiding a button in the UI is never enough \u2014 the command catalogue is filtered *and* execution re-checks the permission.\n\nModeration actions are **bounded**: the server rebuilds each command from validated fields, so a moderator gets a \"Kick\" button without ever getting arbitrary Lua. Operators can add their own bounded buttons through a JSON catalogue, with their own permission level, again without opening arbitrary code execution. Everything lands in an **SQLite audit log** \u2014 every action *and* every refusal, with the command actually sent.\n\nThe panel also collects optional time series for CPU, memory, player count and server UPS, **without mounting the Docker socket**. It binds to `127.0.0.1` by default, stays on the Compose network so RCON is never published, and ships nonce-based CSP, origin validation, session revocation and per-session / per-IP rate limiting.\n\nBuilt with **Next.js 16**, **React 19** and **TypeScript**, tested with **Vitest**, bilingual English / French inferred from the browser. It is published on Docker Hub for `amd64` and `arm64`, with a **distroless** variant (no shell, no package manager), SBOM and build provenance \u2014 MIT licensed, self-hosted, no telemetry.",
+      "capsuleImage": "https://raw.githubusercontent.com/EdwinAlkins/factorio-admin-rcon/main/docs/assets/media/console.png",
+      "images": [
+        "https://raw.githubusercontent.com/EdwinAlkins/factorio-admin-rcon/main/docs/assets/media/demo.gif",
+        "https://raw.githubusercontent.com/EdwinAlkins/factorio-admin-rcon/main/docs/assets/media/console.png",
+        "https://raw.githubusercontent.com/EdwinAlkins/factorio-admin-rcon/main/docs/assets/media/audit.png",
+        "https://raw.githubusercontent.com/EdwinAlkins/factorio-admin-rcon/main/docs/assets/media/roles.png"
+      ],
+      "technologies": [
+        "nextjs",
+        "react",
+        "typescript",
+        "nodejs",
+        "sqlite",
+        "tailwindcss",
+        "zod",
+        "recharts",
+        "vitest",
+        "docker"
+      ],
+      "tags": [
+        "Security",
+        "Open Source",
+        "DevOps",
+        "Gaming",
+        "Self-Hosted",
+        "Audit"
+      ],
+      "category": "Web Application",
+      "releaseDate": "2026-09-21",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/EdwinAlkins/factorio-admin-rcon",
+        "documentation": "https://edwinalkins.github.io/factorio-admin-rcon/",
+        "dockerhub": "https://hub.docker.com/r/williamnauroy/factorio-admin-rcon"
+      },
+      "experienceId": -1
+    },
+    {
+      "id": 12,
+      "order": 14,
+      "title": "Automate Simulator",
+      "slug": "automate-simulator",
+      "shortDescription": "Logiciel de cr\u00e9ation, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'\u00e9valuation.",
+      "longDescription": "L'**Automate Simulator** est un logiciel desktop d\u00e9velopp\u00e9 pour l'IUT de Valence, con\u00e7u pour faciliter l'apprentissage et la pratique des automates graphiques. Il permet de cr\u00e9er et modifier des graphes d'automatisation, de les simuler pour tester leur bon fonctionnement, et de les simplifier automatiquement gr\u00e2ce \u00e0 un algorithme d\u00e9di\u00e9.\n\nL'application dispose d'un **mode examen** qui retire la plupart des outils pour ne conserver que les fonctionnalit\u00e9s essentielles : modification du graphe et sauvegarde en PDF. Ce mode permet d'\u00e9valuer les \u00e9tudiants dans des conditions contr\u00f4l\u00e9es, sans acc\u00e8s aux outils d'aide.\n\nD\u00e9velopp\u00e9 en **Java** avec **Swing**, le projet offre une interface graphique compl\u00e8te pour concevoir, tester et exporter des automates, servant d'outil p\u00e9dagogique pour les \u00e9tudiants en informatique.",
+      "capsuleImage": "/portfolio/projects/automat/app.png",
+      "images": [
+        "/portfolio/projects/automat/app.png"
+      ],
+      "technologies": [
+        "java",
+        "swing"
+      ],
+      "tags": [
+        "Automation",
+        "Desktop",
+        "Simulation",
+        "\u00c9ducation",
+        "Graphes"
+      ],
+      "category": "Desktop Application",
+      "releaseDate": "2018-08-31",
+      "status": "Production",
+      "experienceId": 6
+    },
+    {
+      "id": 13,
+      "order": 15,
+      "title": "Copy Contents",
+      "slug": "copy-contents",
+      "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click \u2014 ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
+      "longDescription": "**Copy Contents** is a Visual Studio Code extension that copies the combined contents of all files within a folder straight to your clipboard in a single click. It is built for developers who want to quickly share code with language models (ChatGPT, Claude, Copilot) without opening each file one by one.\n\nKey features:\n - **Copy folder contents**: recursively copy everything in a folder in one click from the context menu.\n - **Selective copy**: a dialog lets you pick exactly which files to include, with a per-folder toggle to check/uncheck all of its files at once.\n - **Multi-selection**: the commands operate on the entire selection (files and/or folders).\n - **Smart filtering**: automatic exclusion of common folders (`.git`, `node_modules`, `dist`, etc.), configurable extensions, and file size / count limits.\n - **Structured output**: each file is prefixed with a header showing its path (optional) to help the LLM understand the project layout.\n\nBuilt with TypeScript, the extension is published on the Visual Studio Marketplace.",
+      "capsuleImage": "https://edwinalkins.gallerycdn.vsassets.io/extensions/edwinalkins/copy-contents/0.0.5/1782393257155/Microsoft.VisualStudio.Services.Icons.Default",
+      "images": [
+        "https://raw.githubusercontent.com/edwinalkins/copy-contents/main/usage.gif"
+      ],
+      "technologies": [
+        "typescript",
+        "vscode",
+        "nodejs"
+      ],
+      "tags": [
+        "VS Code",
+        "Extension",
+        "Developer Tools",
+        "LLM",
+        "Productivity"
+      ],
+      "category": "Tool",
+      "releaseDate": "2026-06-25",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/edwinalkins/copy-contents",
+        "marketplace": "https://marketplace.visualstudio.com/items?itemName=edwinalkins.copy-contents"
+      },
+      "experienceId": -1
+    },
+    {
+      "id": 11,
+      "order": 16,
+      "title": "RVaultPass",
+      "slug": "rvaultpass",
+      "shortDescription": "Un gestionnaire de mots de passe s\u00e9curis\u00e9, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de donn\u00e9es SQLCipher.",
+      "longDescription": "**RVaultPass** est un gestionnaire de mots de passe desktop qui garde l'int\u00e9gralit\u00e9 de vos donn\u00e9es sur votre propre machine \u2014 aucun serveur, aucun cloud, aucune donn\u00e9e transmise sur internet. Tout est stock\u00e9 dans un seul fichier chiffr\u00e9.\n\nL'application permet de stocker et organiser tous vos identifiants, notes et codes \u00e0 usage unique (TOTP) en toute simplicit\u00e9. Elle propose un g\u00e9n\u00e9rateur de mots de passe fort, des codes TOTP qui se rafra\u00eechissent en temps r\u00e9el, une recherche instantan\u00e9e dans tous vos \u00e9l\u00e9ments, ainsi qu'une organisation par dossiers et tags. Un syst\u00e8me de favoris permet d'acc\u00e9der rapidement \u00e0 vos comptes les plus utilis\u00e9s.\n\nD\u00e9velopp\u00e9 avec **Rust** et **Tauri**, le projet a \u00e9t\u00e9 con\u00e7u avec une approche \"zero-knowledge\" : l'interface ne voit jamais vos mots de passe en clair, et toutes les op\u00e9rations sensibles sont trait\u00e9es directement dans le noyau s\u00e9curis\u00e9 de l'application. Le tout dispose d'une interface bilingue fran\u00e7ais/anglais avec un th\u00e8me clair et sombre.",
+      "capsuleImage": "/portfolio/projects/rvaultpass/home.png",
+      "images": [
+        "/portfolio/projects/rvaultpass/home.png",
+        "/portfolio/projects/rvaultpass/app.png"
+      ],
+      "technologies": [
+        "rust",
+        "tauri",
+        "preact",
+        "typescript",
+        "sqlcipher",
+        "argon2",
+        "vite",
+        "zustand",
+        "tailwindcss"
+      ],
+      "tags": [
+        "Security",
+        "Desktop",
+        "Password Manager",
+        "Zero-Knowledge",
+        "Rust",
+        "Tauri",
+        "Cryptography"
+      ],
+      "category": "Desktop Application",
+      "releaseDate": "2026-04-11",
+      "status": "Production",
+      "links": {
+        "github": "https://github.com/EdwinAlkins/rvaultpass"
       },
       "experienceId": -1
     }

@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>db.json — éditeur</title>
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    --blue1: #90cdf4;
+    --black1: #030711;
+    --black2: #09090b;
+    --gray1: #e1e7ef;
+    --gray2: #a0aec0;
+    --line: #1e293b;
+    --red: #f87171;
+    --green: #6ee7b7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--black1);
+    color: var(--gray1);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .6rem 1rem;
+    background: var(--black2);
+    border-bottom: 1px solid var(--line);
+  }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  header h1 span { color: var(--gray2); font-weight: 400; }
+  .tabs { display: flex; gap: .3rem; }
+  .tabs button {
+    background: transparent; color: var(--gray2); border: 1px solid var(--line);
+    padding: .3rem .8rem; border-radius: 6px; cursor: pointer; font: inherit;
+  }
+  .tabs button.active { color: var(--black1); background: var(--blue1); border-color: var(--blue1); font-weight: 600; }
+  .spacer { flex: 1; }
+  #status { color: var(--gray2); font-size: 13px; }
+  #status.dirty { color: var(--blue1); }
+  #status.ok { color: var(--green); }
+  #status.err { color: var(--red); }
+  #save {
+    background: var(--blue1); color: var(--black1); border: 0; font: inherit; font-weight: 600;
+    padding: .4rem 1.1rem; border-radius: 6px; cursor: pointer;
+  }
+  #save:disabled { opacity: .35; cursor: default; }
+
+  main { flex: 1; display: flex; min-height: 0; }
+  aside {
+    width: 300px; flex: none; border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; background: var(--black2);
+  }
+  #list { flex: 1; overflow: auto; margin: 0; padding: .4rem; list-style: none; }
+  #list li {
+    padding: .45rem .6rem; border-radius: 6px; cursor: pointer; color: var(--gray2);
+    display: flex; gap: .5rem; align-items: baseline; border: 1px solid transparent;
+  }
+  #list li:hover { background: #ffffff0a; }
+  #list li.sel { background: #90cdf41f; color: var(--gray1); border-color: #90cdf44d; }
+  #list li.drop-before { border-top-color: var(--blue1); }
+  #list li.drop-after { border-bottom-color: var(--blue1); }
+  #list li .num { color: #64748b; font-variant-numeric: tabular-nums; font-size: 12px; flex: none; }
+  #list li .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .aside-actions { display: flex; gap: .4rem; padding: .5rem; border-top: 1px solid var(--line); }
+  .aside-actions button { flex: 1; }
+
+  button.ghost {
+    background: transparent; color: var(--gray1); border: 1px solid var(--line);
+    padding: .35rem .6rem; border-radius: 6px; cursor: pointer; font: inherit; font-size: 13px;
+  }
+  button.ghost:hover { border-color: var(--blue1); color: var(--blue1); }
+  button.ghost.danger:hover { border-color: var(--red); color: var(--red); }
+
+  section#form { flex: 1; overflow: auto; padding: 1.2rem 1.5rem 3rem; }
+  .field { margin-bottom: 1.1rem; max-width: 1100px; }
+  .field > label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--gray2); margin-bottom: .3rem; }
+  .field .hint { font-size: 12px; color: #64748b; text-transform: none; letter-spacing: 0; }
+  input[type=text], input[type=date], input[type=number], textarea, select {
+    width: 100%; background: #0b1220; color: var(--gray1);
+    border: 1px solid var(--line); border-radius: 6px; padding: .45rem .6rem; font: inherit;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--blue1); }
+  input:read-only { color: var(--gray2); background: #0b122080; }
+  textarea { resize: vertical; min-height: 70px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; }
+  .row { display: flex; gap: .5rem; align-items: center; margin-bottom: .35rem; }
+  .row input { flex: 1; }
+  .row .key { flex: 0 0 170px; }
+  .thumb {
+    flex: none; width: 96px; height: 54px; border-radius: 4px; border: 1px solid var(--line);
+    object-fit: cover; background: #0b1220;
+  }
+  .thumb-missing {
+    flex: none; width: 96px; height: 54px; border-radius: 4px; border: 1px dashed var(--red);
+    color: var(--red); font-size: 10px; display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .md-split { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .md-split textarea { min-height: 340px; }
+  .md-preview {
+    border: 1px solid var(--line); border-radius: 6px; padding: .6rem .8rem;
+    overflow: auto; max-height: 420px; background: #0b1220;
+  }
+  .md-preview p { margin: 0 0 .7rem; }
+  .md-preview code { background: #1e293b; padding: .05rem .3rem; border-radius: 3px; font-size: 12px; }
+  .md-preview ul { margin: 0 0 .7rem; padding-left: 1.2rem; }
+  .md-preview a { color: var(--blue1); }
+  #errors {
+    margin: 0; padding: .6rem 1rem; background: #7f1d1d33; border-bottom: 1px solid var(--red);
+    color: var(--red); font-size: 13px;
+  }
+  #errors ul { margin: .2rem 0 0; padding-left: 1.2rem; }
+  [hidden] { display: none !important; }
+  .empty { color: var(--gray2); padding: 2rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>db.json <span id="path"></span></h1>
+  <div class="tabs">
+    <button data-tab="projects" class="active">projects</button>
+    <button data-tab="articles">articles</button>
+    <button data-tab="experiences">experiences</button>
+  </div>
+  <div class="spacer"></div>
+  <span id="status">chargement…</span>
+  <button id="save" disabled>Enregistrer</button>
+</header>
+
+<div id="errors" hidden></div>
+
+<main>
+  <aside>
+    <ul id="list"></ul>
+    <div class="aside-actions">
+      <button class="ghost" id="add">+ Nouveau</button>
+      <button class="ghost" id="dup">Dupliquer</button>
+      <button class="ghost danger" id="del">Supprimer</button>
+    </div>
+  </aside>
+  <section id="form"><div class="empty">Chargement…</div></section>
+</main>
+
+<script>
+// ---------------------------------------------------------------- état global
+let db = null;          // contenu de db.json
+let tab = 'projects';
+let sel = 0;            // index sélectionné dans db[tab]
+let dirty = false;
+
+const $ = (s) => document.querySelector(s);
+const el = (tag, props = {}, kids = []) => {
+  const n = Object.assign(document.createElement(tag), props);
+  for (const k of [].concat(kids)) n.append(k);
+  return n;
+};
+
+// --------------------------------------------------------------- schéma (UI)
+// L'ordre des champs est aussi l'ordre des clés écrites dans db.json.
+const SCHEMA = {
+  projects: {
+    label: (p) => p.title || '(sans titre)',
+    fields: [
+      { key: 'id', type: 'readonly', label: 'id' },
+      { key: 'order', type: 'readonly', label: 'order', hint: 'recalculé par glisser-déposer dans la liste' },
+      { key: 'title', type: 'text', label: 'title' },
+      { key: 'slug', type: 'slug', label: 'slug' },
+      { key: 'shortDescription', type: 'textarea', label: 'shortDescription', rows: 3 },
+      { key: 'longDescription', type: 'markdown', label: 'longDescription' },
+      { key: 'capsuleImage', type: 'image', label: 'capsuleImage' },
+      { key: 'images', type: 'imageList', label: 'images' },
+      { key: 'technologies', type: 'list', label: 'technologies', suggest: 'technologies' },
+      { key: 'tags', type: 'list', label: 'tags', suggest: 'tags' },
+      { key: 'category', type: 'text', label: 'category', suggest: 'category' },
+      { key: 'releaseDate', type: 'date', label: 'releaseDate' },
+      { key: 'status', type: 'select', label: 'status', options: ['Beta', 'Production'] },
+      { key: 'links', type: 'links', label: 'links', omitIfEmpty: true },
+      { key: 'experienceId', type: 'experience', label: 'experienceId' },
+    ],
+    blank: () => ({
+      id: 0, order: 0, title: '', slug: '', shortDescription: '', longDescription: '',
+      capsuleImage: '', images: [], technologies: [], tags: [], category: '',
+      releaseDate: new Date().toISOString().slice(0, 10), status: 'Production',
+      links: {}, experienceId: -1,
+    }),
+  },
+  articles: {
+    label: (a) => a.title || '(sans titre)',
+    fields: [
+      { key: 'id', type: 'readonly', label: 'id' },
+      { key: 'title', type: 'text', label: 'title' },
+      { key: 'url', type: 'text', label: 'url' },
+      { key: 'description', type: 'textarea', label: 'description', rows: 3, omitIfEmpty: true },
+    ],
+    blank: () => ({ id: 0, title: '', url: '', description: '' }),
+  },
+  experiences: {
+    label: (e) => `${e.title || '(sans titre)'} — ${e.company || ''}`,
+    fields: [
+      { key: 'id', type: 'readonly', label: 'id' },
+      { key: 'title', type: 'text', label: 'title' },
+      { key: 'company', type: 'text', label: 'company' },
+      { key: 'companyUrl', type: 'text', label: 'companyUrl' },
+      { key: 'startDate', type: 'text', label: 'startDate' },
+      { key: 'endDate', type: 'text', label: 'endDate', hint: 'année, ou "Present"' },
+      { key: 'description', type: 'textarea', label: 'description', rows: 3 },
+      { key: 'technologies', type: 'textarea', label: 'technologies', rows: 2, hint: 'texte libre (string, pas un tableau)' },
+    ],
+    blank: () => ({ id: 0, title: '', company: '', companyUrl: '', startDate: '', endDate: '', description: '', technologies: '' }),
+  },
+};
+
+const LINK_KEYS = ['github', 'demo', 'documentation', 'dockerhub', 'pypi', 'article', 'marketplace'];
+
+// ------------------------------------------------------------------- helpers
+const markDirty = () => {
+  dirty = true;
+  $('#save').disabled = false;
+  setStatus('modifications non enregistrées', 'dirty');
+};
+
+const setStatus = (msg, cls = '') => {
+  const s = $('#status');
+  s.textContent = msg;
+  s.className = cls;
+};
+
+const slugify = (s) =>
+  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const isVideo = (src) => /\.(mp4|webm|ogg)$/i.test(src);
+
+// /portfolio/projects/x.png -> /public/projects/x.png (servi par le serveur local)
+const previewSrc = (src) => {
+  if (!src) return '';
+  if (/^https?:\/\//i.test(src)) return src;
+  return '/public/' + src.replace(/^\/?portfolio\//, '').replace(/^\//, '');
+};
+
+// Aperçu markdown approximatif (gras, italique, code, liens, listes).
+const renderMarkdown = (src) => {
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const inline = (s) => esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return (src || '').split(/\n{2,}/).map((block) => {
+    const lines = block.split('\n');
+    if (lines.every((l) => /^\s*[-*]\s+/.test(l))) {
+      return '<ul>' + lines.map((l) => `<li>${inline(l.replace(/^\s*[-*]\s+/, ''))}</li>`).join('') + '</ul>';
+    }
+    const head = block.match(/^(#{1,4})\s+(.*)$/);
+    if (head) return `<h${head[1].length}>${inline(head[2])}</h${head[1].length}>`;
+    return `<p>${lines.map(inline).join('<br>')}</p>`;
+  }).join('');
+};
+
+// Valeurs déjà utilisées, pour les <datalist>.
+const suggestions = (what) => {
+  const set = new Set();
+  for (const p of db.projects) {
+    if (what === 'category') set.add(p.category);
+    else for (const v of p[what] ?? []) set.add(v);
+  }
+  return [...set].filter(Boolean).sort();
+};
+
+// ------------------------------------------------------------- liste (gauche)
+let dragFrom = null;
+
+function renderList() {
+  const items = db[tab];
+  const ul = $('#list');
+  ul.replaceChildren();
+  items.forEach((item, i) => {
+    const li = el('li', { className: i === sel ? 'sel' : '', draggable: true });
+    li.append(el('span', { className: 'num', textContent: tab === 'projects' ? `#${item.order}` : `#${item.id}` }));
+    li.append(el('span', { className: 'name', textContent: SCHEMA[tab].label(item) }));
+    li.onclick = () => { sel = i; renderList(); renderForm(); };
+    li.ondragstart = (e) => { dragFrom = i; e.dataTransfer.effectAllowed = 'move'; };
+    li.ondragover = (e) => {
+      e.preventDefault();
+      const after = e.offsetY > li.offsetHeight / 2;
+      li.classList.toggle('drop-after', after);
+      li.classList.toggle('drop-before', !after);
+    };
+    li.ondragleave = () => li.classList.remove('drop-before', 'drop-after');
+    li.ondrop = (e) => {
+      e.preventDefault();
+      li.classList.remove('drop-before', 'drop-after');
+      let to = e.offsetY > li.offsetHeight / 2 ? i + 1 : i;
+      if (dragFrom === null || dragFrom === to) return;
+      const [moved] = items.splice(dragFrom, 1);
+      if (dragFrom < to) to -= 1;
+      items.splice(to, 0, moved);
+      sel = to;
+      renumber();
+      markDirty();
+      renderList();
+      renderForm();
+    };
+    ul.append(li);
+  });
+}
+
+// `order` suit l'ordre de la liste (projects uniquement : les autres n'ont pas ce champ).
+function renumber() {
+  if (tab !== 'projects') return;
+  db.projects.forEach((p, i) => { p.order = i + 1; });
+}
+
+// ------------------------------------------------------------ formulaire (droite)
+function renderForm() {
+  const host = $('#form');
+  host.replaceChildren();
+  const item = db[tab][sel];
+  if (!item) {
+    host.append(el('div', { className: 'empty', textContent: 'Aucune entrée sélectionnée.' }));
+    return;
+  }
+  for (const f of SCHEMA[tab].fields) host.append(buildField(f, item));
+}
+
+function buildField(f, item) {
+  const wrap = el('div', { className: 'field' });
+  const lbl = el('label', { textContent: f.label });
+  if (f.hint) lbl.append(el('span', { className: 'hint', textContent: `  — ${f.hint}` }));
+  wrap.append(lbl);
+  wrap.append(BUILDERS[f.type](f, item));
+  return wrap;
+}
+
+const bindText = (input, item, key, after) => {
+  input.oninput = () => { item[key] = input.value; markDirty(); after?.(); };
+  return input;
+};
+
+const datalistFor = (name) => {
+  const id = `dl-${name}`;
+  let dl = document.getElementById(id);
+  if (!dl) {
+    dl = el('datalist', { id });
+    document.body.append(dl);
+  }
+  dl.replaceChildren(...suggestions(name).map((v) => el('option', { value: v })));
+  return id;
+};
+
+// Aperçu d'un média, remplacé par un badge si le chargement échoue.
+function thumbFor(src) {
+  const box = el('span');
+  const render = () => {
+    box.replaceChildren();
+    if (!src) return box.append(el('span', { className: 'thumb-missing', textContent: 'vide' }));
+    const node = isVideo(src)
+      ? el('video', { className: 'thumb', src: previewSrc(src), muted: true })
+      : el('img', { className: 'thumb', src: previewSrc(src), loading: 'lazy' });
+    node.onerror = () => box.replaceChildren(el('span', { className: 'thumb-missing', textContent: 'introuvable' }));
+    box.append(node);
+  };
+  render();
+  return box;
+}
+
+const BUILDERS = {
+  readonly: (f, item) => el('input', { type: 'text', value: String(item[f.key] ?? ''), readOnly: true }),
+
+  text: (f, item) => {
+    const i = el('input', { type: 'text', value: item[f.key] ?? '' });
+    if (f.suggest) i.setAttribute('list', datalistFor(f.suggest));
+    return bindText(i, item, f.key);
+  },
+
+  slug: (f, item) => {
+    const row = el('div', { className: 'row' });
+    const i = el('input', { type: 'text', value: item[f.key] ?? '' });
+    const btn = el('button', { className: 'ghost', textContent: 'depuis le titre', type: 'button' });
+    btn.onclick = () => { i.value = slugify(item.title || ''); item[f.key] = i.value; markDirty(); };
+    row.append(bindText(i, item, f.key), btn);
+    return row;
+  },
+
+  textarea: (f, item) => {
+    const t = el('textarea', { rows: f.rows ?? 3, value: item[f.key] ?? '' });
+    return bindText(t, item, f.key);
+  },
+
+  date: (f, item) => bindText(el('input', { type: 'date', value: item[f.key] ?? '' }), item, f.key),
+
+  select: (f, item) => {
+    const s = el('select');
+    for (const o of f.options) s.append(el('option', { value: o, textContent: o, selected: item[f.key] === o }));
+    s.onchange = () => { item[f.key] = s.value; markDirty(); };
+    return s;
+  },
+
+  experience: (f, item) => {
+    const s = el('select');
+    s.append(el('option', { value: '-1', textContent: '-1 — Projet personnel' }));
+    for (const e of db.experiences) {
+      s.append(el('option', { value: String(e.id), textContent: `${e.id} — ${e.company} (${e.title})` }));
+    }
+    s.value = String(item[f.key] ?? -1);
+    s.onchange = () => { item[f.key] = Number(s.value); markDirty(); };
+    return s;
+  },
+
+  markdown: (f, item) => {
+    const split = el('div', { className: 'md-split' });
+    const ta = el('textarea', { value: item[f.key] ?? '' });
+    const prev = el('div', { className: 'md-preview' });
+    prev.innerHTML = renderMarkdown(ta.value);
+    bindText(ta, item, f.key, () => { prev.innerHTML = renderMarkdown(ta.value); });
+    split.append(ta, prev);
+    return split;
+  },
+
+  image: (f, item) => {
+    const row = el('div', { className: 'row' });
+    const i = el('input', { type: 'text', value: item[f.key] ?? '' });
+    let thumb = thumbFor(i.value);
+    bindText(i, item, f.key, () => {
+      const next = thumbFor(i.value);
+      thumb.replaceWith(next);
+      thumb = next;
+    });
+    row.append(thumb, i);
+    return row;
+  },
+
+  imageList: (f, item) => listWidget(f, item, true),
+  list: (f, item) => listWidget(f, item, false),
+
+  links: (f, item) => {
+    const box = el('div');
+    // { github: "a", demo: ["b","c"] } -> [["github","a"], ["demo","b"], ["demo","c"]]
+    const rows = [];
+    for (const [k, v] of Object.entries(item.links ?? {})) {
+      for (const one of [].concat(v)) rows.push([k, one]);
+    }
+    const commit = () => {
+      const out = {};
+      for (const [k, v] of rows) {
+        if (!k.trim() || !v.trim()) continue;
+        if (out[k] === undefined) out[k] = v;
+        else out[k] = [].concat(out[k], v);
+      }
+      item.links = out;
+      markDirty();
+    };
+    const draw = () => {
+      box.replaceChildren();
+      rows.forEach((pair, i) => {
+        const row = el('div', { className: 'row' });
+        const k = el('input', { type: 'text', className: 'key', value: pair[0], placeholder: 'github' });
+        k.setAttribute('list', 'dl-linkkeys');
+        const v = el('input', { type: 'text', value: pair[1], placeholder: 'https://…' });
+        k.oninput = () => { pair[0] = k.value; commit(); };
+        v.oninput = () => { pair[1] = v.value; commit(); };
+        const rm = el('button', { className: 'ghost danger', textContent: '×', type: 'button' });
+        rm.onclick = () => { rows.splice(i, 1); commit(); draw(); };
+        row.append(k, v, rm);
+        box.append(row);
+      });
+      const add = el('button', { className: 'ghost', textContent: '+ lien', type: 'button' });
+      add.onclick = () => { rows.push(['', '']); draw(); };
+      box.append(add);
+    };
+    draw();
+    return box;
+  },
+};
+
+// Liste de chaînes (images / technologies / tags), avec ou sans aperçu.
+function listWidget(f, item, withThumb) {
+  const box = el('div');
+  const arr = (item[f.key] ??= []);
+  const draw = () => {
+    box.replaceChildren();
+    arr.forEach((val, i) => {
+      const row = el('div', { className: 'row' });
+      const input = el('input', { type: 'text', value: val });
+      if (f.suggest) input.setAttribute('list', datalistFor(f.suggest));
+      let thumb = withThumb ? thumbFor(val) : null;
+      input.oninput = () => {
+        arr[i] = input.value;
+        markDirty();
+        if (withThumb) { const next = thumbFor(input.value); thumb.replaceWith(next); thumb = next; }
+      };
+      const rm = el('button', { className: 'ghost danger', textContent: '×', type: 'button' });
+      rm.onclick = () => { arr.splice(i, 1); markDirty(); draw(); };
+      if (thumb) row.append(thumb);
+      row.append(input, rm);
+      box.append(row);
+    });
+    const add = el('button', { className: 'ghost', textContent: '+ ajouter', type: 'button' });
+    add.onclick = () => { arr.push(''); draw(); };
+    box.append(add);
+  };
+  draw();
+  return box;
+}
+
+// ----------------------------------------------------------------- validation
+function validate() {
+  const errs = [];
+  const dup = (list, key, what) => {
+    const seen = new Map();
+    for (const it of list) {
+      const v = it[key];
+      if (seen.has(v)) errs.push(`${what} en double : ${key} = ${JSON.stringify(v)}`);
+      seen.set(v, true);
+    }
+  };
+  for (const coll of ['projects', 'articles', 'experiences']) dup(db[coll], 'id', coll);
+  dup(db.projects, 'slug', 'projects');
+  dup(db.projects, 'order', 'projects');
+
+  const expIds = new Set(db.experiences.map((e) => e.id));
+  for (const p of db.projects) {
+    const who = `projet #${p.id} (${p.title || 'sans titre'})`;
+    for (const k of ['title', 'slug', 'shortDescription']) {
+      if (!String(p[k] ?? '').trim()) errs.push(`${who} : ${k} est vide`);
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(p.releaseDate ?? '')) errs.push(`${who} : releaseDate doit être au format YYYY-MM-DD`);
+    if (p.experienceId !== -1 && !expIds.has(p.experienceId)) errs.push(`${who} : experienceId ${p.experienceId} n'existe pas`);
+  }
+  for (const a of db.articles) {
+    if (!String(a.title ?? '').trim()) errs.push(`article #${a.id} : title est vide`);
+    if (!String(a.url ?? '').trim()) errs.push(`article #${a.id} : url est vide`);
+  }
+  for (const e of db.experiences) {
+    for (const k of ['title', 'company']) {
+      if (!String(e[k] ?? '').trim()) errs.push(`expérience #${e.id} : ${k} est vide`);
+    }
+  }
+  return errs;
+}
+
+function showErrors(errs) {
+  const box = $('#errors');
+  box.hidden = errs.length === 0;
+  box.replaceChildren();
+  if (!errs.length) return;
+  box.append(el('strong', { textContent: 'Sauvegarde bloquée :' }));
+  box.append(el('ul', {}, errs.map((e) => el('li', { textContent: e }))));
+}
+
+// ------------------------------------------------------- sérialisation fidèle
+// Reproduit le format exact du fichier : 2 espaces, non-ASCII échappé en \uXXXX,
+// clés dans l'ordre du schéma, pas de newline finale.
+function serialize() {
+  const ordered = {};
+  for (const coll of Object.keys(db)) {
+    ordered[coll] = Array.isArray(db[coll]) ? db[coll].map((item) => orderKeys(coll, item)) : db[coll];
+  }
+  const json = JSON.stringify(ordered, null, 2);
+  return json.replace(/[\u007f-￿]/g, (c) => '\\u' + c.charCodeAt(0).toString(16).padStart(4, '0'));
+}
+
+function orderKeys(coll, item) {
+  const schema = SCHEMA[coll];
+  if (!schema) return item;
+  const out = {};
+  for (const f of schema.fields) {
+    const v = item[f.key];
+    if (v === undefined) continue;
+    const empty = v === '' || (v && typeof v === 'object' && Object.keys(v).length === 0);
+    if (f.omitIfEmpty && empty) continue;
+    out[f.key] = v;
+  }
+  // Clés inconnues du schéma : conservées telles quelles, à la fin.
+  for (const k of Object.keys(item)) if (!(k in out) && item[k] !== undefined) out[k] = item[k];
+  return out;
+}
+
+// ----------------------------------------------------------------- actions
+async function save() {
+  const errs = validate();
+  showErrors(errs);
+  if (errs.length) { setStatus('erreurs de validation', 'err'); return; }
+  setStatus('enregistrement…');
+  try {
+    const res = await fetch('/api/db', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: serialize() });
+    const out = await res.json();
+    if (!res.ok || !out.ok) throw new Error(out.error ?? res.statusText);
+    dirty = false;
+    $('#save').disabled = true;
+    setStatus(`enregistré à ${new Date().toLocaleTimeString()}`, 'ok');
+  } catch (err) {
+    setStatus(`échec : ${err.message}`, 'err');
+  }
+}
+
+const nextId = (list) => list.reduce((m, x) => Math.max(m, x.id ?? 0), 0) + 1;
+
+function addItem(copy) {
+  const list = db[tab];
+  const base = copy ? structuredClone(list[sel]) : SCHEMA[tab].blank();
+  base.id = nextId(list);
+  if (copy) {
+    base.title = `${base.title} (copie)`;
+    if (tab === 'projects') base.slug = `${base.slug}-copie`;
+  }
+  list.push(base);
+  sel = list.length - 1;
+  renumber();
+  markDirty();
+  renderList();
+  renderForm();
+  $('#list').lastElementChild?.scrollIntoView({ block: 'nearest' });
+}
+
+function delItem() {
+  const item = db[tab][sel];
+  if (!item || !confirm(`Supprimer « ${SCHEMA[tab].label(item)} » ?`)) return;
+  db[tab].splice(sel, 1);
+  sel = Math.max(0, sel - 1);
+  renumber();
+  markDirty();
+  renderList();
+  renderForm();
+}
+
+// -------------------------------------------------------------------- démarrage
+$('#save').onclick = save;
+$('#add').onclick = () => addItem(false);
+$('#dup').onclick = () => addItem(true);
+$('#del').onclick = delItem;
+
+for (const btn of document.querySelectorAll('.tabs button')) {
+  btn.onclick = () => {
+    document.querySelector('.tabs button.active').classList.remove('active');
+    btn.classList.add('active');
+    tab = btn.dataset.tab;
+    sel = 0;
+    renderList();
+    renderForm();
+  };
+}
+
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); save(); }
+});
+
+window.addEventListener('beforeunload', (e) => {
+  if (dirty) { e.preventDefault(); e.returnValue = ''; }
+});
+
+document.body.append(el('datalist', { id: 'dl-linkkeys' }, LINK_KEYS.map((k) => el('option', { value: k }))));
+
+fetch('/api/db')
+  .then((r) => r.json())
+  .then((data) => {
+    db = data;
+    // La liste (et donc le fichier) suit l'ordre d'affichage du site.
+    db.projects.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    $('#path').textContent = '— public/db.json';
+    setStatus(`${db.projects.length} projets · ${db.articles.length} articles · ${db.experiences.length} expériences`);
+    renderList();
+    renderForm();
+  })
+  .catch((err) => setStatus(`impossible de charger db.json : ${err.message}`, 'err'));
+</script>
+</body>
+</html>

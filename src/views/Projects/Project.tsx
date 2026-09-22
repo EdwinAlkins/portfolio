@@ -15,6 +15,7 @@ const LINK_META: Record<string, { icon?: string; label: string }> = {
     github: { icon: 'fab fa-github', label: 'GitHub' },
     demo: { icon: 'fas fa-external-link-alt', label: 'Live Demo' },
     documentation: { icon: 'fas fa-book', label: 'Documentation' },
+    dockerhub: { icon: 'fab fa-docker', label: 'Docker Hub' },
     // Known types rendered without an icon, but with a properly cased label.
     pypi: { label: 'PyPI' },
     article: { label: 'Article' },

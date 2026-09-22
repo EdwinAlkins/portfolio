@@ -10,6 +10,7 @@ npm run build      # TypeScript check + Vite build → build/
 npm run lint       # ESLint
 npm run deploy     # Build then push to GitHub Pages
 npm run generate-pdf  # Render cv/index.html → public/pdf/cv-william-nauroy-v2.pdf via WeasyPrint (uv run --directory cv main.py)
+npm run db-editor  # Local GUI to edit public/db.json — http://127.0.0.1:5174 (dev tool, not part of the app)
 ```
 
 There are no tests beyond the placeholder `App.test.tsx`.
@@ -21,6 +22,19 @@ There are no tests beyond the placeholder `App.test.tsx`.
 All content (articles, projects, experiences) is stored in `public/db.json` — no backend. The `src/utils/dbUtils.ts` module provides async fetch wrappers (`getProjects`, `getArticles`, `getExperiences`, `getExperienceById`) that resolve URLs relative to the Vite `BASE_URL` (`/portfolio/`).
 
 Static assets referenced by db.json entries (project images, article markdown files) live under `public/projects/` and `public/articles/` respectively.
+
+### Dev tool: db.json editor
+
+`devtools/db-editor/` is a standalone local editor for `public/db.json`, decoupled from the React
+app (not in `src`, not in `tsconfig.json`'s `include`, never built or deployed). `npm run db-editor`
+starts a zero-dependency Node server on `127.0.0.1:5174` (`server.mjs`) serving a single vanilla-JS
+page (`index.html`): tabs for the three collections, drag-to-reorder (which rewrites the projects'
+`order`), image thumbnails, a markdown preview and pre-save validation.
+
+The writer reproduces the file's exact on-disk format — 2-space indent, non-ASCII escaped as
+`\uXXXX`, no trailing newline, keys in the order declared by `SCHEMA` in `index.html` — so saving
+without editing anything leaves `git diff` empty. Keep that property when touching either file.
+Every save first copies the previous content to `public/db.json.bak` (gitignored via `*.bak`).
 
 ### Routing
 

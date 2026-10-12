@@ -1,4 +1,4 @@
-import"./rolldown-runtime-CbXtAM7H.js";import{i as e}from"./analytics-BcbmYEdP.js";import{t}from"./react-vendor-BE2QSrhy.js";import{c as n,s as r,u as i}from"./index-ahO2y5vf.js";e();var a=t(),o=i.div`
+import"./rolldown-runtime-CbXtAM7H.js";import{i as e}from"./analytics-BSPBJ9sO.js";import{t}from"./react-vendor-DBgTzdJC.js";import{c as n,s as r,u as i}from"./index-CazUzl3J.js";e();var a=t(),o=i.div`
   padding: 2rem;
   color: ${n};
   margin-top: 5rem;

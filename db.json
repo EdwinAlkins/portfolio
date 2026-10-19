@@ -263,7 +263,7 @@
     },
     {
       "id": 6,
-      "order": 7,
+      "order": 8,
       "title": "Clad\u00e8se",
       "slug": "e-learning-platform",
       "shortDescription": "Clad\u00e8se \u2014 a self-hosted e-learning platform with a built-in RAG assistant: host your video courses, pick up where you left off, take timestamped notes, and get answers grounded in the lessons themselves, with sources.",
@@ -304,7 +304,7 @@
     },
     {
       "id": 7,
-      "order": 8,
+      "order": 9,
       "title": "Software Supervisor",
       "slug": "software-supervisor",
       "shortDescription": "Ensemble de logiciels Java pour la supervision d'op\u00e9rateurs, la saisie de donn\u00e9es et la gestion d'inventaire, d\u00e9velopp\u00e9s durant un stage chez LPG System.",
@@ -330,7 +330,7 @@
     },
     {
       "id": 8,
-      "order": 9,
+      "order": 10,
       "title": "HDR vs LDR Visual Attention Comparison",
       "slug": "hdr-vs-ldr-visual-attention-comparison",
       "shortDescription": "Projet de recherche comparant l'attention visuelle sur des images HDR et LDR \u00e0 l'aide d'algorithmes d'IA pour d\u00e9terminer quelle m\u00e9thode de conversion pr\u00e9serve le mieux les patterns d'attention humaine.",
@@ -360,7 +360,7 @@
     },
     {
       "id": 9,
-      "order": 10,
+      "order": 11,
       "title": "protoruf",
       "slug": "protoruf",
       "shortDescription": "A high-performance Python library, written in Rust, for converting data between JSON and Protobuf \u2014 faster than Google's standard library and with no tedious setup.",
@@ -398,7 +398,7 @@
     },
     {
       "id": 10,
-      "order": 11,
+      "order": 12,
       "title": "Bot Analyste Quantitatif",
       "slug": "bot-analyste-quantitatif",
       "shortDescription": "Dashboard interactif d'analyse de march\u00e9 utilisant une convergence de mod\u00e8les quantitatifs (Machine Learning et statistiques) pour g\u00e9n\u00e9rer des opinions de march\u00e9 structur\u00e9es.",
@@ -433,7 +433,7 @@
     },
     {
       "id": 15,
-      "order": 12,
+      "order": 13,
       "title": "FastAPI Hexagonal",
       "slug": "fastapi-hexagonal",
       "shortDescription": "A runnable reference for building FastAPI apps with hexagonal architecture and tactical DDD \u2014 architecture rules enforced by the build, three levels of tests, and a full path from Docker Compose to Kubernetes, with a 15-chapter course.",
@@ -474,7 +474,7 @@
     },
     {
       "id": 16,
-      "order": 13,
+      "order": 14,
       "title": "Factorio Admin RCON",
       "slug": "factorio-admin-rcon",
       "shortDescription": "A hardened web console that delegates Factorio server moderation without handing out the RCON password \u2014 three server-side roles, bounded commands instead of raw Lua, and an audit log of every action and every refusal.",
@@ -518,7 +518,7 @@
     },
     {
       "id": 12,
-      "order": 14,
+      "order": 15,
       "title": "Automate Simulator",
       "slug": "automate-simulator",
       "shortDescription": "Logiciel de cr\u00e9ation, modification et simulation d'automates pour l'IUT de Valence, permettant de concevoir des graphes d'automatisation, les tester, les simplifier, avec un mode examen pour l'\u00e9valuation.",
@@ -545,7 +545,7 @@
     },
     {
       "id": 13,
-      "order": 15,
+      "order": 16,
       "title": "Copy Contents",
       "slug": "copy-contents",
       "shortDescription": "A VS Code extension to copy the entire contents of a folder to your clipboard in one click \u2014 ideal for feeding context to LLMs (ChatGPT, Claude, Copilot).",
@@ -577,7 +577,7 @@
     },
     {
       "id": 11,
-      "order": 16,
+      "order": 17,
       "title": "RVaultPass",
       "slug": "rvaultpass",
       "shortDescription": "Un gestionnaire de mots de passe s\u00e9curis\u00e9, local et zero-knowledge pour desktop, avec chiffrement AES-256 et base de donn\u00e9es SQLCipher.",
@@ -614,6 +614,39 @@
         "github": "https://github.com/EdwinAlkins/rvaultpass"
       },
       "experienceId": -1
+    },
+    {
+      "id": 17,
+      "order": 7,
+      "title": "AI Coding Agent Harness",
+      "slug": "ai-coding-agent-harness",
+      "shortDescription": "A private plugin marketplace that gives the engineering team's AI coding agents (Claude Code, Codex, Cursor) shared, company-specific skills \u2014 so every assistant follows the same Python, architecture, CI/CD and documentation standards.",
+      "longDescription": "**AI Coding Agent Harness** is an internal toolkit that turns generic AI coding assistants into colleagues who know the house rules. Instead of each developer writing their own prompts, the team installs a shared set of **skills** \u2014 packaged instructions and reference material \u2014 that agents load automatically when the task calls for it.\n\nThe skills cover the team's day-to-day work: a **Python** expert layer with **FastAPI**, **SQLAlchemy** and **Alembic** patterns, an **architecture guardrail** that decides where new code belongs and makes sure every change ships with its contract, migration and tests, a **GitLab CI/CD** standard (unified stages, policies and components), a **MkDocs** documentation-as-code guide, and a skill that files well-formed **Linear** issues for any team. A guiding principle runs through all of them: the agent must never invent a package, command or layer it has not seen in the repository.\n\nThe marketplace ships to **Claude Code**, **OpenAI Codex** and **Cursor** from a single source of truth: a **Python** script generates each tool's catalog and manifests, enforced by a mandatory **pre-commit** hook and validated in **GitLab CI** alongside SAST and secret detection. The documentation is published automatically to the internal developer portal.",
+      "capsuleImage": "/portfolio/projects/ai-coding-agent-harness/clawd.svg",
+      "images": [
+        "/portfolio/projects/ai-coding-agent-harness/clawd.svg"
+      ],
+      "technologies": [
+        "python",
+        "claude-code",
+        "codex",
+        "cursor",
+        "fastapi",
+        "mkdocs",
+        "gitlab-ci",
+        "pre-commit"
+      ],
+      "tags": [
+        "AI",
+        "Developer Experience",
+        "LLM Agents",
+        "Tooling",
+        "Standards"
+      ],
+      "category": "Tool",
+      "releaseDate": "2026-10-19",
+      "status": "Production",
+      "experienceId": 1
     }
   ]
 }

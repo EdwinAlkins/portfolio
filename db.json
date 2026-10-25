@@ -647,6 +647,41 @@
       "releaseDate": "2026-10-19",
       "status": "Production",
       "experienceId": 1
+    },
+    {
+      "id": 18,
+      "order": 18,
+      "title": "Forme Studio",
+      "slug": "forme-studio",
+      "shortDescription": "A browser extension (Chrome & Firefox) to capture clothes from online shops, build outfits and generate virtual try-ons, through GPT or a ComfyUI pipeline, without leaving the extension.",
+      "longDescription": "**Forme Studio** is a browser extension that turns any online shop into a personal wardrobe. With an eyedropper, you click a product image on a shop page and the piece is saved to a local catalog. Its category (top, bottom, jacket, shoes, dress, accessory) is detected automatically from the page itself: JSON-LD, title, breadcrumb and URL. When the signals are ambiguous, the extension asks instead of guessing.\n\nPieces are combined into **outfits**, with one piece per slot and as many accessories as you like. For each outfit, the extension builds a **try-on request** from a full-length reference photo of the user, optional face close-up and profile shots, a captioned outfit board in HD and a generated prompt. A **backend** sends that request to the **GPT image API**, and the result comes back straight into the extension, so the user never has to open ChatGPT. A second engine runs the same request through a **ComfyUI** pipeline, so you can compare the two side by side on fidelity, rendering quality and cost. Every result is saved to the outfit's history, and outfits are locked into revisions so earlier results are never lost.\n\nThe wardrobe and photos stay in the browser in **IndexedDB**. Generation requests go through the backend, which acts as a **stateless relay**: it forwards them to the engines and stores nothing, neither images nor prompts nor results. Built with **WXT**, **React** and **TypeScript** on Manifest V3 for both Chrome and Firefox. It uses **Zod** for validation and **fflate** for export and backup, and is tested with **Vitest** and **Playwright**.",
+      "capsuleImage": "/portfolio/projects/forme-studio/icon.svg",
+      "images": [
+        "/portfolio/projects/forme-studio/icon.svg"
+      ],
+      "technologies": [
+        "typescript",
+        "react",
+        "wxt",
+        "indexeddb",
+        "openai",
+        "comfyui",
+        "zod",
+        "vitest",
+        "playwright"
+      ],
+      "tags": [
+        "Browser Extension",
+        "Fashion",
+        "AI",
+        "Virtual Try-On",
+        "Privacy",
+        "Local-First"
+      ],
+      "category": "Tool",
+      "releaseDate": "2026-10-25",
+      "status": "Beta",
+      "experienceId": -1
     }
   ]
 }

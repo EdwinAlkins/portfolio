@@ -682,6 +682,50 @@
       "releaseDate": "2026-10-25",
       "status": "Beta",
       "experienceId": -1
+    },
+    {
+      "id": 19,
+      "order": 19,
+      "title": "fastgrpc3",
+      "slug": "fastgrpc3",
+      "shortDescription": "A FastAPI-like gRPC framework for Python, with an optimized Rust protobuf codec (protoruf) and an optional Rust (tonic) server transport that serves up to 14\u00d7 more calls per CPU core than grpc.aio.",
+      "longDescription": "**fastgrpc3** is a FastAPI-like gRPC framework for Python: services are plain `async` functions with Pydantic models, and the framework brings dependency injection, typed clients, rich errors, health checking, server reflection and interactive docs. Protobuf messages are encoded and decoded by [protoruf](https://github.com/EdwinAlkins/protoruf), a Rust library with an optimized codec that goes straight between protobuf bytes and Pydantic models \u2014 no `protoc`, no generated `_pb2` files.\n\nThe project comes with **fastgrpc3-transport**, a gRPC server transport written in Rust on tonic and tokio: HTTP/2, gRPC framing, TLS and flow control run in Rust, and the asyncio loop receives the calls by batches through a PyO3 bridge. Switching transport is one option (`fastgrpc3 run app:app --transport tonic`) \u2014 handlers, dependencies, middlewares and errors do not change, and the whole test suite runs on both transports.\n\nKey points:\n - Up to 14\u00d7 more calls per CPU core than the same app on `grpc.aio`: 62,000 calls/s on one core, 13 \u00b5s of CPU per call, p99 latency 8\u00d7 lower.\n - Optimized protobuf codec through protoruf: encoding 9\u00d7 faster than fastgrpc2 and 55\u00d7 faster than `google.protobuf` + Pydantic, validation included on decoding (or skipped for trusted data).\n - Two ways to write a contract: Pydantic models to `.proto` (field numbers pinned in a lock file, breaking changes caught in CI), or `.proto` files to generated models and typed clients that pass `mypy --strict`.\n - Full gRPC: the four kinds of call, deadlines and cancellation, metadata, standard `google.rpc` error details, TLS and mTLS, compression, health checking and reflection.\n - Production engineering on the Rust side: bounded queues and backpressure, admission control, graceful shutdown, profile-guided optimization, wheels for Linux, macOS and Windows.\n\nBoth packages are open source and published on PyPI.",
+      "capsuleImage": "https://grpc.io/img/logos/grpc-logo.png",
+      "images": [],
+      "technologies": [
+        "python",
+        "rust",
+        "grpc",
+        "tonic",
+        "tokio",
+        "pyo3",
+        "maturin",
+        "protobuf",
+        "pydantic",
+        "asyncio"
+      ],
+      "tags": [
+        "Open Source",
+        "High Performance",
+        "Developer Experience",
+        "Python",
+        "Rust",
+        "gRPC"
+      ],
+      "category": "Library",
+      "releaseDate": "2026-10-30",
+      "status": "Beta",
+      "links": {
+        "github": [
+          "https://github.com/EdwinAlkins/fastgrpc3",
+          "https://github.com/EdwinAlkins/fastgrpc3-transport"
+        ],
+        "pypi": [
+          "https://pypi.org/project/fastgrpc3",
+          "https://pypi.org/project/fastgrpc3-transport"
+        ]
+      },
+      "experienceId": -1
     }
   ]
 }
